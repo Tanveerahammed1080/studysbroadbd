@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0ZMFT4DXBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0ZMFT4DXBG');
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>আন্তর্জাতিক পড়াশোনা ও কাজের ইন্টারেক্টিভ গাইড</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+
+<link rel="preload" href="https://fonts.gstatic.com/s/hindsiliguri/v13/ijwOs5juQtsyLLR5SN4cBej9EP_0vQVKxGv.woff2" as="font" type="font/woff2" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+
+<style>
+    /* Create a fallback font that mimics the final web font's metrics */
+    @font-face {
+      font-family: 'Hind Siliguri Fallback';
+      src: local('Arial');
+      size-adjust: 105.56%;
+      ascent-override: 94.67%;
+      descent-override: 34.61%;
+      line-gap-override: 0%;
+    }
+</style>
+
+<style>
+        body {
+            /* Apply the fallback font first, then the actual web font */
+            font-family: 'Hind Siliguri', 'Hind Siliguri Fallback', sans-serif;
+            background-color: #FFFBF5;
+            color: #2D3748;
+        }
+        .nav-link {
+            transition: all 0.3s;
+            @apply px-4 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200 hover:text-gray-900;
+        }
+        .nav-link.active {
+            @apply bg-blue-100 text-blue-700;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-center mb-4 text-gray-800;
+        }
+        .section-subtitle {
+            @apply text-center text-gray-600 max-w-2xl mx-auto mb-10;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300;
+        }
+        .tab-button {
+            @apply px-4 py-2 font-semibold text-gray-600 rounded-t-lg transition-colors duration-300;
+        }
+        .tab-button.active {
+            @apply bg-white text-blue-600 border-b-2 border-blue-600;
+        }
+        .country-card {
+            @apply bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer; /* Increased translate-y for more float */
+            border: 2px solid transparent; /* Initial transparent border */
+            transition: all 0.3s ease-in-out; /* Smooth transition for all changes */
+        }
+        /* Ensure border is always visible on hover for better clickability indication */
+        .country-card:hover {
+            @apply bg-blue-50 border-blue-500 text-blue-800; /* Change background, border, and text color on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover for more float */
+        }
+        /* For mobile, ensure border is always there */
+        @media (max-width: 767px) {
+            .country-card {
+                border: 1px solid #CBD5E0; /* Light gray border for mobile */
+            }
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        [data-tab-content] {
+            display: none;
+        }
+        [data-tab-content].active {
+            display: block;
+        }
+        /* Removed .llm-output as LLM API is no longer used for dynamic content */
+    </style>
+
+<link href="https://studyabroadbd.top/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://studyabroadbd.top/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://studyabroadbd.top/favicon.ico" rel="shortcut icon"/>
+<link href="https://studyabroadbd.top/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<meta content="STUDY ABROAD BD" name="apple-mobile-web-app-title"/>
+<link href="https://studyabroadbd.top/site.webmanifest" rel="manifest"/>
+</head>
+<body class="antialiased">
+<header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm" id="header">
+<nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+<div class="text-xl font-bold text-gray-800">আন্তর্জাতিক গাইড</div>
+<div class="hidden md:flex items-center space-x-1">
+<a class="nav-link" href="#home">ভূমিকা</a>
+<a class="nav-link" href="#pathways">পথ</a>
+<a class="nav-link" href="#requirements">প্রয়োজনীয়তা</a>
+<a class="nav-link" href="#ielts">IELTS</a>
+<a class="nav-link" href="#opportunities">সুযোগ</a>
+<a class="nav-link" href="#financials">আর্থিক</a>
+<a class="nav-link" href="#study-work">পড়াশোনা ও কাজ</a>
+</div>
+<button class="md:hidden text-gray-700 focus:outline-none" id="mobile-menu-button">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</nav>
+<div class="hidden md:hidden" id="mobile-menu">
+<a class="block py-2 px-4 text-sm hover:bg-gray-200" href="#home">ভূমিকা</a>
+<a class="block py-2 px-4 text-sm hover:bg-gray-200" href="#pathways">পথ</a>
+<a class="block py-2 px-4 text-sm hover:bg-gray-200" href="#requirements">প্রয়োজনীয়তা</a>
+<a class="block py-2 px-4 text-sm hover:bg-gray-200" href="#ielts">IELTS</a>
+<a class="block py-2 px-4 text-sm hover:bg-gray-200" href="#opportunities">সুযোগ</a>
+<a class="block py-2 px-4 text-sm hover:bg-gray-200" href="#financials">আর্থিক</a>
+<a class="block py-2 px-4 text-sm hover:bg-gray-200" href="#study-work">পড়াশোনা ও কাজ</a>
+</div>
+</header>
+<main>
+<section class="py-20 bg-blue-50" id="home">
+<div class="container mx-auto px-6 text-center">
+<h1 class="text-4xl md:text-5xl font-extrabold text-blue-700 mb-4 tracking-tight leading-none">আন্তর্জাতিক পড়াশোনা ও কাজের জগতে স্বাগতম</h1>
+<h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-6 max-w-4xl mx-auto leading-tight">আপনি HSC পাস করে কানাডা🇨🇦/আমেরিকা🇺🇸/অস্ট্রেলিয়া🇦🇺/যুক্তরাজ্য🇬🇧/সেনজেন এলাকা(ইউরোপ)🇪🇺/চীন🇨🇳/দক্ষিণ কোরিয়া🇰🇷 - এ বিনামূল্যে পড়তে যেতে চান কিন্তু বুঝতে পারছেন না আপনার স্কলারশিপ নাকি ওয়ার্ক-পারমিট প্রয়োজন?? এই ইন্টারেক্টিভ গাইডটি আপনার বিদেশ যাত্রা সহজ করার জন্য তৈরি করা হয়েছে।</h2>
+<a class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition-colors" href="#pathways">আপনার যাত্রা শুরু করুন</a>
+</div>
+</section>
+<section class="py-20" id="pathways">
+<div class="container mx-auto px-6">
+<h2 class="section-title"><strong>স্কলারশিপ বনাম ওয়ার্ক পারমিট:-</strong></h2>
+<p class="section-subtitle">আপনার আন্তর্জাতিক যাত্রার পরিকল্পনা করার জন্য স্কলারশিপ এবং ওয়ার্ক পারমিটের মধ্যে মূল পার্থক্য বোঝা অপরিহার্য। এই বিভাগে দুটি পথের একটি পরিষ্কার তুলনা প্রদান করা হলো, যা আপনাকে সঠিক সিদ্ধান্ত নিতে সাহায্য করবে।</p>
+<br/>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="card">
+<div class="flex items-center mb-4">
+<span class="text-4xl mr-4">🎓</span>
+<h3 class="text-2xl font-bold text-gray-800">স্কলারশিপ (বৃত্তি)</h3>
+</div>
+<p class="text-gray-600 mb-4"><strong>মূল উদ্দেশ্য: শিক্ষায় আর্থিক সহায়তা প্রদান। এটি কোনো ঋণ নয় এবং সাধারণত ফেরত দিতে হয় না।<strong></strong></strong></p>
+<ul class="space-y-2 text-gray-700 list-disc list-inside">
+<li><strong>প্রকারভেদ:</strong>  মেধা-ভিত্তিক, প্রয়োজন-ভিত্তিক, প্রতিভা-ভিত্তিক।</li>
+<li><strong>সুবিধা:</strong>  টিউশন ফি, জীবনযাত্রার খরচ বা সম্পূর্ণ খরচ বহন করে।</li>
+<li><strong>ফলাফল:</strong> ছাত্র ভিসা পাওয়ার আর্থিক যোগ্যতা অর্জনে সহায়তা করে।</li>
+</ul>
+</div>
+<div class="card">
+<div class="flex items-center mb-4">
+<span class="text-4xl mr-4">💼</span>
+<h3 class="text-2xl font-bold text-gray-800">ওয়ার্ক পারমিট (কাজের অনুমতি)</h3>
+</div>
+<p class="text-gray-600 mb-4"><strong>মূল উদ্দেশ্য:</strong> কোনো দেশে আইনতভাবে চাকরি করার অনুমতি প্রদান।</p>
+<ul class="space-y-2 text-gray-700 list-disc list-inside">
+<li><strong>প্রকারভেদ:</strong> নিয়োগকর্তা-স্পনসরড, পোস্ট-স্টাডি ওয়ার্ক, ছাত্রকালীন কাজের অনুমতি।</li>
+<li><strong>সুবিধা:</strong> আয়ের মাধ্যমে জীবনযাত্রার ব্যয় নির্বাহ করা এবং কাজের অভিজ্ঞতা অর্জন।</li>
+<li><strong>ফলাফল:</strong> প্রায়শই একটি বৈধ ছাত্র ভিসার উপর নির্ভরশীল।</li>
+</ul>
+</div>
+</div>
+<div class="mt-12 bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-6 rounded-r-lg">
+<p class="font-bold">গুরুত্বপূর্ণ সংযোগ:</p>
+<p>স্কলারশিপ → আর্থিক সচ্ছলতার প্রমাণ → ছাত্র ভিসা → কাজের সুযোগ (ওয়ার্ক পারমিট)। স্কলারশিপ সরাসরি কাজের অনুমতি না দিলেও, এটি সেই পথ খুলে দেয় যার মাধ্যমে কাজের সুযোগ পাওয়া যায়।</p>
+</div>
+</div>
+</section>
+<section class="py-20 bg-gray-50" id="requirements">
+<div class="container mx-auto px-6">
+<h2 class="section-title">প্রয়োজনীয়তা ও প্রক্রিয়া:-</h2>
+<p class="section-subtitle">স্কলারশিপ এবং ছাত্রকালীন কাজের অনুমতির জন্য আবেদন প্রক্রিয়া এবং প্রয়োজনীয়তা দেশ ভেদে ভিন্ন হয়। এখানে একটি সংক্ষিপ্ত বিবরণ দেওয়া হলো। সঠিক ট্যাব নির্বাচন করে বিস্তারিত জানুন।</p>
+<div class="border-b border-gray-200">
+<nav class="flex -mb-px" id="tabs-req">
+<button class="tab-button active" data-tab="scholarship-req">স্কলারশিপ</button>
+<button class="tab-button" data-tab="work-permit-req">ছাত্র ভিসা ও কাজ</button>
+</nav>
+</div>
+<div class="mt-8">
+<div class="active card" data-tab-content="" id="scholarship-req">
+<h3 class="text-xl font-bold mb-4">স্কলারশিপের জন্য সাধারণ প্রয়োজনীয়তা</h3>
+<ul class="space-y-3 list-disc list-inside text-gray-700">
+<li><strong>একাডেমিক রেকর্ড:</strong> আপনার HSC-তে A+/A/A-... এর মতো চমৎকার ফলাফল একটি বড় প্লাস পয়েন্ট।</li>
+<li><strong>ব্যক্তিগত রচনা (Personal Statement):</strong> আপনার লক্ষ্য, অর্জন এবং কেন আপনি যোগ্য তা তুলে ধরুন।</li>
+<li><strong>সুপারিশপত্র (Letters of Recommendation):</strong>  আপনার শিক্ষক বা পরামর্শদাতাদের কাছ থেকে।</li>
+<li><strong>সহশিক্ষা কার্যক্রম:</strong> খেলাধুলা, নেতৃত্ব বা সামাজিক কাজে অংশগ্রহণ।</li>
+<li><strong>ইংরেজি দক্ষতা:</strong> IELTS বা TOEFL এর ভালো স্কোর।</li>
+</ul>
+</div>
+<div data-tab-content="" id="work-permit-req">
+<div class="card">
+<h3 class="text-xl font-bold mb-4">ছাত্রকালীন কাজের অনুমতির প্রক্রিয়া (দেশভিত্তিক)</h3>
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<h4 class="font-semibold text-lg mb-2">🇺🇸 মার্কিন যুক্তরাষ্ট্র (F-1 ভিসা)</h4>
+<ul class="space-y-2 list-disc list-inside text-gray-700">
+<li><strong>On-Campus:</strong> সাধারণত পৃথক অনুমতি লাগে না।</li>
+<li><strong>Off-Campus (CPT/OPT):</strong> পড়াশোনার সাথে সম্পর্কিত কাজের জন্য নির্দিষ্ট অনুমোদন (I-20 endorsement বা EAD কার্ড) প্রয়োজন।</li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-lg mb-2">🇨🇦 কানাডা</h4>
+<ul class="space-y-2 list-disc list-inside text-gray-700">
+<li><strong>On/Off-Campus:</strong> বৈধ স্টাডি পারমিট থাকলে সাধারণত সপ্তাহে ২৪ ঘণ্টা পর্যন্ত কাজের অনুমতি থাকে।</li>
+<li><strong>Co-op Work Permit:</strong> যদি পড়াশোনার অংশ হিসেবে কাজ বাধ্যতামূলক হয়, তবে এর জন্য পৃথক পারমিট লাগে।</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20" id="ielts">
+<div class="container mx-auto px-6">
+<h2 class="section-title">IELTS এর অপরিহার্য ভূমিকা:-</h2>
+<p class="section-subtitle">আন্তর্জাতিক পড়াশোনা বা কাজের জন্য IELTS একটি চাবিকাঠি। এটি আপনার ইংরেজি ভাষার দক্ষতা প্রমাণ করে। বিশ্ববিদ্যালয় ভর্তি, ভিসা এবং চাকরির জন্য এটি প্রায়শই বাধ্যতামূলক।</p>
+<br/>
+<div class="text-center mb-8">
+<button class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-l-lg" id="ielts-study-btn">পড়াশোনার জন্য (Academic)</button>
+<button class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-r-lg" id="ielts-work-btn">কাজের জন্য (General)</button>
+</div>
+<div class="chart-container">
+<canvas id="ieltsChart"></canvas>
+</div>
+</div>
+</section>
+<section class="py-20 bg-gray-50" id="opportunities">
+<div class="container mx-auto px-6">
+<h2 class="section-title">আপনার A+ / A- / A... দিয়ে বৈশ্বিক সুযোগ:-</h2>
+<p class="section-subtitle">আপনার এইচএসসি পরীক্ষার ফলাফল বিশ্বের সেরা বিশ্ববিদ্যালয়গুলোর দরজা খুলে দিতে পারে। নিচে কয়েকটি জনপ্রিয় দেশের সুযোগ সম্পর্কে জানতে কার্ডে ক্লিক করুন।</p>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="country-grid">
+</div>
+<h3 class="section-title mt-16">ন্যূনতম HSC GPA প্রয়োজনীয়তা (আনুমানিক):-</h3>
+<p class="section-subtitle">এখানে বিভিন্ন দেশের বিশ্ববিদ্যালয়গুলিতে ভর্তির জন্য আনুমানিক ন্যূনতম HSC GPA স্কোর দেখানো হয়েছে। মনে রাখবেন, এই স্কোরগুলি বিশ্ববিদ্যালয় এবং প্রোগ্রামের উপর নির্ভর করে পরিবর্তিত হতে পারে।</p>
+<br/>
+<div class="chart-container">
+<canvas id="gpaChart"></canvas>
+</div>
+</section>
+<section class="py-20" id="financials">
+<div class="container mx-auto px-6">
+<h2 class="section-title">আর্থিক প্রয়োজনীয়তা:-</h2>
+<p class="section-subtitle">বিদেশে পড়াশোনার জন্য আর্থিক সচ্ছলতার প্রমাণ দেখানো একটি গুরুত্বপূর্ণ ধাপ। দেশ ভেদে টিউশন ফি এবং জীবনযাত্রার খরচের পরিমাণ ভিন্ন হয়। নিচের চার্টটি আপনাকে একটি প্রাথমিক ধারণা দেবে।</p>
+<br/>
+<div class="chart-container">
+<canvas id="financialChart"></canvas>
+</div>
+<div class="mt-8 text-center text-gray-700 max-w-2xl mx-auto" id="financial-details">
+<p>চার্টে প্রতিটি দেশের জন্য আনুমানিক বার্ষিক জীবনযাত্রার খরচ দেখানো হয়েছে। টিউশন ফি বিশ্ববিদ্যালয় এবং কোর্সের উপর নির্ভর করে পরিবর্তিত হয় এবং এই খরচের সাথে অতিরিক্তভাবে যোগ হবে।</p>
+<div class="mt-8 p-6 bg-blue-50 rounded-lg shadow-inner">
+<h3 class="text-xl font-bold mb-4 text-gray-800">আর্থিক পরিকল্পনা</h3>
+<p class="mb-4 text-gray-600">আপনার বাজেট এবং পছন্দের দেশের উপর ভিত্তি করে আর্থিক পরিকল্পনা করুন।</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-gray-50" id="study-work">
+<div class="container mx-auto px-6">
+<h2 class="section-title">পড়াশোনা ও কাজের সমন্বয়:-</h2>
+<p class="section-subtitle">আন্তর্জাতিক ছাত্র হিসেবে পড়াশোনার পাশাপাশি কাজের সুযোগ একটি বড় আকর্ষণ। এটি আপনাকে মূল্যবান অভিজ্ঞতা অর্জনের পাশাপাশি আর্থিকভাবেও সহায়তা করে। নিচে ছাত্র থেকে কর্মজীবনে প্রবেশের একটি সাধারণ পথ দেখানো হলো।</p>
+<br/>
+<br/>
+<div class="relative max-w-3xl mx-auto"> <div class="border-l-2 border-blue-300 absolute h-full top-0 left-1/2 transform -translate-x-1/2"></div>
+<div class="space-y-12">
+<div class="relative flex items-center justify-start">
+<div class="w-1/2 pr-8 text-right">
+<h3 class="font-bold text-lg">ছাত্র ভিসা ও ভর্তি</h3>
+<p class="text-gray-600">স্কলারশিপ বা নিজ অর্থায়নে বিশ্ববিদ্যালয়ে ভর্তি নিশ্চিত করে ছাত্র ভিসা অর্জন।</p>
+</div>
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500 text-white font-bold text-xl flex items-center justify-center z-10 relative">1</div>
+<div class="w-1/2 pl-8"></div>
+</div>
+<div class="relative flex items-center justify-end">
+<div class="w-1/2 pr-8"></div>
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500 text-white font-bold text-xl flex items-center justify-center z-10 relative">2</div>
+<div class="w-1/2 pl-8 text-left">
+<h3 class="font-bold text-lg">ছাত্রকালীন কাজ</h3>
+<p class="text-gray-600">ক্যাম্পাসে বা ক্যাম্পাসের বাইরে নির্দিষ্ট সময়ের জন্য কাজের অনুমতি (যেমন কানাডায় সপ্তাহে ২৪ ঘণ্টা)।</p>
+</div>
+</div>
+<div class="relative flex items-center justify-start">
+<div class="w-1/2 pr-8 text-right">
+<h3 class="font-bold text-lg">স্নাতক ও পোস্ট-গ্র্যাজুয়েশন ওয়ার্ক পারমিট</h3>
+<p class="text-gray-600"> পড়াশোনা শেষে পোস্ট-গ্র্যাজুয়েশন ওয়ার্ক পারমিট (PGWP) এর জন্য আবেদন, যা ১-৩ বছরের কাজের অভিজ্ঞতা দেয়।</p>
+</div>
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500 text-white font-bold text-xl flex items-center justify-center z-10 relative">3</div>
+<div class="w-1/2 pl-8"></div>
+</div>
+<div class="relative flex items-center justify-end">
+<div class="w-1/2 pr-8"></div>
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500 text-white font-bold text-xl flex items-center justify-center z-10 relative">4</div>
+<div class="w-1/2 pl-8 text-left">
+<h3 class="font-bold text-lg">স্থায়ী বসবাসের পথ</h3>
+<p class="text-gray-600">কাজের অভিজ্ঞতাকে কাজে লাগিয়ে স্থায়ী বাসিন্দা (PR) হওয়ার জন্য আবেদন।</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20" id="contact-support">
+<div class="container mx-auto px-6 text-center">
+<h2 class="section-title">যোগাযোগ এবং সমর্থন</h2>
+<p class="section-subtitle">আপনার মূল্যবান মতামত, পরামর্শ, বা অভিযোগ আমাদের জানান। এছাড়াও, সাম্প্রতিক আপডেট  পেতে আমাদের ফেসবুক গ্রুপ এ যোগ দিন।</p>
+<br/>
+<div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
+<a class="bg-green-600 text-white font-bold py-3 px-8 rounded-full hover:bg-green-700 transition-colors shadow-lg" href="https://forms.gle/RtJuaCfprcVoUv2AA" target="_blank">পরামর্শ/অভিযোগের জন্য ফর্ম</a>
+<a class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-purple-700 transition-colors shadow-lg" href="https://facebook.com/studyabroadbd.top" target="_blank">ফেসবুক গ্রুপে যোগ দিন</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-800 text-white py-8">
+<div class="container mx-auto px-6 text-center">
+<p>© 2025 আন্তর্জাতিক পড়াশোনা ও কাজের গাইড। আপনার উজ্জ্বল ভবিষ্যতের জন্য শুভকামনা।</p>
+<p class="text-sm text-slate-400 mt-2">সর্বশেষ তথ্যের জন্য সর্বদা অফিসিয়াল সরকারি এবং বিশ্ববিদ্যালয়ের ওয়েবসাইটগুলি দেখুন।</p>
+<p class="text-sm mt-2">Admin: Tanveer Ahammed | Contact: <a class="text-sm text-gray-300 hover:text-[#BF0A30] transition" href="mailto:studyabroadbd360@gmail.com">studyabroadbd360@gmail.com</a>
+</p></div></footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if(link.hash !== "") {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(link.hash);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70, 
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                 if(mobileMenu.classList.contains('hidden') === false) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        const sections = document.querySelectorAll('section');
+        const headerNavLinks = document.querySelectorAll('#header .nav-link');
+        window.onscroll = () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if(pageYOffset >= sectionTop - 80) {
+                    current = section.getAttribute('id');
+                }
+            });
+            headerNavLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        };
+        
+        const tabsContainer = document.getElementById('tabs-req');
+        if (tabsContainer) {
+            tabsContainer.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    const tabId = e.target.dataset.tab;
+                    
+                    document.querySelectorAll('#tabs-req button').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+
+                    document.querySelectorAll('[data-tab-content]').forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === tabId) {
+                            content.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+        
+        const ieltsData = {
+            study: {
+                labels: ['🇬🇧 যুক্তরাজ্য', '🇦🇺 অস্ট্রেলিয়া', '🇺🇸 মার্কিন যুক্তরাষ্ট্র', '🇨🇦 কানাডা', '🇪🇺 শেনজেন এলাকা', '🇨🇳 চীন', '🇰🇷 দক্ষিণ কোরিয়া'],
+                scores: [5.5, 6.0, 6.0, 6.5, 6.0, 5.5, 5.5], 
+                title: 'পড়াশোনার জন্য ন্যূনতম IELTS স্কোর (Academic)'
+            },
+            work: {
+                labels: ['🇬🇧 যুক্তরাজ্য (Skilled)', '🇦🇺 অস্ট্রেলিয়া (Skilled)', '🇨🇦 কানাডা (Skilled)', '🇪🇺 শেনজেন এলাকা', '🇨🇳 চীন', '🇰🇷 দক্ষিণ কোরিয়া'],
+                scores: [4.0, 6.0, 6.0, 6.0, 5.0, 5.0], 
+                title: 'কাজের জন্য ন্যূনতম IELTS স্কোর (General)'
+            }
+        };
+
+        const ieltsCtx = document.getElementById('ieltsChart').getContext('2d');
+        let ieltsChart = new Chart(ieltsCtx, {
+            type: 'bar',
+            data: {
+                labels: ieltsData.study.labels,
+                datasets: [{
+                    label: 'ন্যূনতম ব্যান্ড স্কোর',
+                    data: ieltsData.study.scores,
+                    backgroundColor: 'rgba(66, 153, 225, 0.6)',
+                    borderColor: 'rgba(66, 153, 225, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: ieltsData.study.title,
+                        font: { size: 16, family: 'Hind Siliguri' },
+                        color: '#2D3748'
+                    },
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 9.0,
+                        title: {
+                            display: true,
+                            text: 'ব্যান্ড স্কোর',
+                            font: { family: 'Hind Siliguri' }
+                        }
+                    },
+                    x: {
+                       ticks: { font: { family: 'Hind Siliguri' } }
+                    }
+                }
+            }
+        });
+
+        const ieltsStudyBtn = document.getElementById('ielts-study-btn');
+        const ieltsWorkBtn = document.getElementById('ielts-work-btn');
+
+        function updateIeltsChart(type) {
+            const chartData = ieltsData[type];
+            ieltsChart.data.labels = chartData.labels;
+            ieltsChart.data.datasets[0].data = chartData.scores;
+            ieltsChart.options.plugins.title.text = chartData.title;
+            ieltsChart.update();
+
+            if(type === 'study') {
+                ieltsStudyBtn.classList.add('bg-blue-500', 'text-white');
+                ieltsStudyBtn.classList.remove('bg-gray-300', 'text-gray-700');
+                ieltsWorkBtn.classList.add('bg-gray-300', 'text-gray-700');
+                ieltsWorkBtn.classList.remove('bg-blue-500', 'text-white');
+            } else {
+                ieltsWorkBtn.classList.add('bg-blue-500', 'text-white');
+                ieltsWorkBtn.classList.remove('bg-gray-300', 'text-gray-700');
+                ieltsStudyBtn.classList.add('bg-gray-300', 'text-gray-700');
+                ieltsStudyBtn.classList.remove('bg-blue-500', 'text-white');
+            }
+        }
+
+        ieltsStudyBtn.addEventListener('click', () => updateIeltsChart('study'));
+        ieltsWorkBtn.addEventListener('click', () => updateIeltsChart('work'));
+
+        const countryData = [
+            {
+                name: "কানাডা 🇨🇦",
+                pathway: "সরাসরি স্নাতক প্রোগ্রামে ভর্তি বা ফাউন্ডেশন প্রোগ্রামের মাধ্যমে।",
+                notes: "বিশ্বব্যাপী স্বীকৃত ডিগ্রি এবং তুলনামূলকভাবে সাশ্রয়ী। ইঞ্জিনিয়ারিং এবং ব্যবসার মতো বিষয় জনপ্রিয়।",
+                details: "কানাডিয়ান বিশ্ববিদ্যালয়গুলি সাধারণত এইচএসসি যোগ্যতা গ্রহণ করে। বছর গ্যাপের গ্রহণযোগ্যতা বিশ্ববিদ্যালয় এবং প্রোগ্রামের উপর নির্ভর করে, তবে সাধারণত ১-২ বছর পর্যন্ত গ্রহণযোগ্য। বয়সের নির্দিষ্ট কোনো কঠোর সীমা নেই, তবে স্নাতক প্রোগ্রামের জন্য সাধারণত ১৮-২৫ বছর বয়সীদের অগ্রাধিকার দেওয়া হয়।",
+                link: "Canada.html"
+            },
+            {
+                name: "অস্ট্রেলিয়া 🇦🇺",
+                pathway: "ডিপ্লোমা বা ফাউন্ডেশন প্রোগ্রামের মাধ্যমে; খুব ভালো ফলাফলে সরাসরি ব্যাচেলর ডিগ্রিতেও ভর্তির সুযোগ থাকে।",
+                notes: "প্রতিষ্ঠানগুলো স্বতন্ত্রভাবে বিদেশী যোগ্যতা মূল্যায়ন করে।",
+                details: "অস্ট্রালিয়ান বিশ্ববিদ্যালয়গুলি এইচএসসি যোগ্যতা বিবেচনা করে। বছর গ্যাপ সাধারণত গ্রহণযোগ্য, বিশেষ করে যদি এই সময়ে শিক্ষামূলক বা কর্মসংস্থানমূলক অভিজ্ঞতা থাকে। স্নাতক প্রোগ্রামের জন্য বয়স সীমা সাধারণত ২৫-৩০ বছরের মধ্যে থাকে, তবে কিছু ক্ষেত্রে বেশি বয়সীদেরও বিবেচনা করা হয়।",
+                link: "Australia.html"
+            },
+            {
+                name: "যুক্তরাজ্য 🇬🇧",
+                pathway: "সাধারণত ফাউন্ডেশন কোর্সের মাধ্যমে; ব্যতিক্রমী ফলাফলে সরাসরি ভর্তির সুযোগ বিরল।",
+                notes: "সরাসরি ভর্তি অত্যন্ত প্রতিযোগিতামূলক।",
+                details: "যুক্তরাজ্যের বিশ্ববিদ্যালয়গুলিতে এইচএসসি সাধারণত ফাউন্ডেশন কোর্সের জন্য বিবেচিত হয়। ১-২ বছরের বছর গ্যাপ সাধারণত গ্রহণযোগ্য। স্নাতক প্রোগ্রামের জন্য নির্দিষ্ট কোনো বয়স সীমা নেই, তবে ১৮ বছরের বেশি বয়সীদের জন্য ফাউন্ডেশন কোর্স একটি সাধারণ পথ। খুব ব্যতিক্রমী ফলাফলের ক্ষেত্রে সরাসরি ভর্তির সুযোগ হতে পারে, তবে এটি অত্যন্ত প্রতিযোগিতামূলক।",
+                link: "UK.html"
+            },
+            {
+                name: "মার্কিন যুক্তরাষ্ট্র 🇺🇸",
+                pathway: "আপনার HSC, মার্কিন হাই স্কুল ডিপ্লোমার সমতুল্য। সরাসরি স্নাতক প্রোগ্রামে ভর্তির সুযোগ আছে।",
+                notes: "নির্দিষ্ট GPA এবং TOEFL/IELTS স্কোর প্রয়োজন। শংসাপত্র মূল্যায়ন লাগতে পারে।",
+                details: "মার্কিন বিশ্ববিদ্যালয়গুলি এইচএসসিকে মার্কিন হাই স্কুল ডিপ্লোমার সমতুল্য মনে করে। বছর গ্যাপের গ্রহণযোগ্যতা বিশ্ববিদ্যালয় এবং আপনার গ্যাপের সময় কী করেছেন তার উপর নির্ভর করে। সাধারণত ২-৩ বছর পর্যন্ত গ্যাপ গ্রহণযোগ্য, বিশেষ করে যদি আপনি এই সময়ে প্রাসঙ্গিক অভিজ্ঞতা অর্জন করেন। স্নাতক প্রোগ্রামের জন্য নির্দিষ্ট কোনো বয়স সীমা নেই।",
+                link: "USA.html"
+            },
+            {
+                name: "শেনজেন এলাকা 🇪🇺",
+                pathway: "শেনজেনভুক্ত দেশগুলির বিশ্ববিদ্যালয়গুলিতে স্নাতক বা স্নাতকোত্তর প্রোগ্রামে ভর্তির সুযোগ।",
+                notes: "বিভিন্ন ইউরোপীয় দেশের নিজস্ব নীতি এবং বৃত্তি রয়েছে। কাজের সুযোগ দেশভেদে ভিন্ন।",
+                details: "শেনজেনভুক্ত দেশগুলিতে এইচএসসি যোগ্যতা গ্রহণ করা হয়, তবে প্রতিটি দেশের নিজস্ব নির্দিষ্ট নিয়মাবলী রয়েছে। বছর গ্যাপের গ্রহণযোগ্যতা দেশভেদে ভিন্ন, তবে ১-২ বছর সাধারণত গ্রহণযোগ্য। কিছু দেশে ৫ বছরের বেশি গ্যাপও গ্রহণযোগ্য হতে পারে যদি আপনার প্রাসঙ্গিক অভিজ্ঞতা থাকে। স্কলারশিপের সুযোগ দেশভেদে ভিন্ন, তবে সাধারণত সরকারি, বিশ্ববিদ্যালয়-ভিত্তিক এবং ব্যক্তিগত ফাউন্ডেশন স্কলারশিপ পাওয়া যায়। স্কলারশিপের সংখ্যা এবং কভারেজ দেশ ও প্রোগ্রামের উপর নির্ভর করে।",
+                link: "Shenzhen.html" // Assuming Shenzhen.html is the correct filename for Schengen Area
+            },
+            {
+                name: "চীন 🇨🇳",
+                pathway: "স্নাতক বা স্নাতকোত্তর প্রোগ্রামে সরাসরি ভর্তি বা চীনা ভাষা কোর্সের মাধ্যমে।",
+                notes: "অনেক স্কলারশিপের সুযোগ রয়েছে, বিশেষ করে CSC স্কলারশিপ।",
+                details: "চীনা বিশ্ববিদ্যালয়গুলিতে এইচএসসি যোগ্যতা গ্রহণ করা হয়। সাধারণত ১-২ বছরের বছর গ্যাপ গ্রহণযোগ্য। বয়সের সীমা বিশ্ববিদ্যালয় এবং প্রোগ্রামের উপর নির্ভর করে, তবে সাধারণত ২৫ বছর পর্যন্ত স্নাতক প্রোগ্রামের জন্য অগ্রাধিকার দেওয়া হয়। CSC (চায়না স্কলারশিপ কাউন্সিল) স্কলারশিপ খুব জনপ্রিয়।",
+                link: "China.html" 
+            },
+            {
+                name: "দক্ষিণ কোরিয়া 🇰🇷",
+                pathway: "স্নাতক প্রোগ্রামে সরাসরি ভর্তি বা কোরিয়ান ভাষা ইনস্টিটিউটের মাধ্যমে।",
+                notes: "K-pop এবং প্রযুক্তির জন্য পরিচিত, অনেক বিশ্ববিদ্যালয় আন্তর্জাতিক শিক্ষার্থীদের জন্য স্কলারশিপ অফার করে।",
+                details: "কোরিয়ার বিশ্ববিদ্যালয়গুলি এইচএসসি যোগ্যতা গ্রহণ করে। বছর গ্যাপ সাধারণত ১-২ বছর গ্রহণযোগ্য। বয়সের সীমা বিশ্ববিদ্যালয়ভেদে ভিন্ন, তবে সাধারণত ২৫ বছর পর্যন্ত স্নাতক প্রোগ্রামের জন্য অগ্রাধিকার দেওয়া হয়। GKS (গ্লোবাল কোরিয়া স্কলারশিপ) একটি জনপ্রিয় স্কলারশিপ।",
+                link: "Korea.html" 
+            }
+        ];
+
+        const countryGrid = document.getElementById('country-grid');
+        countryData.forEach(country => {
+            const card = document.createElement('a'); 
+            card.href = country.link; 
+            card.className = 'country-card block no-underline text-current'; 
+            card.innerHTML = `
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">${country.name}</h3>
+                    <p class="text-gray-600 mt-4"><strong>প্রবেশ পথ:</strong> ${country.pathway}</p>
+                    <p class="text-sm text-gray-500 mt-2"><strong>দ্রষ্টব্য:</strong> ${country.notes}</p>
+                    <p class="text-sm text-gray-700 mt-4">${country.details}</p>
+                </div>
+            `;
+            countryGrid.appendChild(card);
+        });
+
+        // New GPA Chart Data
+        const gpaData = {
+            labels: ['🇨🇦 কানাডা', '🇦🇺 অস্ট্রেলিয়া', '🇬🇧 যুক্তরাজ্য', '🇺🇸 মার্কিন যুক্তরাষ্ট্র', '🇪🇺 শেনজেন এলাকা', '🇨🇳 চীন', '🇰🇷 দক্ষিণ কোরিয়া'],
+            gpaScores: [4.0, 4.5, 4.5, 4.0, 3.5, 3.0, 3.5], 
+            title: 'বিভিন্ন দেশের বিশ্ববিদ্যালয়গুলিতে ভর্তির জন্য আনুমানিক ন্যূনতম HSC GPA (5.0 এর মধ্যে)'
+        };
+
+        const gpaCtx = document.getElementById('gpaChart').getContext('2d');
+        const gpaChart = new Chart(gpaCtx, {
+            type: 'bar',
+            data: {
+                labels: gpaData.labels,
+                datasets: [{
+                    label: 'ন্যূনতম GPA স্কোর',
+                    data: gpaData.gpaScores,
+                    backgroundColor: 'rgba(255, 159, 64, 0.6)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: gpaData.title,
+                        font: { size: 16, family: 'Hind Siliguri' },
+                        color: '#2D3748'
+                    },
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 5.0,
+                        title: {
+                            display: true,
+                            text: 'GPA স্কোর (5.0 এর মধ্যে)',
+                            font: { family: 'Hind Siliguri' }
+                        }
+                    },
+                    x: {
+                       ticks: { font: { family: 'Hind Siliguri' } }
+                    }
+                }
+            }
+        });
+
+
+        const financialData = {
+            labels: ['🇨🇦 কানাডা', '🇦🇺 অস্ট্রেলিয়া', '🇬🇧 যুক্তরাজ্য', '🇺🇸 মার্কিন যুক্তরাষ্ট্র', '🇪🇺 শেনজেন এলাকা', '🇨🇳 চীন', '🇰🇷 দক্ষিণ কোরিয়া'],
+            // Converted approximate annual living costs to USD for better comparison on a single chart
+            livingCostsUSD: [
+                20635 * 0.73,   // CAD to USD
+                29710 * 0.66,   // AUD to USD
+                13347 * 1.27,   // GBP to USD
+                30000,          // Already USD
+                10000 * 1.08,   // EUR to USD
+                30000 * 0.14,   // CNY to USD
+                12000000 * 0.00072 // KRW to USD
+            ], 
+            currencies: ['USD', 'USD', 'USD', 'USD', 'USD', 'USD', 'USD'] // All converted to USD
+        };
+
+        const financialCtx = document.getElementById('financialChart').getContext('2d');
+        const financialChart = new Chart(financialCtx, {
+            type: 'bar',
+            data: {
+                labels: financialData.labels,
+                datasets: [{
+                    label: 'বার্ষিক জীবনযাত্রার খরচ (আনুমানিক USD)',
+                    data: financialData.livingCostsUSD,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 99, 132, 0.6)', 
+                        'rgba(54, 162, 235, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'বিভিন্ন দেশে আনুমানিক বার্ষিক জীবনযাত্রার খরচ (USD তে রূপান্তরিত)',
+                        font: { size: 16, family: 'Hind Siliguri' },
+                        color: '#2D3748'
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    // Display in USD, as all values are converted
+                                    label += '$' + new Intl.NumberFormat('en-US').format(context.parsed.y.toFixed(0));
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'খরচ (USD তে)',
+                            font: { family: 'Hind Siliguri' }
+                        }
+                    },
+                     x: {
+                       ticks: { font: { family: 'Hind Siliguri' } }
+                    }
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html>

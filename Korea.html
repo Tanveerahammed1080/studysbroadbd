@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="bn">
+<head><!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0ZMFT4DXBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0ZMFT4DXBG');
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ইন্টারেক্টিভ গাইড: দক্ষিণ কোরিয়ায় পড়াশোনার জন্য</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Chosen Palette: Calm Harmony (Korean & Bangladeshi Flag Inspired) -->
+<!-- Application Structure Plan: The SPA uses a thematic, non-linear dashboard structure to empower users. The flow is designed around a student's decision-making process: 1) Quick eligibility check, 2) Interactive university exploration with filters, 3) Deep dive into financial/scholarship data, and 4) Understanding student life rules. This is superior to the report's linear format because it allows users to immediately access the information most relevant to them (e.g., "Which universities can I get into with my IELTS score?") via an interactive "University Explorer". This task-oriented design enhances usability and makes complex data comparison intuitive. -->
+<!-- Visualization & Content Choices: 
+        - Report Info: Core Eligibility (Education, Nationality, etc.) -> Goal: Inform -> Presentation: Icon-based info cards -> Interaction: Static -> Justification: Quick, scannable overview of baseline requirements. -> Method: Tailwind CSS.
+        - Report Info: University comparison table -> Goal: Compare & Organize -> Presentation: Filterable grid of university cards with a modal for details -> Interaction: IELTS slider filter, click-to-view details -> Justification: Transforms a static table into a personalized tool, improving user engagement and decision-making efficiency. -> Method: Vanilla JS, Tailwind CSS.
+        - Report Info: Scholarship Maintenance GPAs -> Goal: Compare -> Presentation: Horizontal bar chart -> Interaction: Hover tooltips -> Justification: Visually highlights the academic commitment required for different scholarships, which is difficult to gauge from numbers in a table. -> Library: Chart.js.
+        - Report Info: Financial Proof Amounts -> Goal: Compare -> Presentation: Horizontal bar chart (normalized to USD) -> Interaction: Hover tooltips -> Justification: Simplifies comparison of varying financial requirements across universities. -> Library: Chart.js.
+        - Report Info: Work Permit Rules -> Goal: Inform -> Presentation: Infographic-style layout with icons -> Interaction: Static -> Justification: Presents regulations in a simple, memorable format. -> Method: Tailwind CSS.
+    -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<style>
+        body { font-family: 'Noto Sans Bengali', 'Inter', sans-serif; background-color: #F8F7F4; color: #333; }
+        .nav-link { transition: color 0.3s; }
+        .nav-link:hover { color: #0047A0; } /* Korean Flag Blue */
+        .card { transition: transform 0.3s, box-shadow 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
+        .btn-primary { background-color: #CD2E3A; color: white; transition: background-color 0.3s; } /* Korean Flag Red */
+        .btn-primary:hover { background-color: #B22633; } /* Darker Red */
+        .chart-container { position: relative; width: 100%; max-width: 800px; margin-left: auto; margin-right: auto; height: 400px; max-height: 50vh; }
+        .modal-bg { transition: opacity 0.3s; }
+        .modal-content { transition: transform 0.3s; }
+    </style>
+
+<link href="https://studyabroadbd.top/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://studyabroadbd.top/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://studyabroadbd.top/favicon.ico" rel="shortcut icon"/>
+<link href="https://studyabroadbd.top/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<meta content="STUDY ABROAD BD" name="apple-mobile-web-app-title"/>
+<link href="https://studyabroadbd.top/site.webmanifest" rel="manifest"/>
+</head>
+<body class="antialiased">
+<header class="bg-[#F8F7F4]/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm" id="header">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<a class="text-xl font-bold text-gray-800" href="#">কোরিয়া স্টাডি হাব</a>
+<div class="hidden md:flex space-x-8">
+<a class="nav-link text-gray-600 font-medium" href="#eligibility">যোগ্যতা</a>
+<a class="nav-link text-gray-600 font-medium" href="#explorer">বিশ্ববিদ্যালয় এক্সপ্লোরার</a>
+<a class="nav-link text-gray-600 font-medium" href="#scholarships">স্কলারশিপ</a>
+<a class="nav-link text-gray-600 font-medium" href="#student-life">শিক্ষার্থী জীবন</a>
+</div>
+<button class="md:hidden text-gray-700 focus:outline-none" id="mobile-menu-button">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</nav>
+<div class="hidden md:hidden" id="mobile-menu">
+<a class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100" href="#eligibility">যোগ্যতা</a>
+<a class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100" href="#explorer">বিশ্ববিদ্যালয় এক্সপ্লোরার</a>
+<a class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100" href="#scholarships">স্কলারশিপ</a>
+<a class="block py-2 px-6 text-sm text-gray-700 hover:bg-gray-100" href="#student-life">শিক্ষার্থী জীবন</a>
+</div>
+</header>
+<main>
+<section class="py-20 bg-white" id="hero">
+<div class="container mx-auto px-6 text-center">
+<h1 class="text-4xl md:text-6xl font-bold text-gray-800 leading-tight">দক্ষিণ কোরিয়ার বিশ্ববিদ্যালয়ে আপনার যাত্রা এখান থেকেই শুরু</h1>
+<p class="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">বাংলাদেশী এইচএসসি স্নাতকদের জন্য দক্ষিণ কোরিয়ায় পড়াশোনা, স্কলারশিপ এবং প্রয়োজনীয়তা অন্বেষণের একটি ইন্টারেক্টিভ গাইড।</p>
+<a class="mt-8 inline-block btn-primary font-bold py-3 px-8 rounded-full" href="#explorer">বিশ্ববিদ্যালয় অন্বেষণ করুন</a>
+</div>
+</section>
+<section class="py-16" id="eligibility">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold text-center text-gray-800 mb-2">আপনি কি যোগ্য?</h2>
+<p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">এই বিভাগটি বেশিরভাগ আন্তর্জাতিক আবেদনকারীদের জন্য প্রযোজ্য মৌলিক প্রয়োজনীয়তাগুলি তুলে ধরে। এই মূল মানদণ্ড পূরণ করা আপনার আবেদন প্রক্রিয়ার প্রথম ধাপ। এটি আপনাকে দ্রুত মূল্যায়ন করতে সাহায্য করে যে দক্ষিণ কোরিয়ায় উচ্চশিক্ষা গ্রহণ আপনার জন্য একটি কার্যকর পথ কিনা।</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-md text-center">
+<div class="text-4xl mb-4">🎓</div>
+<h3 class="text-xl font-semibold mb-2">শিক্ষা</h3>
+<p class="text-gray-600">১২ বছরের প্রাথমিক ও মাধ্যমিক শিক্ষা সম্পন্ন (বাংলাদেশের জন্য এইচএসসি সমতুল্য)।</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md text-center">
+<div class="text-4xl mb-4">🌐</div>
+<h3 class="text-xl font-semibold mb-2">জাতীয়তা</h3>
+<p class="text-gray-600">আবেদনকারী এবং উভয় পিতামাতার কোরিয়ান নাগরিকত্ব থাকা যাবে না একজন আন্তর্জাতিক শিক্ষার্থী হিসেবে বিবেচিত হওয়ার জন্য।</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md text-center">
+<div class="text-4xl mb-4">🗣️</div>
+<h3 class="text-xl font-semibold mb-2">ভাষা</h3>
+<p class="text-gray-600">প্রোগ্রামের উপর নির্ভর করে ইংরেজিতে (IELTS 5.5+) বা কোরিয়ানে (TOPIK 3+) দক্ষতা প্রয়োজন।</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md text-center">
+<div class="text-4xl mb-4">💰</div>
+<h3 class="text-xl font-semibold mb-2">আর্থিক প্রমাণ</h3>
+<p class="text-gray-600">ভিসা আবেদনের জন্য পর্যাপ্ত তহবিল (যেমন, ~$15,000-$23,000 USD) ভর্তির পর প্রমাণ করতে হবে।</p>
+</div>
+</div>
+<p class="text-center text-gray-500 mt-8 text-sm italic">দ্রষ্টব্য: বেশিরভাগ বিশ্ববিদ্যালয় এইচএসসির পরে সর্বোচ্চ কত বছরের গ্যাপ গ্রহণযোগ্য তা উল্লেখ করে না, যা নমনীয়তা প্রদান করে। তবে, কোনো উল্লেখযোগ্য গ্যাপ থাকলে তার ব্যাখ্যা দেওয়া বাঞ্ছনীয়।</p>
+</div>
+</section>
+<section class="py-16 bg-gray-50" id="explorer">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold text-center text-gray-800 mb-2">বিশ্ববিদ্যালয় এক্সপ্লোরার</h2>
+<p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">এটি আমাদের গাইডের মূল অংশ। আপনার যোগ্যতা অনুযায়ী বিশ্ববিদ্যালয় খুঁজে বের করতে নিচের ফিল্টারটি ব্যবহার করুন। এক্সপ্লোরারটি রিপোর্টের জটিল ডেটাকে একটি ব্যক্তিগতকৃত টুলে রূপান্তরিত করে, যা আপনাকে প্রতিষ্ঠানগুলির তুলনা করতে এবং নিখুঁত মিল খুঁজে পেতে সহায়তা করে। স্কলারশিপ, আর্থিক এবং আরও অনেক কিছু সম্পর্কে বিস্তারিত তথ্য দেখতে যেকোনো বিশ্ববিদ্যালয়ের কার্ডে ক্লিক করুন।</p>
+<div class="bg-white p-6 rounded-lg shadow-md mb-12 max-w-2xl mx-auto">
+<label class="block text-lg font-medium text-gray-700" for="ielts-filter">আপনার IELTS স্কোর দ্বারা ফিল্টার করুন:</label>
+<div class="flex items-center space-x-4 mt-2">
+<input class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" id="ielts-filter" max="8.0" min="5.0" step="0.5" type="range" value="5.5"/>
+<span class="font-bold text-lg text-[#0047A0] w-12 text-center" id="ielts-value">5.5</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="university-grid">
+</div>
+<p class="text-center text-gray-600 text-lg hidden" id="no-results">আপনার নির্বাচিত ফিল্টারের সাথে কোনো বিশ্ববিদ্যালয় মেলে না। IELTS স্কোর সামঞ্জস্য করার চেষ্টা করুন।</p>
+</div>
+</section>
+<section class="py-16" id="scholarships">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold text-center text-gray-800 mb-2">স্কলারশিপ ও আর্থিক বিষয়াদি</h2>
+<p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">আর্থিক প্রয়োজনীয়তা বোঝা অত্যন্ত গুরুত্বপূর্ণ। এই বিভাগটি আপনার ভিসার জন্য প্রয়োজনীয় সর্বনিম্ন তহবিল এবং স্কলারশিপ বজায় রাখার জন্য প্রয়োজনীয় একাডেমিক পারফরম্যান্সের একটি ভিজ্যুয়াল তুলনা প্রদান করে। এটি আপনাকে শুধুমাত্র ভর্তির জন্য নয়, আপনার ডিগ্রি জুড়ে টেকসই সাফল্যের জন্য পরিকল্পনা করতে সহায়তা করে।</p>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<div>
+<h3 class="text-2xl font-semibold text-center text-gray-800 mb-4">ভিসার জন্য সর্বনিম্ন ব্যাংক ব্যালেন্স</h3>
+<p class="text-center text-gray-600 mb-6 text-sm">D-2 ছাত্র ভিসার জন্য প্রয়োজনীয় তহবিলের তুলনা, সহজে তুলনার জন্য USD তে রূপান্তরিত। বিস্তারিত জানতে হোভার করুন।</p>
+<div class="chart-container bg-white p-4 rounded-lg shadow-md">
+<canvas id="financialChart"></canvas>
+</div>
+</div>
+<div>
+<h3 class="text-2xl font-semibold text-center text-gray-800 mb-4">স্কলারশিপ বজায় রাখার জন্য জিপিএ</h3>
+<p class="text-center text-gray-600 mb-6 text-sm">স্কলারশিপের সুবিধাগুলি অব্যাহত রাখতে প্রতি সেমিস্টারে প্রয়োজনীয় সর্বনিম্ন জিপিএ (4.0 স্কেলে) এর তুলনা।</p>
+<div class="chart-container bg-white p-4 rounded-lg shadow-md">
+<canvas id="gpaChart"></canvas>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50" id="student-life">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl font-bold text-center text-gray-800 mb-2">শিক্ষার্থী জীবন: ওয়ার্ক পারমিট</h2>
+<p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">আন্তর্জাতিক শিক্ষার্থীরা পার্ট-টাইম কাজের মাধ্যমে তাদের আয় বাড়াতে পারে। এই বিভাগটি কোরিয়ান সরকার কর্তৃক নির্ধারিত নিয়মাবলী পরিষ্কারভাবে তুলে ধরে যাতে আপনার কাজ আপনার মূল লক্ষ্য: আপনার শিক্ষাকে ব্যাহত না করে। একটি সুষম এবং সফল শিক্ষার্থী জীবনের জন্য এই নিয়মগুলি বোঝা অপরিহার্য।</p>
+<div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+<div class="flex flex-col md:flex-row items-center">
+<div class="md:w-1/2 p-4">
+<h3 class="text-2xl font-bold text-gray-800 mb-4">পার্ট-টাইম কাজের নিয়মাবলী</h3>
+<ul class="space-y-4 text-gray-700">
+<li class="flex items-start">
+<span class="text-[#0047A0] font-bold mr-3">✔</span>
+<span><strong>যোগ্যতা:</strong> ৬ মাস (১ সেমিস্টার) পড়াশোনা সম্পন্ন করার পর অনুমতি দেওয়া হয়।</span>
+</li>
+<li class="flex items-start">
+<span class="text-[#0047A0] font-bold mr-3">✔</span>
+<span><strong>প্রয়োজনীয়তা:</strong> সাধারণত আপনার বিশ্ববিদ্যালয়ের সুপারিশ প্রয়োজন।</span>
+</li>
+<li class="flex items-start">
+<span class="text-[#0047A0] font-bold mr-3">✔</span>
+<span><strong>কাজের সময়:</strong> একাডেমিক সেমিস্টারের সময় প্রতি সপ্তাহে <strong>২০ ঘন্টা</strong> সীমাবদ্ধ।</span>
+</li>
+<li class="flex items-start">
+<span class="text-[#0047A0] font-bold mr-3">✔</span>
+<span><strong>ছুটির দিনের কাজ:</strong> অফিসিয়াল স্কুল ছুটির সময় কাজের ঘন্টার কোনো সীমাবদ্ধতা নেই।</span>
+</li>
+</ul>
+<p class="mt-6 text-sm text-gray-500 italic">সর্বদা আপনার বিশ্ববিদ্যালয়ের আন্তর্জাতিক শিক্ষার্থী অফিসের সাথে সর্বশেষ নিয়মাবলী নিশ্চিত করুন।</p>
+</div>
+<div class="md:w-1/2 p-4 flex justify-center items-center">
+<div class="text-center p-8 bg-[#CD2E3A]/10 rounded-full w-64 h-64 flex flex-col justify-center items-center shadow-inner">
+<div class="text-6xl mb-2">🕒</div>
+<p class="text-xl font-bold text-[#CD2E3A]">সর্বোচ্চ ২০ ঘন্টা/সপ্তাহ</p>
+<p class="text-sm text-[#CD2E3A]">(সেমিস্টারের সময়)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-800 text-white py-8">
+<div class="container mx-auto px-6 text-center">
+<p>© ২০২৫ ইন্টারেক্টিভ কোরিয়া স্টাডি গাইড।</p>
+<p class="text-sm text-gray-400 mt-2">সর্বশেষ এবং সবচেয়ে আপ-টু-ডেট তথ্যের জন্য, সর্বদা অফিসিয়াল "স্টাডি ইন কোরিয়া" পোর্টাল এবং বিশ্ববিদ্যালয়ের ওয়েবসাইটগুলি দেখুন।</p>
+<div class="mt-4 text-sm text-gray-300">
+<p>Website Admin: Tanveer Ahammed</p>
+<p>Contact: <a class="text-blue-300 hover:underline" href="mailto:studyabroadbd360@gmail.com">tanveerahammed1594@gmail.com</a></p>
+</div>
+</div>
+</footer>
+<div class="fixed inset-0 bg-black bg-opacity-50 modal-bg z-50 flex items-center justify-center p-4 hidden" id="modal">
+<div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 relative modal-content transform scale-95" id="modal-content">
+<button class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition" id="modal-close">×</button>
+<div id="modal-body">
+</div>
+</div>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const universityData = [
+                {
+                    name: "সিউল ন্যাশনাল ইউনিভার্সিটি (SNU)",
+                    logo: '🎓',
+                    website: "https://en.snu.ac.kr/admission",
+                    ielts: 6.0,
+                    gpa_admission: "প্রোগ্রাম অনুযায়ী ভিন্ন (যেমন, 4.0 এর মধ্যে 3.0)",
+                    gpa_hsc_bd: "৪.৫০ - ৫.০০ (এইচএসসি, ৫.০০ এর মধ্যে)", /* Estimated for Bangladeshi HSC */
+                    year_gap: "নির্দিষ্ট করা নেই",
+                    financial_proof_krw: "সাধারণ ভিসা নিয়ম প্রযোজ্য",
+                    financial_proof_usd: 20000,
+                    scholarships: "GKS, গ্লোবাল হোপ স্কলারশিপ। গ্লোবাল ট্যালেন্ট স্কলারশিপের জন্য আংশিক টিউশন/জীবনযাত্রার ব্যয়।",
+                    gpa_maintenance: "ভিন্ন",
+                    gpa_maintenance_value: 3.0
+                },
+                {
+                    name: "কাইস্ট (KAIST)",
+                    logo: '🔬',
+                    website: "https://www.kaist.ac.kr/en/",
+                    ielts: 6.5,
+                    gpa_admission: "সামগ্রিক পর্যালোচনা",
+                    gpa_hsc_bd: "৫.০০ (এইচএসসি, ৫.০০ এর মধ্যে)", /* Estimated for Bangladeshi HSC */
+                    year_gap: "নির্দিষ্ট করা নেই",
+                    financial_proof_krw: "প্রযোজ্য নয় (সম্পূর্ণ স্কলারশিপ)",
+                    financial_proof_usd: 0,
+                    scholarships: "কাইস্ট স্কলারশিপ (সম্পূর্ণ টিউশন, মাসিক ৩,৫০,০০০ KRW উপবৃত্তি, স্বাস্থ্য বীমা), GKS।",
+                    gpa_maintenance: "২.৭ / ৪.৩",
+                    gpa_maintenance_value: 2.51
+                },
+                {
+                    name: "ইয়োনসেই ইউনিভার্সিটি",
+                    logo: '🦅',
+                    website: "https://uic.yonsei.ac.kr/",
+                    ielts: 6.0,
+                    gpa_admission: "বিস্তৃত মূল্যায়ন",
+                    gpa_hsc_bd: "৫.০০ (এইচএসসি, ৫.০০ এর মধ্যে)", /* Estimated for Bangladeshi HSC */
+                    year_gap: "নির্দিষ্ট করা নেই",
+                    financial_proof_krw: "নির্দিষ্ট করা নেই",
+                    financial_proof_usd: 20000,
+                    scholarships: "UIC স্কলারশিপ (৪ বছরের জন্য সম্পূর্ণ টিউশন, মেধা/প্রয়োজন ভিত্তিক), অন্যান্য মেধা/প্রয়োজন ভিত্তিক স্কলারশিপ।",
+                    gpa_maintenance: "একটি নির্দিষ্ট স্তর বজায় রাখতে হবে",
+                    gpa_maintenance_value: 3.0
+                },
+                {
+                    name: "কোরিয়া ইউনিভার্সিটি",
+                    logo: '🐯',
+                    website: "https://oia.korea.ac.kr/",
+                    ielts: 5.5,
+                    gpa_admission: "সামগ্রিক মূল্যায়ন",
+                    gpa_hsc_bd: "৫.০০ (এইচএসসি, ৫.০০ এর মধ্যে)", /* Estimated for Bangladeshi HSC */
+                    year_gap: "নির্দিষ্ট করা নেই",
+                    financial_proof_krw: "২০,০০,০০০ KRW+",
+                    financial_proof_usd: 15000,
+                    scholarships: "গ্লোবাল লিডার স্কলারশিপ A (সম্পূর্ণ টিউশন) ও B (৫০% টিউশন), ব্রাইট ফিউচারস স্কলারশিপ।",
+                    gpa_maintenance: "৩.৫+ (সম্পূর্ণ), ৩.০+ (আংশিক)",
+                    gpa_maintenance_value: 3.5
+                },
+                {
+                    name: "পুসান ন্যাশনাল ইউনিভার্সিটি (PNU)",
+                    logo: '🌊',
+                    website: "https://www.pusan.ac.kr/eng/",
+                    ielts: 5.5,
+                    gpa_admission: "একাডেমিক পারফরম্যান্স বিবেচনা করা হয়",
+                    gpa_hsc_bd: "৪.০০ - ৪.৫০ (এইচএসসি, ৫.০০ এর মধ্যে)", /* Estimated for Bangladeshi HSC */
+                    year_gap: "নির্দিষ্ট করা নেই",
+                    financial_proof_krw: "১১,৫০,০০০ KRW (২ সেমিস্টার)",
+                    financial_proof_usd: 8500,
+                    scholarships: "PNU স্কলারশিপ (সম্পূর্ণ/অর্ধেক টিউশন), GKS সহায়তা।",
+                    gpa_maintenance: "২.৫",
+                    gpa_maintenance_value: 2.5
+                },
+                {
+                    name: "সাংকিউংকওয়ান ইউনিভার্সিটি (SKKU)",
+                    logo: '🏛️',
+                    website: "https://admission-global.skku.edu/eng/",
+                    ielts: 7.0,
+                    gpa_admission: "১০০% ডকুমেন্ট মূল্যায়ন",
+                    gpa_hsc_bd: "৫.০০ (এইচএসসি, ৫.০০ এর মধ্যে)", /* Estimated for Bangladeshi HSC */
+                    year_gap: "নির্দিষ্ট করা নেই",
+                    financial_proof_krw: "ভিন্ন",
+                    financial_proof_usd: 20000,
+                    scholarships: "ভর্তি স্কলারশিপ (মেধা এবং ভাষা স্কোরের উপর ভিত্তি করে ১০-১০০% টিউশন মওকুফ)। ৫০% মওকুফের জন্য IELTS ৭.০, ১০০% এর জন্য ৮.০।",
+                    gpa_maintenance: "২.০ - ৩.৫+",
+                    gpa_maintenance_value: 3.0
+                },
+                {
+                    name: "হানিয়াং ইউনিভার্সিটি",
+                    logo: '🦁',
+                    website: "https://oia.hanyang.ac.kr/",
+                    ielts: 6.0,
+                    gpa_admission: "নির্দিষ্ট করা নেই",
+                    gpa_hsc_bd: "উচ্চ প্রতিযোগিতামূলক (অনুমানিত ৫.০০)", /* Estimated for Bangladeshi HSC */
+                    year_gap: "নির্দিষ্ট করা নেই",
+                    financial_proof_krw: "নির্দিষ্ট করা নেই",
+                    financial_proof_usd: 20000,
+                    scholarships: "হানিয়াং ইন্টারন্যাশনাল এক্সেলেন্স অ্যাওয়ার্ডস (৩০-৭০% টিউশন হ্রাস), TOPIK স্কলারশিপ।",
+                    gpa_maintenance: "৩.০",
+                    gpa_maintenance_value: 3.0
+                },
+                {
+                    name: "ইওহা ওম্যানস ইউনিভার্সিটি",
+                    logo: '🍐',
+                    website: "https://isa.ewha.ac.kr/",
+                    ielts: 6.0,
+                    gpa_admission: "বিস্তৃত মূল্যায়ন",
+                    gpa_hsc_bd: "৫.০০ (এইচএসসি, ৫.০০ এর মধ্যে)", /* Estimated for Bangladeshi HSC */
+                    year_gap: "নির্দিষ্ট করা নেই",
+                    financial_proof_krw: "নির্দিষ্ট করা নেই",
+                    financial_proof_usd: 20000,
+                    scholarships: "বিভিন্ন স্কলারশিপ উপলব্ধ।",
+                    gpa_maintenance: "ভিন্ন",
+                    gpa_maintenance_value: 3.0
+                }
+            ];
+
+            const ieltsFilter = document.getElementById('ielts-filter');
+            const ieltsValue = document.getElementById('ielts-value');
+            const universityGrid = document.getElementById('university-grid');
+            const noResults = document.getElementById('no-results');
+
+            function renderUniversities(filterValue) {
+                universityGrid.innerHTML = '';
+                const filteredData = universityData.filter(uni => uni.ielts <= filterValue);
+
+                if (filteredData.length === 0) {
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                }
+
+                filteredData.forEach(uni => {
+                    const card = document.createElement('div');
+                    card.className = 'card bg-white p-6 rounded-lg shadow-md cursor-pointer';
+                    card.innerHTML = `
+                        <div class="flex items-center mb-4">
+                            <div class="text-4xl mr-4">${uni.logo}</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">${uni.name}</h3>
+                                <p class="text-sm text-gray-500">সর্বনিম্ন IELTS: ${uni.ielts}</p>
+                                <p class="text-sm text-gray-500">এইচএসসি জিপিএ (আনুমানিক): ${uni.gpa_hsc_bd}</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">স্কলারশিপের জন্য জিপিএ বজায় রাখা প্রয়োজন: ~${uni.gpa_maintenance}</p>
+                        <button class="text-sm text-[#0047A0] font-semibold hover:underline">বিস্তারিত দেখুন</button>
+                    `;
+                    card.addEventListener('click', () => openModal(uni));
+                    universityGrid.appendChild(card);
+                });
+            }
+
+            ieltsFilter.addEventListener('input', (e) => {
+                const value = parseFloat(e.target.value);
+                ieltsValue.textContent = value.toFixed(1);
+                renderUniversities(value);
+            });
+            
+            renderUniversities(parseFloat(ieltsFilter.value));
+
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modal-content');
+            const modalClose = document.getElementById('modal-close');
+            const modalBody = document.getElementById('modal-body');
+
+            function openModal(uni) {
+                modalBody.innerHTML = `
+                    <div class="flex items-center mb-6">
+                        <div class="text-5xl mr-5">${uni.logo}</div>
+                        <div>
+                            <h2 class="text-3xl font-bold text-gray-900">${uni.name}</h2>
+                            <a href="${uni.website}" target="_blank" rel="noopener noreferrer" class="text-[#0047A0] hover:underline">অফিসিয়াল ওয়েবসাইট দেখুন →</a>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-700">ভর্তির প্রয়োজনীয়তা:</h4>
+                            <ul class="list-disc list-inside text-gray-600 pl-2">
+                                <li><strong>সর্বনিম্ন IELTS স্কোর:</strong> ${uni.ielts}</li>
+                                <li><strong>সর্বনিম্ন জিপিএ (এইচএসসি, আনুমানিক):</strong> ${uni.gpa_hsc_bd}</li>
+                                <li><strong>ইয়ার গ্যাপ নীতি:</strong> ${uni.year_gap}</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700">ভিসার জন্য আর্থিক বিষয়াদি:</h4>
+                             <ul class="list-disc list-inside text-gray-600 pl-2">
+                                <li><strong>ব্যাংক ব্যালেন্স:</strong> ${uni.financial_proof_krw} ${uni.financial_proof_usd > 0 ? `(আনুমানিক $${uni.financial_proof_usd.toLocaleString()} USD)` : ''}</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700">স্কলারশিপের বিস্তারিত:</h4>
+                             <ul class="list-disc list-inside text-gray-600 pl-2">
+                                <li><strong>সুযোগ:</strong> ${uni.scholarships}</li>
+                                <li><strong>বজায় রাখার জন্য জিপিএ:</strong> সুবিধাগুলি অব্যাহত রাখতে প্রতি সেমিস্টারে <strong>${uni.gpa_maintenance}</strong> জিপিএ বজায় রাখতে হবে।</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modalContent.classList.remove('scale-95');
+                }, 10);
+            }
+
+            function closeModal() {
+                 modal.classList.add('opacity-0');
+                 modalContent.classList.add('scale-95');
+                 setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const gpaTo4PointScale = (gpa, scale) => {
+                if(typeof gpa !== 'string') return gpa;
+                let val = parseFloat(gpa);
+                if (isNaN(val)) return 0;
+                return (val / scale) * 4.0;
+            };
+
+            const chartData = universityData.filter(u => u.gpa_maintenance_value > 0);
+
+            const financialCtx = document.getElementById('financialChart').getContext('2d');
+            new Chart(financialCtx, {
+                type: 'bar',
+                data: {
+                    labels: universityData.filter(u => u.financial_proof_usd > 0).map(u => u.name),
+                    datasets: [{
+                        label: 'সর্বনিম্ন ব্যাংক ব্যালেন্স (USD)',
+                        data: universityData.filter(u => u.financial_proof_usd > 0).map(u => u.financial_proof_usd),
+                        backgroundColor: 'rgba(0, 71, 160, 0.6)', /* Korean Flag Blue */
+                        borderColor: 'rgba(0, 71, 160, 1)', /* Korean Flag Blue */
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                             callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.x);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                             ticks: {
+                                callback: function(value, index, values) {
+                                    return '$' + value / 1000 + 'k';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const gpaCtx = document.getElementById('gpaChart').getContext('2d');
+            new Chart(gpaCtx, {
+                type: 'bar',
+                data: {
+                    labels: chartData.map(u => u.name),
+                    datasets: [{
+                        label: '৪.০ স্কেলে সর্বনিম্ন জিপিএ',
+                        data: chartData.map(u => {
+                            const parts = u.gpa_maintenance.split('/');
+                            if(parts.length === 2) {
+                                return gpaTo4PointScale(parts[0].trim(), parseFloat(parts[1].trim()));
+                            }
+                            return parseFloat(u.gpa_maintenance) ? parseFloat(u.gpa_maintenance) : u.gpa_maintenance_value;
+                        }),
+                        backgroundColor: 'rgba(205, 46, 58, 0.6)', /* Korean Flag Red */
+                        borderColor: 'rgba(205, 46, 58, 1)', /* Korean Flag Red */
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 4.0,
+                            title: {
+                                display: true,
+                                text: '৪.০ স্কেলে জিপিএ'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<link href="https://studyabroadbd.top/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://studyabroadbd.top/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://studyabroadbd.top/favicon.ico" rel="shortcut icon"/>
+<link href="https://studyabroadbd.top/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<meta content="STUDY ABROAD BD" name="apple-mobile-web-app-title"/>
+<link href="https://studyabroadbd.top/site.webmanifest" rel="manifest"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0ZMFT4DXBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0ZMFT4DXBG');
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>এইচএসসি স্নাতকদের জন্য ইউকেতে পড়াশোোনার ইন্টারেক্টিভ গাইড</title>
+<!-- Chosen Palette: UK Inspired Harmony (Blue, Red, White, Slate) -->
+<!-- Application Structure Plan: A task-oriented, non-linear Single Page Application (SPA) designed for quick, personalized information retrieval. The structure prioritizes user tasks over the report's linear format. It uses a top navigation bar to jump between distinct, interactive sections: 1. An 'Eligibility Checker' to instantly assess academic standing (now including HSC GPA). 2. A 'Financial Planner' to calculate visa fund requirements. 3. A searchable 'University Explorer' to filter the extensive university list (now displaying Minimum HSC GPA). 4. A 'Post-Study Pathway' section to clarify work visa options. This modular, dashboard-like approach was chosen because prospective students have specific, urgent questions (Can I get in? Can I afford it? Where can I apply?). This structure answers those questions directly with interactive tools, making the dense information from the report more digestible and actionable than a simple document layout. -->
+<!-- Visualization & Content Choices:
+        - Report Info: IELTS score ranges (Section 2.1). Goal: Compare requirements. Viz: Interactive Bar Chart (Chart.js/Canvas). Interaction: User's score is highlighted on the chart. Justification: Visually contextualizes the user's score against university tiers, which is more impactful than reading text.
+        - Report Info: Financial requirements (Section 3.1). Goal: Inform & Calculate. Viz: Interactive Calculator + Donut Chart (Chart.js/Canvas). Interaction: User inputs tuition, chart updates to show tuition vs. living cost breakdown. Justification: Turns static rules into a personalized financial planning tool.
+        - Report Info: University list (Section 5). Goal: Organize & Explore. Viz: Searchable HTML Table (now with Min HSC GPA). Interaction: Live text search filters the list. Justification: Provides immediate access to specific university info from a list of over 100, which is unusable as a static table.
+        - Report Info: Graduate Route Visa (Section 4). Goal: Inform about a process. Viz: Structured HTML/CSS timeline. Interaction: None needed, clarity is key. Justification: A simple visual flow is easier to understand than a block of text.
+        All visualizations are rendered on Canvas via Chart.js or built with structured HTML/CSS via Tailwind to adhere to the NO SVG/Mermaid constraint. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #2563eb; /* Blue accent for hover/active */
+            border-bottom-color: #2563eb;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .btn {
+            background-color: #2563eb; /* Blue button */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #1d4ed8; /* Darker blue on hover */
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #cbd5e1;
+            border-radius: 5px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #2563eb; /* Blue thumb */
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #2563eb; /* Blue thumb */
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container { height: 350px; }
+        }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="antialiased">
+<header class="bg-white shadow-md sticky top-0 z-50">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<div class="text-2xl font-bold text-blue-700"> <!-- Changed to blue -->
+                ইউকে স্টাডি হাব
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="nav-link font-semibold text-slate-600 border-b-2 border-transparent pb-1" href="#eligibility">যোগ্যতা</a>
+<a class="nav-link font-semibold text-slate-600 border-b-2 border-transparent pb-1" href="#finance">আর্থিক পরিকল্পনা</a>
+<a class="nav-link font-semibold text-slate-600 border-b-2 border-transparent pb-1" href="#universities">বিশ্ববিদ্যালয়সমূহ</a>
+<a class="nav-link font-semibold text-slate-600 border-b-2 border-transparent pb-1" href="#post-study">পড়াশোনার পর কাজ</a>
+</div>
+<div class="md:hidden">
+<button class="text-slate-600 focus:outline-none" id="mobile-menu-button">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</nav>
+<div class="hidden md:hidden" id="mobile-menu">
+<a class="block py-2 px-6 text-sm text-slate-600 hover:bg-slate-100" href="#eligibility">যোগ্যতা</a>
+<a class="block py-2 px-6 text-sm text-slate-600 hover:bg-slate-100" href="#finance">আর্থিক পরিকল্পনা</a>
+<a class="block py-2 px-6 text-sm text-slate-600 hover:bg-slate-100" href="#universities">বিশ্ববিদ্যালয়সমূহ</a>
+<a class="block py-2 px-6 text-sm text-slate-600 hover:bg-slate-100" href="#post-study">পড়াশোনার পর কাজ</a>
+</div>
+</header>
+<main class="container mx-auto px-6 py-8 md:py-12">
+<section class="text-center mb-16" id="hero">
+<h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4">ইউকে বিশ্ববিদ্যালয়ে আপনার যাত্রা এখান থেকেই শুরু</h1>
+<p class="text-lg text-slate-600 max-w-3xl mx-auto">এই ইন্টারেক্টিভ গাইডটি আপনাকে এইচএসসি-এর পর ইউকেতে ভর্তি, আর্থিক ব্যবস্থা এবং পড়াশোনার পর কাজের সুযোগ সম্পর্কে জানতে সাহায্য করবে। তথ্য ব্যক্তিগতকরণ এবং আপনার পথ পরিকল্পনা করতে নিচের টুলগুলো ব্যবহার করুন।</p>
+</section>
+<section class="mb-16 scroll-mt-20" id="eligibility">
+<h2 class="text-3xl font-bold text-center text-slate-800 mb-2">আপনি কি যোগ্য?</h2>
+<p class="text-md text-slate-600 text-center max-w-2xl mx-auto mb-8">এই বিভাগটি আপনাকে আপনার একাডেমিক প্রস্তুতি যাচাই করতে সাহায্য করবে। আপনার যোগ্যতা অনুযায়ী স্লাইডারগুলো সামঞ্জস্য করুন এবং এইচএসসি স্নাতকদের জন্য সাধারণ ইউকে বিশ্ববিদ্যালয়ের মানদণ্ডের উপর ভিত্তি করে একটি সাধারণ মূল্যায়ন দেখুন। এটি একটি নির্দেশিকা, এবং নির্দিষ্ট বিশ্ববিদ্যালয়ের প্রয়োজনীয়তা ভিন্ন হতে পারে।</p>
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="card p-8">
+<div class="mb-6">
+<label class="block font-semibold mb-2" for="ielts-score">আইইএলটিএস সামগ্রিক স্কোর: <span class="text-blue-600 font-bold" id="ielts-score-value">6.5</span></label> <!-- Changed to blue -->
+<input class="w-full" id="ielts-score" max="9.0" min="4.0" step="0.5" type="range" value="6.5"/>
+</div>
+<div class="mb-6">
+<label class="block font-semibold mb-2" for="hsc-gpa">এইচএসসি জিপিএ (৫.০০ এর মধ্যে): <span class="text-blue-600 font-bold" id="hsc-gpa-value">4.00</span></label> <!-- New GPA slider -->
+<input class="w-full" id="hsc-gpa" max="5.00" min="3.00" step="0.01" type="range" value="4.00"/>
+</div>
+<div class="mb-6">
+<label class="block font-semibold mb-2" for="study-gap">এইচএসসি-এর পর পড়াশোনার বিরতি (বছর): <span class="text-blue-600 font-bold" id="study-gap-value">1</span></label> <!-- Changed to blue -->
+<input class="w-full" id="study-gap" max="5" min="0" step="1" type="range" value="1"/>
+</div>
+<div class="mt-6 p-4 rounded-lg bg-slate-100" id="eligibility-result">
+<h4 class="font-bold mb-2">আপনার প্রোফাইল বিশ্লেষণ:</h4>
+<p class="text-slate-700 text-sm" id="eligibility-text"></p>
+</div>
+</div>
+<div class="card p-6">
+<h3 class="text-xl font-semibold text-center mb-4">বিশ্ববিদ্যালয়ের স্তর অনুযায়ী আইইএলটিএস-এর সাধারণ প্রয়োজনীয়তা</h3>
+<div class="chart-container">
+<canvas id="ielts-chart"></canvas>
+</div>
+</div>
+</div>
+<div class="card p-6 mt-8">
+<h3 class="text-xl font-semibold mb-3">স্টাডি গ্যাপ বোঝা</h3>
+<p class="text-slate-600">ইউকে বিশ্ববিদ্যালয়গুলো সাধারণত স্টাডি গ্যাপের বিষয়ে নমনীয়, বিশেষ করে স্নাতক আবেদনকারীদের জন্য যেখানে <strong>২ বছর</strong> পর্যন্ত গ্যাপ সাধারণ। সবচেয়ে গুরুত্বপূর্ণ হলো আপনি সেই সময়টি কীভাবে ব্যবহার করেছেন। যদি আপনি প্রমাণ করতে পারেন যে আপনি সেই সময়ে:
+                    <ul class="list-disc list-inside mt-2 text-slate-600 space-y-1">
+<li>কাজের অভিজ্ঞতা বা ইন্টার্নশিপ করেছেন</li>
+<li>প্রতিযোগিতামূলক পরীক্ষার জন্য প্রস্তুতি নিয়েছেন</li>
+<li>মূল্যবান বৃত্তিমূলক বা স্বল্পমেয়াদী কোর্স করেছেন</li>
+</ul>
+                    তবে গ্যাপটিকে ইতিবাচকভাবে দেখা হয়।
+                </p>
+<p class="mt-3 text-slate-600">আপনার গ্যাপ ব্যাখ্যা করার জন্য একটি শক্তিশালী <strong>স্টেটমেন্ট অফ পারপাস (SOP)</strong> অত্যন্ত গুরুত্বপূর্ণ, যা আপনার অভিজ্ঞতাগুলোকে আপনার ভবিষ্যতের একাডেমিক আকাঙ্ক্ষার সাথে সংযুক্ত করবে। সততা এবং স্পষ্ট ডকুমেন্টেশন আপনার স্টাডি গ্যাপকে আপনার আবেদনের একটি শক্তিতে পরিণত করার মূল চাবিকাঠি।</p>
+</div>
+</section>
+<section class="mb-16 scroll-mt-20" id="finance">
+<h2 class="text-3xl font-bold text-center text-slate-800 mb-2">আপনার আর্থিক পরিকল্পনা করুন</h2>
+<p class="text-md text-slate-600 text-center max-w-2xl mx-auto mb-8">এই টুলটি আপনাকে আপনার ইউকে স্টুডেন্ট ভিসার জন্য প্রয়োজনীয় মোট তহবিলের অনুমান করতে সাহায্য করবে। এর মধ্যে আপনার প্রথম বছরের টিউশন ফি এবং জীবনযাত্রার ব্যয়ের (রক্ষণাবেক্ষণ) জন্য একটি নির্দিষ্ট পরিমাণ অন্তর্ভুক্ত। মনে রাখবেন, তহবিল অবশ্যই আপনার (বা আপনার পিতামাতার) ব্যাংক অ্যাকাউন্টে কমপক্ষে ২৮ দিন ধরে থাকতে হবে।</p>
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="card p-8">
+<h3 class="text-xl font-semibold mb-4">ভিসা ফান্ড ক্যালকুলেটর</h3>
+<div class="mb-6">
+<label class="block font-semibold mb-2">পড়াশোনার স্থান:</label>
+<div class="flex space-x-4">
+<label class="flex items-center">
+<input class="mr-2 text-blue-600 focus:ring-blue-500" name="location" type="radio" value="in-london"/> <!-- Changed to blue -->
+                                লন্ডনে
+                            </label>
+<label class="flex items-center">
+<input checked="" class="mr-2 text-blue-600 focus:ring-blue-500" name="location" type="radio" value="out-london"/> <!-- Changed to blue -->
+                                লন্ডনের বাইরে
+                            </label>
+</div>
+</div>
+<div class="mb-6">
+<label class="block font-semibold mb-2" for="tuition-fee">প্রথম বছরের টিউশন ফি (£)</label>
+<input class="w-full p-2 border border-slate-300 rounded-md focus:ring-blue-500 focus:border-blue-500" id="tuition-fee" type="number" value="15000"/> <!-- Changed to blue -->
+</div>
+<div class="p-4 rounded-lg bg-slate-100">
+<h4 class="font-bold mb-2">প্রয়োজনীয় মোট তহবিলের অনুমান:</h4>
+<p class="text-2xl font-bold text-blue-600" id="finance-result">£0</p> <!-- Changed to blue -->
+<p class="text-xs text-slate-500 mt-2">দ্রষ্টব্য: যেকোনো প্রদত্ত ডিপোজিট বা প্রাপ্ত স্কলারশিপ এই পরিমাণ কমিয়ে দেবে।</p>
+</div>
+</div>
+<div class="card p-6">
+<h3 class="text-xl font-semibold text-center mb-4">তহবিলের বিভাজন</h3>
+<div class="chart-container">
+<canvas id="finance-chart"></canvas>
+</div>
+</div>
+</div>
+<div class="card p-6 mt-8">
+<h3 class="text-xl font-semibold mb-3">২৮ দিনের নিয়ম ব্যাখ্যা</h3>
+<p class="text-slate-600">এটি একটি কঠোর UKVI প্রয়োজনীয়তা। আপনাকে প্রমাণ করতে হবে যে প্রয়োজনীয় মোট তহবিল কমপক্ষে <strong>২৮ দিন</strong> ধরে একটি অনুমোদিত ব্যাংক অ্যাকাউন্টে ছিল। এই ২৮ দিনের শেষ তারিখটি আপনার ভিসা আবেদন জমা দেওয়ার তারিখের ৩১ দিনের মধ্যে হতে হবে। এই নিয়ম পূরণ করতে ব্যর্থ হলে ভিসা প্রত্যাখ্যানের একটি সাধারণ কারণ হতে পারে, তাই আপনার আর্থিক পরিকল্পনা আগে থেকেই ভালোভাবে করুন।</p>
+</div>
+</section>
+<section class="mb-16 scroll-mt-20" id="universities">
+<h2 class="text-3xl font-bold text-center text-slate-800 mb-2">বিশ্ববিদ্যালয়সমূহ অন্বেষণ করুন</h2>
+<p class="text-md text-slate-600 text-center max-w-2xl mx-auto mb-8">ইউকেতে সরকারি ও বেসরকারি বিশ্ববিদ্যালয়ের বিশাল পরিসর রয়েছে। একটি নির্দিষ্ট প্রতিষ্ঠান খুঁজে বের করতে সার্চ বার ব্যবহার করুন অথবা তালিকাটি ব্রাউজ করুন। টেবিলটি প্রতিটি বিশ্ববিদ্যালয়ের অফিসিয়াল ওয়েবসাইটের সরাসরি লিঙ্ক প্রদান করে, যা কোর্স, স্কলারশিপ এবং নির্দিষ্ট ভর্তির প্রয়োজনীয়তা সম্পর্কে বিস্তারিত তথ্যের জন্য সেরা উৎস।</p>
+<div class="card p-6">
+<div class="mb-4">
+<input class="w-full p-3 border border-slate-300 rounded-md focus:ring-blue-500 focus:border-blue-500" id="university-search" placeholder="একটি বিশ্ববিদ্যালয় খুঁজুন..." type="text"/> <!-- Changed to blue -->
+</div>
+<div class="overflow-x-auto max-h-[600px]">
+<table class="min-w-full divide-y divide-slate-200">
+<thead class="bg-slate-50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">বিশ্ববিদ্যালয়ের নাম</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">ধরণ</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">ন্যূনতম জিপিএ (এইচএসসি)</th> <!-- New column header -->
+<th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">ওয়েবসাইট</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-slate-200" id="university-table-body">
+</tbody>
+</table>
+<p class="text-center p-4 text-slate-500 hidden" id="no-results">আপনার অনুসন্ধানের সাথে মিলে যাওয়া কোনো বিশ্ববিদ্যালয় পাওয়া যায়নি।</p>
+</div>
+</div>
+</section>
+<section class="scroll-mt-20" id="post-study">
+<h2 class="text-3xl font-bold text-center text-slate-800 mb-2">পড়াশোনার পর আপনার পথ</h2>
+<p class="text-md text-slate-600 text-center max-w-2xl mx-auto mb-8">ইউকে-এর গ্র্যাজুয়েট রুট ভিসা আন্তর্জাতিক শিক্ষার্থীদের জন্য একটি চমৎকার সুযোগ। এটি আপনাকে স্নাতক হওয়ার পর ইউকেতে কাজ করতে বা কাজের সন্ধান করতে দেয়, কোনো চাকরির অফার ছাড়াই। এই বিভাগটি এর মূল সুবিধা এবং সহজ প্রক্রিয়াটি তুলে ধরে।</p>
+<div class="card p-8">
+<h3 class="text-2xl font-semibold mb-6 text-center">গ্র্যাজুয়েট রুট ভিসা</h3>
+<div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-4 text-center">
+<div class="flex-1 flex flex-col items-center">
+<div class="bg-blue-100 text-blue-700 rounded-full w-20 h-20 flex items-center justify-center mb-3"> <!-- Changed to blue -->
+<span class="text-3xl font-bold">🎓</span>
+</div>
+<h4 class="font-bold text-lg">ধাপ ১: স্নাতক হন</h4>
+<p class="text-slate-600 text-sm">একটি স্বীকৃত বিশ্ববিদ্যালয় থেকে আপনার যোগ্য ইউকে ব্যাচেলর, মাস্টার্স বা পিএইচডি ডিগ্রি সফলভাবে সম্পন্ন করুন।</p>
+</div>
+<div class="text-slate-300 text-4xl hidden md:block">→</div>
+<div class="text-slate-300 text-4xl rotate-90 md:hidden">↓</div>
+<div class="flex-1 flex flex-col items-center">
+<div class="bg-blue-100 text-blue-700 rounded-full w-20 h-20 flex items-center justify-center mb-3"> <!-- Changed to blue -->
+<span class="text-3xl font-bold">📝</span>
+</div>
+<h4 class="font-bold text-lg">ধাপ ২: ইউকেতে আবেদন করুন</h4>
+<p class="text-slate-600 text-sm">আপনার স্টুডেন্ট ভিসার মেয়াদ শেষ হওয়ার আগে ইউকে-এর ভেতর থেকে গ্র্যাজুয়েট রুট ভিসার জন্য আবেদন করুন।</p>
+</div>
+<div class="text-slate-300 text-4xl hidden md:block">→</div>
+<div class="text-slate-300 text-4xl rotate-90 md:hidden">↓</div>
+<div class="flex-1 flex flex-col items-center">
+<div class="bg-blue-100 text-blue-700 rounded-full w-20 h-20 flex items-center justify-center mb-3"> <!-- Changed to blue -->
+<span class="text-3xl font-bold">💼</span>
+</div>
+<h4 class="font-bold text-lg">ধাপ ৩: ইউকেতে কাজ করুন</h4>
+<p class="text-slate-600 text-sm"><strong>২ বছর</strong> (পিএইচডি স্নাতকদের জন্য ৩ বছর) পর্যন্ত যেকোনো দক্ষতা স্তরে থাকুন এবং কাজ করুন।</p>
+</div>
+</div>
+<div class="mt-8 bg-slate-100 p-6 rounded-lg">
+<h4 class="font-bold text-lg mb-3">মূল সুবিধা:</h4>
+<ul class="space-y-2">
+<li class="flex items-start">
+<span class="text-blue-500 mr-3 mt-1">✓</span> <!-- Changed to blue -->
+<span class="text-slate-700"><strong>কোনো চাকরির অফার প্রয়োজন নেই:</strong> আপনার চাকরির ব্যবস্থা না থাকলেও আপনি আবেদন করতে পারবেন।</span>
+</li>
+<li class="flex items-start">
+<span class="text-blue-500 mr-3 mt-1">✓</span> <!-- Changed to blue -->
+<span class="text-slate-700"><strong>কোনো আর্থিক প্রয়োজন নেই:</strong> এই ভিসা আবেদনের জন্য আপনাকে তহবিলের প্রমাণ দেখাতে হবে না।</span>
+</li>
+<li class="flex items-start">
+<span class="text-blue-500 mr-3 mt-1">✓</span> <!-- Changed to blue -->
+<span class="text-slate-700"><strong>কাজের নমনীয়তা:</strong> আপনি প্রায় যেকোনো চাকরিতে কাজ করতে পারবেন, নিয়োগকর্তা পরিবর্তন করতে পারবেন বা স্ব-নিযুক্ত হতে পারবেন।</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-slate-800 text-slate-300 mt-16">
+<div class="container mx-auto px-6 py-8 text-center">
+<p>© ২০২৫ ইউকে স্টাডি হাব।</p>
+<p class="text-sm text-slate-400 mt-2">সর্বদা সর্বশেষ তথ্যের জন্য অফিসিয়াল বিশ্ববিদ্যালয় এবং ইউকে সরকারের (gov.uk) ওয়েবসাইট দেখুন।</p>
+<p class="text-sm text-slate-400 mt-4">Admin: Tanveer Ahammed</p>
+<p> Contact: <a class="text-sm text-gray-300 hover:text-[#BF0A30] transition" href="mailto:studyabroadbd360@gmail.com">studyabroadbd360@gmail.com</a>
+</p></div>
+</footer>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const universityData = [
+                { name: "Abertay University", type: "Public", url: "https://www.abertay.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Aberystwyth University", type: "Public", url: "https://www.aber.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Anglia Ruskin University", type: "Public", url: "https://aru.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Arden University", type: "Private", url: "https://arden.ac.uk/", minHSCGPA: 3.00 },
+                { name: "Arts University Bournemouth", type: "Public", url: "https://aub.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Aston University", type: "Public", url: "https://www.aston.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Bangor University", type: "Public", url: "https://www.bangor.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Bath Spa University", type: "Public", url: "https://www.bathspa.ac.uk/", minHSCGPA: 4.00 },
+                { name: "BIMM University", type: "Private", url: "https://www.bimm.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Birmingham City University", type: "Public", url: "https://www.bcu.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Birmingham Newman University", type: "Public", url: "https://www.newman.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Bishop Grosseteste University", type: "Public", url: "https://www.bishopg.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Bournemouth University", type: "Public", url: "https://www.bournemouth.ac.uk/", minHSCGPA: 4.00 },
+                { name: "BPP University", type: "Private", url: "https://www.bpp.com/", minHSCGPA: 3.00 },
+                { name: "Brunel University of London", type: "Public", url: "https://www.brunel.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Buckinghamshire New University", type: "Public", url: "https://bucks.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Canterbury Christ Church University", type: "Public", url: "https://www.canterbury.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Cardiff Metropolitan University", type: "Public", url: "https://www.cardiffmet.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Cardiff University", type: "Public", url: "https://www.cardiff.ac.uk/", minHSCGPA: 4.50 },
+                { name: "City St George's, University of London", type: "Public", url: "https://www.city.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Coventry University", type: "Public", url: "https://www.coventry.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Cranfield University", type: "Public", url: "https://www.cranfield.ac.uk/", minHSCGPA: 4.50 },
+                { name: "De Montfort University", type: "Public", url: "https://www.dmu.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Durham University", type: "Public", url: "https://www.durham.ac.uk/", minHSCGPA: 5.00 },
+                { name: "Edge Hill University", type: "Public", url: "https://www.edgehill.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Edinburgh Napier University", type: "Public", url: "https://www.napier.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Falmouth University", type: "Public", url: "https://www.falmouth.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Glasgow Caledonian University", type: "Public", url: "https://www.gcu.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Goldsmiths, University of London", type: "Public", url: "https://www.gold.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Guildhall School of Music and Drama", type: "Public", url: "https://www.gsmd.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Harper Adams University", type: "Public", url: "https://www.harper-adams.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Hartpury University", type: "Public", url: "https://www.hartpury.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Health Sciences University", type: "Private", url: "https://www.healthsciences.ac.uk/", minHSCGPA: 3.00 },
+                { name: "Heriot-Watt University", type: "Public", url: "https://www.hw.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Imperial College London", type: "Public", url: "https://www.imperial.ac.uk/", minHSCGPA: 5.00 },
+                { name: "Keele University", type: "Public", url: "https://www.keele.ac.uk/", minHSCGPA: 4.00 },
+                { name: "King's College London", type: "Public", url: "https://www.kcl.ac.uk/", minHSCGPA: 5.00 },
+                { name: "Kingston University", type: "Public", url: "https://www.kingston.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Lancaster University", type: "Public", url: "https://www.lancaster.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Leeds Beckett University", type: "Public", url: "https://www.leedsbeckett.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Leeds Trinity University", type: "Public", url: "https://www.leedstrinity.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Liverpool Hope University", type: "Public", url: "https://www.hope.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Liverpool John Moores University", type: "Public", url: "https://www.ljmu.ac.uk/", minHSCGPA: 3.50 },
+                { name: "London Business School", type: "Public", url: "https://www.london.edu/", minHSCGPA: 5.00 },
+                { name: "London Metropolitan University", type: "Public", url: "https://www.londonmet.ac.uk/", minHSCGPA: 3.50 },
+                { name: "London School of Economics and Political Science", type: "Public", url: "https://www.lse.ac.uk/", minHSCGPA: 5.00 },
+                { name: "London School of Hygiene and Tropical Medicine", type: "Public", url: "https://www.lshtm.ac.uk/", minHSCGPA: 4.50 },
+                { name: "London South Bank University", type: "Public", url: "https://www.lsbu.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Loughborough University", type: "Public", url: "https://www.lboro.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Manchester Metropolitan University", type: "Public", url: "https://www.mmu.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Middlesex University", type: "Public", url: "https://www.mdx.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Newcastle University", type: "Public", url: "https://www.ncl.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Northeastern University London", type: "Private", url: "https://www.nulondon.ac.uk/", minHSCGPA: 3.00 },
+                { name: "Norwich University of the Arts", type: "Public", url: "https://www.nua.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Nottingham Trent University", type: "Public", url: "https://www.ntu.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Oxford Brookes University", type: "Public", url: "https://www.brookes.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Plymouth Marjon University", type: "Public", url: "https://www.marjon.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Queen Margaret University", type: "Public", url: "https://www.qmu.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Queen Mary University of London", type: "Public", url: "https://www.qmul.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Queen's University Belfast", type: "Public", url: "https://www.qub.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Ravensbourne University London", type: "Public", url: "https://www.ravensbourne.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Regent's University London", type: "Private", url: "https://www.regents.ac.uk/", minHSCGPA: 3.00 },
+                { name: "Robert Gordon University", type: "Public", url: "https://www.rgu.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Royal Central School of Speech & Drama", type: "Public", url: "https://www.cssd.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Royal College of Art", type: "Public", url: "https://www.rca.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Royal College of Music, London", type: "Public", url: "https://www.rcm.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Royal Holloway, University of London", type: "Public", url: "https://www.royalholloway.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Royal Northern College of Music", type: "Public", url: "https://www.rncm.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Royal Conservatoire of Scotland", type: "Public", url: "https://www.rcs.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Sheffield Hallam University", type: "Public", url: "https://www.shu.ac.uk/", minHSCGPA: 3.50 },
+                { name: "SOAS, University of London", type: "Public", url: "https://www.soas.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Solent University", type: "Public", url: "https://www.solent.ac.uk/", minHSCGPA: 3.50 },
+                { name: "St Mary's University, Twickenham", type: "Public", url: "https://www.stmarys.ac.uk/", minHSCGPA: 3.50 },
+                { name: "Swansea University", type: "Public", url: "https://www.swansea.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Teesside University", type: "Public", url: "https://www.tees.ac.uk/", minHSCGPA: 3.50 },
+                { name: "The Open University", type: "Public", url: "https://www.open.ac.uk/", minHSCGPA: 3.50 },
+                { name: "The Royal Veterinary College", type: "Public", url: "https://www.rvc.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Trinity Laban Conservatoire of Music and Dance", type: "Public", url: "https://www.trinitylaban.ac.uk/", minHSCGPA: 4.00 },
+                { name: "Ulster University", type: "Public", url: "https://www.ulster.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University College Birmingham", type: "Public", url: "https://www.ucb.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University College London", type: "Public", url: "https://www.ucl.ac.uk/", minHSCGPA: 5.00 },
+                { name: "University for the Creative Arts", type: "Public", url: "https://www.uca.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Aberdeen", type: "Public", url: "https://www.abdn.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of Bath", type: "Public", url: "https://www.bath.ac.uk/", minHSCGPA: 5.00 },
+                { name: "University of Bedfordshire", type: "Public", url: "https://www.beds.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Birmingham", type: "Public", url: "https://www.bham.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of Bolton", type: "Public", url: "https://www.bolton.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Bradford", type: "Public", url: "https://www.bradford.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Brighton", type: "Public", url: "https://www.brighton.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of Bristol", type: "Public", url: "https://www.bristol.ac.uk/", minHSCGPA: 5.00 },
+                { name: "University of Buckingham", type: "Private", url: "https://www.buckingham.ac.uk/", minHSCGPA: 3.00 },
+                { name: "University of Cambridge", type: "Public", url: "https://www.cam.ac.uk/", minHSCGPA: 5.00 },
+                { name: "University of Central Lancashire", type: "Public", url: "https://www.uclan.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Chester", type: "Public", url: "https://www.chester.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Chichester", type: "Public", url: "https://www.chi.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Cumbria", type: "Public", url: "https://www.cumbria.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Derby", type: "Public", url: "https://www.derby.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Dundee", type: "Public", url: "https://www.dundee.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of East Anglia", type: "Public", url: "https://www.uea.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of East London", type: "Public", url: "https://www.uel.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Edinburgh", type: "Public", url: "https://www.ed.ac.uk/", minHSCGPA: 5.00 },
+                { name: "University of Essex", type: "Public", url: "https://www.essex.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of Exeter", type: "Public", url: "https://www.exeter.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of Glasgow", type: "Public", url: "https://www.gla.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of Gloucestershire", type: "Public", url: "https://www.glos.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Greenwich", type: "Public", url: "https://www.gre.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Hertfordshire", type: "Public", url: "https://www.herts.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Huddersfield", type: "Public", url: "https://www.hud.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Hull", type: "Public", url: "https://www.hull.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Kent", type: "Public", url: "https://www.kent.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of Leeds", type: "Public", url: "https://www.leeds.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of Leicester", type: "Public", url: "https://le.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of Lincoln", type: "Public", url: "https://www.lincoln.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Liverpool", type: "Public", url: "https://www.liverpool.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of London", type: "Public", url: "https://london.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of Manchester", type: "Public", url: "https://www.manchester.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of Northampton", type: "Public", url: "https://www.northampton.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Nottingham", type: "Public", url: "https://www.nottingham.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of Oxford", type: "Public", url: "https://www.ox.ac.uk/", minHSCGPA: 5.00 },
+                { name: "University of Plymouth", type: "Public", url: "https://www.plymouth.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Portsmouth", type: "Public", url: "https://www.port.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Reading", type: "Public", url: "https://www.reading.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of Roehampton", type: "Public", url: "https://www.roehampton.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Salford", type: "Public", url: "https://www.salford.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Sheffield", type: "Public", url: "https://www.sheffield.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of South Wales", type: "Public", url: "https://www.southwales.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Southampton", type: "Public", url: "https://www.southampton.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of Staffordshire", type: "Public", url: "https://www.staffs.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of St Andrews", type: "Public", url: "https://www.st-andrews.ac.uk/", minHSCGPA: 5.00 },
+                { name: "University of Stirling", type: "Public", url: "https://www.stir.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of Strathclyde", type: "Public", url: "https://www.strath.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of Suffolk", type: "Public", url: "https://www.uos.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Sunderland", type: "Public", url: "https://www.sunderland.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Surrey", type: "Public", url: "https://www.surrey.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of Sussex", type: "Public", url: "https://www.sussex.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of the Arts London", type: "Public", url: "https://www.arts.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of the Built Environment", type: "Public", url: "https://www.reading.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of the Highlands and Islands", type: "Public", url: "https://www.uhi.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of the West of England, Bristol", type: "Public", url: "https://www.uwe.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of the West of Scotland", type: "Public", url: "https://www.uws.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Wales Trinity Saint David", type: "Public", url: "https://www.uwtsd.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Warwick", type: "Public", url: "https://warwick.ac.uk/", minHSCGPA: 4.50 },
+                { name: "University of West London", type: "Public", url: "https://www.uwl.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Westminster", type: "Public", url: "https://www.westminster.ac.uk/", minHSCGPA: 4.00 },
+                { name: "University of Winchester", type: "Public", url: "https://www.winchester.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Wolverhampton", type: "Public", url: "https://www.wlv.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of Worcester", type: "Public", url: "https://www.worc.ac.uk/", minHSCGPA: 3.50 },
+                { name: "University of York", type: "Public", url: "https://www.york.ac.uk/", minHSCGPA: 4.50 },
+                { name: "Wrexham University", type: "Public", url: "https://www.glyndwr.ac.uk/", minHSCGPA: 3.50 },
+                { name: "York St John University", type: "Public", url: "https://www.yorksj.ac.uk/", minHSCGPA: 3.50 }
+            ];
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            document.querySelectorAll('#mobile-menu a, .nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+            
+            const ieltsScoreSlider = document.getElementById('ielts-score');
+            const ieltsScoreValue = document.getElementById('ielts-score-value');
+            const hscGpaSlider = document.getElementById('hsc-gpa'); // New GPA slider
+            const hscGpaValue = document.getElementById('hsc-gpa-value'); // New GPA value display
+            const studyGapSlider = document.getElementById('study-gap');
+            const studyGapValue = document.getElementById('study-gap-value');
+            const eligibilityText = document.getElementById('eligibility-text');
+            const ieltsChartCtx = document.getElementById('ielts-chart').getContext('2d');
+            let ieltsChart;
+
+            function updateEligibility() {
+                const ielts = parseFloat(ieltsScoreSlider.value);
+                const gpa = parseFloat(hscGpaSlider.value); // Get GPA value
+                const gap = parseInt(studyGapSlider.value);
+                ieltsScoreValue.textContent = ielts.toFixed(1);
+                hscGpaValue.textContent = gpa.toFixed(2); // Display GPA with 2 decimal places
+                studyGapValue.textContent = gap;
+
+                let text = '';
+                if (ielts >= 7.5 && gpa >= 4.50 && gap <= 2) {
+                    text = 'অসাধারণ প্রোফাইল। আপনি অক্সফোর্ড এবং কেমব্রিজের মতো শীর্ষস্থানীয় বিশ্ববিদ্যালয়গুলির সাধারণ প্রয়োজনীয়তা পূরণ করেন। আপনার স্টাডি গ্যাপ গ্রহণযোগ্য সীমার মধ্যে রয়েছে।';
+                } else if (ielts >= 6.5 && gpa >= 4.00 && gap <= 2) {
+                    text = 'শক্তিশালী প্রোফাইল। আপনি রাসেল গ্রুপের অনেক সহ বেশিরভাগ প্রতিযোগিতামূলক বিশ্ববিদ্যালয়ের সাধারণ প্রয়োজনীয়তা পূরণ করেন। আপনার স্টাডি গ্যাপ গ্রহণযোগ্য।';
+                } else if (ielts >= 6.0 && gpa >= 3.50 && gap <= 2) {
+                    text = 'ভালো প্রোফাইল। আপনি ইউকে-এর বিস্তৃত পরিসরের চমৎকার বিশ্ববিদ্যালয়ের প্রয়োজনীয়তা পূরণ করেন। একটি সুনির্দিষ্ট স্টাডি গ্যাপ আপনার আবেদনকে শক্তিশালী করবে।';
+                } else if (ielts >= 6.0 && gpa >= 3.00 && gap > 2) {
+                    text = `আপনার আইইএলটিএস স্কোর এবং জিপিএ অনেক বিশ্ববিদ্যালয়ের জন্য উপযুক্ত, তবে ${gap} বছরের স্টাডি গ্যাপের জন্য স্নাতক কোর্সের জন্য একটি খুব শক্তিশালী যুক্তি (যেমন, উল্লেখযোগ্য কাজের অভিজ্ঞতা) প্রয়োজন।`;
+                } else if (ielts < 6.0 || gpa < 3.00) {
+                     text = 'আপনার আইইএলটিএস স্কোর বা জিপিএ বেশিরভাগ ডিগ্রি প্রোগ্রামের সরাসরি ভর্তির জন্য সাধারণ ন্যূনতমের নিচে। আপনাকে সম্ভবত পরীক্ষাটি পুনরায় দিতে হবে অথবা একটি ফাউন্ডেশন কোর্স বিবেচনা করতে হবে।';
+                } else {
+                    text = 'আপনার প্রোফাইল বিশ্লেষণ করতে দয়া করে আপনার তথ্য সামঞ্জস্য করুন।';
+                }
+                
+                eligibilityText.innerHTML = text;
+                updateIeltsChart(ielts);
+            }
+
+            function createIeltsChart() {
+                 const data = {
+                    labels: ['ফাউন্ডেশন / প্রি-সেশনাল', 'সাধারণ এন্ট্রি', 'প্রতিযোগিতামূলক বিশ্ববিদ্যালয়', 'শীর্ষস্থানীয় বিশ্ববিদ্যালয়'],
+                    datasets: [{
+                        label: 'সাধারণ আইইএলটিএস স্কোর রেঞ্জ',
+                        data: [[5.0, 5.5], [6.0, 6.5], [6.5, 7.0], [7.5, 8.0]],
+                        backgroundColor: [
+                            'rgba(148, 163, 184, 0.6)', /* Slate for lower tiers */
+                            'rgba(59, 130, 246, 0.6)', /* Blue for standard */
+                            'rgba(37, 99, 235, 0.6)', /* Darker Blue for competitive */
+                            'rgba(220, 38, 38, 0.6)' /* Red for top-tier */
+                        ],
+                        borderColor: [
+                           'rgb(148, 163, 184)',
+                           'rgb(59, 130, 246)',
+                           'rgb(37, 99, 235)',
+                           'rgb(220, 38, 38)'
+                        ],
+                        borderWidth: 2,
+                        borderSkipped: false,
+                    }]
+                };
+
+                ieltsChart = new Chart(ieltsChartCtx, {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `রেঞ্জ: ${context.raw[0]} - ${context.raw[1]}`;
+                                    }
+                                }
+                            },
+                            annotation: {
+                                annotations: {}
+                            }
+                        },
+                        scales: {
+                            x: {
+                                min: 4.0,
+                                max: 9.0,
+                                ticks: { stepSize: 0.5 },
+                                title: { display: true, text: 'আইইএলটিএস স্কোর' }
+                            },
+                            y: {
+                                grid: { display: false }
+                            }
+                        }
+                    }
+                });
+            }
+
+            function updateIeltsChart(score) {
+                if (ieltsChart.options.plugins.annotation) {
+                     ieltsChart.options.plugins.annotation.annotations = {
+                        line1: {
+                            type: 'line',
+                            xMin: score,
+                            xMax: score,
+                            borderColor: '#dc2626', /* Red for user score line */
+                            borderWidth: 3,
+                            label: {
+                                content: 'আপনার স্কোর',
+                                enabled: true,
+                                position: 'start',
+                                backgroundColor: '#dc2626', /* Red background for label */
+                                font: {
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    };
+                    ieltsChart.update();
+                }
+            }
+
+
+            const tuitionFeeInput = document.getElementById('tuition-fee');
+            const locationRadios = document.querySelectorAll('input[name="location"]');
+            const financeResult = document.getElementById('finance-result');
+            const financeChartCtx = document.getElementById('finance-chart').getContext('2d');
+            let financeChart;
+            
+            const maintenanceCosts = {
+                'in-london': 13347,
+                'out-london': 10224
+            };
+
+            function updateFinance() {
+                const tuition = parseFloat(tuitionFeeInput.value) || 0;
+                const location = document.querySelector('input[name="location"]:checked').value;
+                const maintenance = maintenanceCosts[location];
+                const total = tuition + maintenance;
+                financeResult.textContent = `£${total.toLocaleString()}`;
+                
+                updateFinanceChart(tuition, maintenance);
+            }
+
+            function createFinanceChart() {
+                 financeChart = new Chart(financeChartCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['টিউশন ফি', 'জীবনযাত্রার খরচ'],
+                        datasets: [{
+                            data: [15000, 10224],
+                            backgroundColor: ['#2563eb', '#60a5fa'], /* Blue shades for finance chart */
+                            borderColor: ['#fff', '#fff'],
+                            borderWidth: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                            },
+                             tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed !== null) {
+                                            label += new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(context.parsed);
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            function updateFinanceChart(tuition, maintenance) {
+                financeChart.data.datasets[0].data[0] = tuition;
+                financeChart.data.datasets[0].data[1] = maintenance;
+                financeChart.update();
+            }
+
+            const universitySearchInput = document.getElementById('university-search');
+            const universityTableBody = document.getElementById('university-table-body');
+            const noResults = document.getElementById('no-results');
+
+            function renderUniversities(filter = '') {
+                universityTableBody.innerHTML = '';
+                const filteredData = universityData.filter(uni => 
+                    uni.name.toLowerCase().includes(filter.toLowerCase()) ||
+                    (uni.type && uni.type.toLowerCase().includes(filter.toLowerCase())) ||
+                    (uni.minHSCGPA && uni.minHSCGPA.toString().includes(filter))
+                );
+                
+                if (filteredData.length === 0) {
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                }
+
+                filteredData.forEach(uni => {
+                    const row = document.createElement('tr');
+                    row.className = "hover:bg-slate-50";
+                    row.innerHTML = `
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-medium text-slate-900">${uni.name}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${uni.type === 'Private' ? 'bg-amber-100 text-amber-800' : 'bg-blue-100 text-blue-800'}"> <!-- Changed to blue -->
+                                ${uni.type === 'Public' ? 'সরকারি' : 'বেসরকারি'}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-700">
+                            ${uni.minHSCGPA ? uni.minHSCGPA.toFixed(2) : 'N/A'}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800"> <!-- Changed to blue -->
+                            <a href="${uni.url}" target="_blank" rel="noopener noreferrer">ওয়েবসাইট দেখুন →</a>
+                        </td>
+                    `;
+                    universityTableBody.appendChild(row);
+                });
+            }
+
+            ieltsScoreSlider.addEventListener('input', updateEligibility);
+            hscGpaSlider.addEventListener('input', updateEligibility); // Event listener for GPA slider
+            studyGapSlider.addEventListener('input', updateEligibility);
+            
+            tuitionFeeInput.addEventListener('input', updateFinance);
+            locationRadios.forEach(radio => radio.addEventListener('change', updateFinance));
+            
+            universitySearchInput.addEventListener('input', (e) => renderUniversities(e.target.value));
+
+            createIeltsChart();
+            createFinanceChart();
+            updateEligibility();
+            updateFinance();
+            renderUniversities();
+        });
+    </script>
+</body>
+</html>

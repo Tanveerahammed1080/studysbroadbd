@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<link href="https://studyabroadbd.top/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://studyabroadbd.top/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://studyabroadbd.top/favicon.ico" rel="shortcut icon"/>
+<link href="https://studyabroadbd.top/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<meta content="STUDY ABROAD BD" name="apple-mobile-web-app-title"/>
+<link href="https://studyabroadbd.top/site.webmanifest" rel="manifest"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0ZMFT4DXBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0ZMFT4DXBG');
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>মার্কিন যুক্তরাষ্ট্র স্টাডি হাব</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* New Palette: USA Flag Theme */
+        /* Justification: The color scheme is derived exclusively from the national flag of the USA (Red, White, Blue).
+           - Primary Blue (#0A3161): A classic navy blue representing the US flag. Used for headers, active states, and primary information.
+           - Accent Red (#BF0A30): A strong, traditional red from the US flag. Used for calls-to-action and highlights to draw attention.
+           - Background White (#F8F9FA): A clean, off-white representing the white stripes, ensuring high readability.
+           - Text (#212529): A dark charcoal for maximum contrast and legibility.
+        */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA; /* Light Neutral Background (White) */
+            color: #212529; /* Dark Text */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .active-tab {
+            background-color: #0A3161; /* Primary Blue */
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px rgba(10, 49, 97, 0.3);
+            transform: translateY(-2px);
+        }
+        .inactive-tab {
+            background-color: #E9ECEF;
+            color: #0A3161; /* Primary Blue */
+        }
+        .inactive-tab:hover {
+            background-color: #DEE2E6;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .accordion-header {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .accordion-content.show {
+            max-height: 1000px;
+        }
+        .icon-rotate {
+            transition: transform 0.3s ease;
+        }
+        .open .icon-rotate {
+            transform: rotate(180deg);
+        }
+        .card-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .card-icon {
+            flex-shrink: 0;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background-color: rgba(10, 49, 97, 0.1); /* Light Blue */
+            color: #0A3161; /* Primary Blue */
+        }
+    </style>
+</head>
+<body class="antialiased">
+<header class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<div class="text-2xl font-bold text-[#0A3161]">
+                মার্কিন যুক্তরাষ্ট্র স্টাডি হাব
+            </div>
+<div class="hidden md:flex space-x-8">
+<a class="text-gray-600 hover:text-[#0A3161] transition" href="#comparator">বিশ্ববিদ্যালয় তুলনাকারী</a>
+<a class="text-gray-600 hover:text-[#0A3161] transition" href="#charts">ভিজ্যুয়াল তুলনা</a>
+<a class="text-gray-600 hover:text-[#0A3161] transition" href="#topics">গুরুত্বপূর্ণ ধারণা</a>
+</div>
+<button class="md:hidden p-2" id="mobile-menu-button">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16m-4 6h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</nav>
+<div class="hidden md:hidden px-6 pb-4" id="mobile-menu">
+<a class="block py-2 text-gray-600 hover:text-[#0A3161] transition" href="#comparator">বিশ্ববিদ্যালয় তুলনাকারী</a>
+<a class="block py-2 text-gray-600 hover:text-[#0A3161] transition" href="#charts">ভিজ্যুয়াল তুলনা</a>
+<a class="block py-2 text-gray-600 hover:text-[#0A3161] transition" href="#topics">গুরুত্বপূর্ণ ধারণা</a>
+</div>
+</header>
+<main class="container mx-auto px-6 py-12">
+<section class="text-center mb-16">
+<h1 class="text-4xl md:text-5xl font-bold text-[#0A3161] mb-4">মার্কিন যুক্তরাষ্ট্রে ভর্তির আপনার ইন্টারেক্টিভ নির্দেশিকা</h1>
+<p class="max-w-3xl mx-auto text-lg text-gray-700">
+                মার্কিন যুক্তরাষ্ট্রের বিশ্ববিদ্যালয় আবেদন প্রক্রিয়া জটিল হতে পারে। এই টুলটি আন্তর্জাতিক শিক্ষার্থীদের জন্য মূল প্রয়োজনীয়তাগুলিকে সহজ করে, বিস্তারিত প্রতিবেদনটিকে একটি ইন্টারেক্টিভ ড্যাশবোর্ডে রূপান্তরিত করে। আপনার আবেদন কৌশল জানাতে শীর্ষ মার্কিন বিশ্ববিদ্যালয়গুলির আর্থিক, একাডেমিক এবং কাজের অনুমতি সম্পর্কিত তথ্য অন্বেষণ করুন।
+            </p>
+</section>
+<section class="mb-20" id="comparator">
+<h2 class="text-3xl font-bold text-center mb-2">বিশ্ববিদ্যালয় তুলনাকারী</h2>
+<p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">এটি অ্যাপ্লিকেশনটির মূল অংশ। একটি বিশ্ববিদ্যালয় নির্বাচন করতে নিচের ট্যাবগুলিতে ক্লিক করুন এবং তাৎক্ষণিকভাবে এর বিস্তারিত প্রয়োজনীয়তাগুলি দেখুন। এটি আপনাকে জিপিএ, আর্থিক প্রমাণ, IELTS স্কোর এবং বৃত্তির নীতিগুলির মতো গুরুত্বপূর্ণ তথ্য পাশাপাশি তুলনা করতে সহায়তা করবে।</p>
+<div class="flex flex-wrap justify-center gap-2 mb-8" id="university-tabs">
+</div>
+<div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg transition-all duration-500 min-h-[500px]" id="university-display">
+</div>
+</section>
+<section class="mb-20" id="charts">
+<h2 class="text-3xl font-bold text-center mb-2">ভিজ্যুয়াল তুলনা</h2>
+<p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">ডেটা ভিজ্যুয়ালাইজেশন এক নজরে অন্তর্দৃষ্টি প্রকাশ করতে পারে। এই চার্টগুলি প্রতিটি বিশ্ববিদ্যালয়ের প্রয়োজনীয় ন্যূনতম আর্থিক প্রমাণ এবং IELTS স্কোর তুলনা করে, যা ভর্তির বিভিন্ন পরিস্থিতি সম্পর্কে একটি স্পষ্ট চিত্র প্রদান করে।</p>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="bg-white p-6 rounded-2xl shadow-lg">
+<h3 class="text-xl font-semibold mb-4 text-center">আনুমানিক বার্ষিক আর্থিক প্রমাণের প্রয়োজন (USD)</h3>
+<div class="chart-container">
+<canvas id="financialsChart"></canvas>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl shadow-lg">
+<h3 class="text-xl font-semibold mb-4 text-center">ন্যূনতম IELTS স্কোর প্রয়োজন</h3>
+<div class="chart-container">
+<canvas id="ieltsChart"></canvas>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-16" id="topics">
+<h2 class="text-3xl font-bold text-center mb-2">গুরুত্বপূর্ণ ধারণা ব্যাখ্যা করা হয়েছে</h2>
+<p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">কিছু বিষয় গভীর বোঝার প্রয়োজন। এই বিভাগটি কাজের অনুমতি (CPT/OPT), আর্থিক ডকুমেন্টেশন এবং একাডেমিক গ্যাপ বছরের নীতিগুলির মতো জটিল ক্ষেত্রগুলিকে ভেঙে দেয়। আরও জানতে যেকোনো বিষয়ে ক্লিক করুন।</p>
+<div class="space-y-4 max-w-4xl mx-auto" id="accordion-container">
+</div>
+</section>
+<section class="bg-[#0A3161] text-white rounded-2xl p-8 text-center">
+<h2 class="text-3xl font-bold mb-4">মূল বিষয় এবং সুপারিশ</h2>
+<div class="max-w-3xl mx-auto text-left space-y-3 text-gray-200">
+<p><span class="font-semibold text-white">একাডেমিক শ্রেষ্ঠত্ব:</span> শীর্ষ বিশ্ববিদ্যালয়গুলির জন্য HSC-তে জিপিএ ৫.০ লক্ষ্য করুন। একটি শক্তিশালী একাডেমিক রেকর্ড অত্যন্ত গুরুত্বপূর্ণ।</p>
+<p><span class="font-semibold text-white">আর্থিক প্রস্তুতি সর্বাগ্রে:</span> $70,000 থেকে $95,000 USD এর বেশি নগদ তহবিল দেখানোর জন্য প্রস্তুত থাকুন। আর্থিক পরিকল্পনা আগে থেকেই শুরু করুন।</p>
+<p><span class="font-semibold text-white">বৃত্তি সীমিত কিন্তু সম্ভব:</span> বেশিরভাগ সহায়তা আন্তর্জাতিক শিক্ষার্থীদের জন্য মেধা-ভিত্তিক। NYU একটি উল্লেখযোগ্য ব্যতিক্রম যা প্রয়োজন-ভিত্তিক সহায়তা প্রদান করে।</p>
+<p><span class="font-semibold text-white">কাজের অনুমতি কৌশল:</span> CPT/OPT নিয়মাবলী বুঝুন। 12 মাস বা তার বেশি পূর্ণকালীন CPT ব্যবহার করলে আপনি স্নাতকোত্তর OPT-এর জন্য অযোগ্য হতে পারেন।</p>
+</div>
+</section>
+</main>
+<footer class="bg-[#0A3161] text-white mt-20">
+<div class="container mx-auto px-6 py-8 text-center">
+<p>© 2025 মার্কিন যুক্তরাষ্ট্র স্টাডি হাব।</p>
+<p class="text-sm text-slate-400 mt-2">সর্বশেষ তথ্যের জন্য সর্বদা অফিসিয়াল সরকারি এবং বিশ্ববিদ্যালয়ের ওয়েবসাইটগুলি দেখুন।</p>
+<p class="text-sm text-gray-300 mt-4">Webpage Admin: Tanveer Ahammed </p>
+<p>Contact: <a class="text-sm text-gray-300 hover:text-[#BF0A30] transition" href="mailto:studyabroadbd360@gmail.com">studyabroadbd360@gmail.com</a>
+</p></div>
+</footer>
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const universityData = {
+                'uc-berkeley': {
+                    name: 'ইউনিভার্সিটি অফ ক্যালিফোর্নিয়া - বার্কলে',
+                    link: 'https://admission.universityofcalifornia.edu/admission-requirements/international-applicants/',
+                    gpa: '5.0',
+                    gpaNote: 'অত্যন্ত প্রতিযোগিতামূলক। আবেদনকারীদের সাধারণত নিখুঁত বা তার কাছাকাছি জিপিএ থাকে।',
+                    ielts: '6.5',
+                    ieltsNote: 'প্রতিযোগিতামূলক আবেদনকারীদের সাধারণত 7.0 বা তার বেশি স্কোর থাকে।',
+                    financials: 76435,
+                    financialsNote: '9 মাসের একাডেমিক বছরের জন্য আনুমানিক। টিউশন, ফি এবং জীবনযাত্রার ব্যয় অন্তর্ভুক্ত।',
+                    scholarships: 'খুব সীমিত। বিশ্ববিদ্যালয় আন্তর্জাতিক শিক্ষার্থীদের জন্য প্রয়োজন-ভিত্তিক আর্থিক সহায়তা প্রদান করে না। মেধা-ভিত্তিক বৃত্তি অত্যন্ত প্রতিযোগিতামূলক।',
+                    workPermit: 'স্ট্যান্ডার্ড CPT এবং OPT উপলব্ধ। গুরুত্বপূর্ণ নীতি: 12 মাস বা তার বেশি পূর্ণকালীন CPT ব্যবহার করলে একজন শিক্ষার্থী পোস্ট-কমপ্লিশন OPT-এর জন্য অযোগ্য হয়ে পড়বে।'
+                },
+                'u-michigan': {
+                    name: 'ইউনিভার্সিটি অফ মিশিগান - অ্যান আর্বার',
+                    link: 'https://admissions.umich.edu/i-am/international-students',
+                    gpa: '5.0',
+                    gpaNote: 'শীর্ষ আবেদনকারীদের প্রায়শই নিখুঁত একাডেমিক রেকর্ড থাকে।',
+                    ielts: '6.5',
+                    ieltsNote: 'একটি প্রতিযোগিতামূলক স্কোর হল 7.0, যার প্রতিটি বিভাগে 6.5 বা তার বেশি স্কোর রয়েছে।',
+                    financials: 80142,
+                    financialsNote: 'নিম্ন বিভাগের LSA (প্রথম বর্ষ/দ্বিতীয় বর্ষের শিক্ষার্থীদের) জন্য আনুমানিক।',
+                    scholarships: 'আন্তর্জাতিক শিক্ষার্থীদের জন্য খুব সীমিত সুযোগ। আবেদনকারীরা ফেডারেল আর্থিক সহায়তার জন্য যোগ্য নন।',
+                    workPermit: 'আন্তর্জাতিক কেন্দ্রের মাধ্যমে স্ট্যান্ডার্ড CPT এবং OPT উপলব্ধ। CPT অনুমোদনের জন্য একটি চাকরির প্রস্তাব প্রয়োজন।'
+                },
+                'nyu': {
+                    name: 'নিউ ইয়র্ক ইউনিভার্সিটি (NYU)',
+                    link: 'https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/international-applicants.html',
+                    gpa: '5.0',
+                    gpaNote: 'অত্যন্ত নির্বাচনী। একটি শক্তিশালী, নিখুঁত জিপিএ সুপারিশ করা হয়।',
+                    ielts: '7.5+',
+                    ieltsNote: 'NYU-এর কোনো ন্যূনতম স্কোর নেই, তবে 7.5+ প্রতিযোগিতামূলক বলে বিবেচিত হয়।',
+                    financials: 97828,
+                    financialsNote: 'কলেজ অফ আর্টস অ্যান্ড সায়েন্সের জন্য আনুমানিক। খরচ স্কুল ভেদে ভিন্ন হয় (যেমন, Tisch প্রায় $104k)।',
+                    scholarships: 'একটি ব্যতিক্রম। NYU সমস্ত প্রথম বর্ষের আবেদনকারীদের, আন্তর্জাতিক সহ, প্রয়োজন-ভিত্তিক আর্থিক সহায়তা প্রদান করে। CSS প্রোফাইল জমা দিতে হয়।',
+                    workPermit: 'স্ট্যান্ডার্ড CPT এবং OPT উপলব্ধ। OGS 5-10 কার্যদিবসের মধ্যে অনুরোধ প্রক্রিয়া করে; OPT-এর জন্য USCIS প্রক্রিয়াকরণে 3-5 মাস সময় লাগে।'
+                },
+                'usc': {
+                    name: 'ইউনিভার্সিটি অফ সাউদার্ন ক্যালিফোর্নিয়া (USC)',
+                    link: 'https://admission.usc.edu/prospective-students/how-to-apply/international-students/',
+                    gpa: '5.0',
+                    gpaNote: 'ভর্তির জন্য অত্যন্ত প্রতিযোগিতামূলক, শীর্ষ একাডেমিক কৃতিত্বের উপর জোর দেওয়া হয়।',
+                    ielts: '7.0',
+                    ieltsNote: 'এটি একটি কঠোর ন্যূনতম। কোনো মওকুফ বা ব্যতিক্রম মঞ্জুর করা হয় না।',
+                    financials: 99139,
+                    financialsNote: '2025-2026 এর জন্য আনুমানিক। আবেদনের সময় আর্থিক নথি প্রয়োজন।',
+                    scholarships: 'প্রয়োজন-ভিত্তিক আর্থিক সহায়তা প্রদান করে না। সমস্ত আন্তর্জাতিক আবেদনকারী মেধা-ভিত্তিক বৃত্তির জন্য বিবেচিত হয়, তবে কোনোটিই সম্পূর্ণ খরচ কভার করে না।',
+                    workPermit: 'স্ট্যান্ডার্ড CPT/OPT উপলব্ধ। অন্যান্য বিশ্ববিদ্যালয়ের মতো, 12 মাস পূর্ণকালীন CPT সম্পন্ন করলে একজন শিক্ষার্থী পোস্ট-কমপ্লিশন OPT-এর জন্য অযোগ্য হয়ে পড়ে।'
+                },
+                'ut-austin': {
+                    name: 'ইউনিভার্সিটি অফ টেক্সাস অ্যাট অস্টিন',
+                    link: 'https://admissions.utexas.edu/info-for/international-students/',
+                    gpa: '4.8+',
+                    gpaNote: 'প্রতিযোগিতামূলক, তবে শীর্ষ আবেদনকারীদের মধ্যে কিছুটা পরিবর্তনশীলতা থাকতে পারে। একটি উচ্চ জিপিএ এখনও একটি উল্লেখযোগ্য সুবিধা।',
+                    ielts: '6.5',
+                    ieltsNote: 'TOEFL (ন্যূনতম 79) হল পছন্দের পরীক্ষা।',
+                    financials: 64040,
+                    financialsNote: 'এটি অ-আবাসিকদের জন্য আনুমানিক পরিসরের নিম্ন সীমা ($64,040 থেকে $72,682)।',
+                    scholarships: 'আরও সুসংগঠিত সুযোগ। আন্তর্জাতিক ছাত্র এবং স্কলার সার্ভিসেস (ISSS) অফিস আন্তর্জাতিকদের জন্য বিভিন্ন প্রাতিষ্ঠানিক বৃত্তি পরিচালনা করে।',
+                    workPermit: 'স্ট্যান্ডার্ড CPT/OPT উপলব্ধ। ISSS বিশেষভাবে শিক্ষার্থীদের OPT যোগ্যতা বজায় রাখার জন্য 330 দিনের বেশি পূর্ণকালীন CPT ব্যবহার না করার পরামর্শ দেয়।'
+                }
+            };
+            
+            const accordionData = [
+                {
+                    title: "I-20 এর জন্য আর্থিক প্রমাণ বোঝা",
+                    content: `সমস্ত আন্তর্জাতিক শিক্ষার্থীদের জন্য একটি গুরুত্বপূর্ণ প্রয়োজন হল আপনার প্রথম বছরের পড়াশোনার খরচ মেটানোর জন্য পর্যাপ্ত নগদ তহবিল আছে তা প্রমাণ করা। এটি ফর্ম I-20 এর জন্য, যা আপনার F-1 ছাত্র ভিসার জন্য আবেদন করতে প্রয়োজন। <strong>যা গৃহীত হয়:</strong> অফিসিয়াল ব্যাংক স্টেটমেন্ট (চেকিং/সঞ্চয়ী), অনুমোদিত শিক্ষা ঋণ এবং অফিসিয়াল স্পনসরশিপ লেটার। <strong>যা গৃহীত হয় না:</strong> সম্পত্তির মূল্যায়ন, বেতনের স্টেটমেন্ট, ট্যাক্স রিটার্ন, বা অবসরকালীন অ্যাকাউন্ট। তহবিল অবশ্যই সহজে উপলব্ধ হতে হবে।`
+                },
+                {
+                    title: "একাডেমিক ইয়ার গ্যাপ কী?",
+                    content: `এটি আপনার হাই স্কুল (HSC) শেষ করার এবং বিশ্ববিদ্যালয় শুরু করার মধ্যে নেওয়া যেকোনো সময়কে বোঝায়। মার্কিন যুক্তরাষ্ট্রের বিশ্ববিদ্যালয়গুলিতে সাধারণত গ্যাপ ইয়ার নিষিদ্ধ করার কোনো কঠোর নীতি নেই। তবে, তারা জানতে চাইবে আপনি এই সময়টি কীভাবে ব্যবহার করেছেন। আরও গুরুত্বপূর্ণ, যদি আপনি আপনার গ্যাপের সময় অন্য কোনো কলেজ বা বিশ্ববিদ্যালয়ে কোর্স করেন, তাহলে আপনাকে সম্ভবত <strong>ট্রান্সফার শিক্ষার্থী</strong> হিসাবে আবেদন করতে হবে, ফ্রেশম্যান হিসাবে নয়, যার জন্য ভিন্ন প্রয়োজনীয়তা এবং সময়সীমা রয়েছে।`
+                },
+                {
+                    title: "কাজের অনুমতি: CPT বনাম OPT",
+                    content: `এগুলি F-1 শিক্ষার্থীদের জন্য কাজের অনুমতির দুটি প্রধান প্রকার। এগুলি স্বয়ংক্রিয় নয় এবং অনুমোদনের প্রয়োজন হয়।<br><br><strong>কারিকুলার প্র্যাকটিক্যাল ট্রেনিং (CPT):</strong> এটি আপনার ডিগ্রি প্রোগ্রামের <em>সময়</em> করা কাজের অভিজ্ঞতা/ইন্টার্নশিপ যা আপনার পাঠ্যক্রমের একটি অবিচ্ছেদ্য অংশ। আপনার বিশ্ববিদ্যালয়ের আন্তর্জাতিক অফিস থেকে CPT অনুমোদনের জন্য আবেদন করতে একটি নির্দিষ্ট চাকরির প্রস্তাব প্রয়োজন।<br><br><strong>অপশনাল প্র্যাকটিক্যাল ট্রেনিং (OPT):</strong> এটি 12 মাসের কাজের অনুমোদন যা আপনি আপনার ডিগ্রি প্রোগ্রাম শেষ করার <em>পরে</em> ব্যবহার করতে পারেন। আপনি আপনার বিশ্ববিদ্যালয়ের মাধ্যমে এবং তারপর ইউ.এস. সিটিজেনশিপ অ্যান্ড ইমিগ্রেশন সার্ভিসেস (USCIS) এর কাছে এর জন্য আবেদন করেন। STEM ক্ষেত্রের শিক্ষার্থীরা প্রাথমিক 12 মাসের পোস্ট-কমপ্লিশন OPT-এর বাইরে অতিরিক্ত 24 মাসের কাজের অনুমতির জন্য যোগ্য হতে পারে।<br><br><strong>গুরুত্বপূর্ণ নিয়ম:</strong> যদি আপনি 12 মাস বা তার বেশি <em>পূর্ণকালীন</em> CPT ব্যবহার করেন, তাহলে আপনি স্নাতকোত্তর OPT-এর জন্য আপনার যোগ্যতা হারাবেন। খণ্ডকালীন CPT ব্যবহার, এর সময়কাল নির্বিশেষে, OPT যোগ্যতাকে প্রভাবিত করে না।`
+                }
+            ];
+
+            const tabsContainer = document.getElementById('university-tabs');
+            const displayContainer = document.getElementById('university-display');
+            const accordionContainer = document.getElementById('accordion-container');
+
+            function createTabs() {
+                Object.keys(universityData).forEach((key, index) => {
+                    const uni = universityData[key];
+                    const button = document.createElement('button');
+                    button.textContent = uni.name;
+                    button.dataset.university = key;
+                    button.className = `px-4 py-2 text-sm sm:text-base font-semibold rounded-full transition-all duration-300 ${index === 0 ? 'active-tab' : 'inactive-tab'}`;
+                    tabsContainer.appendChild(button);
+                });
+            }
+
+            function updateDisplay(uniKey) {
+                const uni = universityData[uniKey];
+                displayContainer.innerHTML = `
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-[#0A3161]">${uni.name}</h3>
+                    <div class="space-y-6">
+                        <div class="bg-[#F8F9FA] p-4 rounded-lg card-item" style="animation-delay: 100ms;">
+                            <span class="card-icon">📝</span>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">ন্যূনতম HSC জিপিএ (আনুমানিক)</h4>
+                                <p class="text-3xl font-bold text-[#0A3161]">${uni.gpa}</p>
+                                <p class="text-sm text-gray-600 mt-1">${uni.gpaNote}</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#F8F9FA] p-4 rounded-lg card-item" style="animation-delay: 200ms;">
+                            <span class="card-icon">📚</span>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">ন্যূনতম IELTS স্কোর</h4>
+                                <p class="text-3xl font-bold text-[#0A3161]">${uni.ielts}</p>
+                                <p class="text-sm text-gray-600 mt-1">${uni.ieltsNote}</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#F8F9FA] p-4 rounded-lg card-item" style="animation-delay: 300ms;">
+                            <span class="card-icon">💰</span>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">আর্থিক প্রমাণ (বার্ষিক আনুমানিক)</h4>
+                                <p class="text-3xl font-bold text-[#0A3161]">$${uni.financials.toLocaleString()}</p>
+                                <p class="text-sm text-gray-600 mt-1">${uni.financialsNote}</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#F8F9FA] p-4 rounded-lg card-item" style="animation-delay: 400ms;">
+                            <span class="card-icon">🎓</span>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">বৃত্তি সুযোগ</h4>
+                                <p class="text-gray-700">${uni.scholarships}</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#F8F9FA] p-4 rounded-lg card-item" style="animation-delay: 500ms;">
+                            <span class="card-icon">💼</span>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">কাজের অনুমতি (CPT/OPT) তথ্য</h4>
+                                <p class="text-gray-700">${uni.workPermit}</p>
+                            </div>
+                        </div>
+                         <div class="text-center mt-6 pt-4 card-item" style="animation-delay: 600ms;">
+                            <a href="${uni.link}" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#BF0A30] text-white font-bold py-3 px-8 rounded-lg hover:bg-opacity-90 transition transform hover:scale-105">ভর্তি পৃষ্ঠা ভিজিট করুন →</a>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            function createAccordions() {
+                accordionData.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'bg-white rounded-xl shadow-md overflow-hidden';
+                    div.innerHTML = `
+                        <div class="accordion-header flex justify-between items-center p-5">
+                            <h3 class="font-semibold text-lg">${item.title}</h3>
+                            <span class="icon-rotate text-[#BF0A30] text-2xl">▾</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="p-5 pt-0 text-gray-700">${item.content}</div>
+                        </div>
+                    `;
+                    accordionContainer.appendChild(div);
+                });
+            }
+
+            tabsContainer.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    document.querySelectorAll('#university-tabs button').forEach(btn => {
+                        btn.classList.remove('active-tab');
+                        btn.classList.add('inactive-tab');
+                    });
+                    e.target.classList.add('active-tab');
+                    e.target.classList.remove('inactive-tab');
+                    updateDisplay(e.target.dataset.university);
+                }
+            });
+            
+            accordionContainer.addEventListener('click', e => {
+                const header = e.target.closest('.accordion-header');
+                if (!header) return;
+
+                const accordionItem = header.parentElement;
+                const content = header.nextElementSibling;
+                const isOpen = content.classList.contains('show');
+
+                content.classList.toggle('show');
+                accordionItem.classList.toggle('open', !isOpen);
+            });
+
+            createTabs();
+            updateDisplay('uc-berkeley');
+            createAccordions();
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            const financialCtx = document.getElementById('financialsChart').getContext('2d');
+            new Chart(financialCtx, {
+                type: 'bar',
+                data: {
+                    labels: Object.values(universityData).map(u => u.name.split(' - ')[0]),
+                    datasets: [{
+                        label: 'আনুমানিক বার্ষিক খরচ (USD)',
+                        data: Object.values(universityData).map(u => u.financials),
+                        backgroundColor: ['#0A3161', '#BF0A30', '#6C757D', '#4682B4', '#DC143C'],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` $${context.raw.toLocaleString()}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000) + 'k';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const ieltsCtx = document.getElementById('ieltsChart').getContext('2d');
+            new Chart(ieltsCtx, {
+                type: 'bar',
+                data: {
+                    labels: Object.values(universityData).map(u => u.name.split(' - ')[0]),
+                    datasets: [{
+                        label: 'ন্যূনতম IELTS স্কোর',
+                        data: Object.values(universityData).map(u => parseFloat(u.ielts)),
+                        backgroundColor: ['#0A3161', '#BF0A30', '#6C757D', '#4682B4', '#DC143C'],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                afterLabel: function(context) {
+                                    const uniKey = Object.keys(universityData)[context.dataIndex];
+                                    return universityData[uniKey].ieltsNote;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                             grid: {
+                                display: false
+                            },
+                            max: 9
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

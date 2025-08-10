@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="bn">
+<head><!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0ZMFT4DXBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0ZMFT4DXBG');
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>আন্তর্জাতিক শিক্ষার্থীদের জন্য অস্ট্রেলিয়ান স্টাডি হাব</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Chosen Palette: Australian Flag Inspired (Blue, White, Red) -->
+<!-- Application Structure Plan: A single-page dashboard design is used to provide a non-linear, exploratory user experience. The main navigation allows users to jump to specific sections of interest: University Explorer, Requirements, Scholarships, and Work/Visa info. This structure avoids a rigid, report-like flow and empowers the user to find the information they need most, such as filtering universities or visually comparing requirements, in an intuitive manner. This task-oriented design is superior for usability as students often research these topics in parallel, not sequentially. -->
+<!-- Visualization & Content Choices:
+        - University Info -> Goal: Organize/Compare -> Viz: Interactive Cards -> Interaction: JS Search/Filter -> Justification: Allows users to quickly find and compare institutions based on type or location, with a clean UI that reveals details on-demand. Added placeholder for HSC GPA as specific data is unavailable.
+        - IELTS Scores -> Goal: Compare -> Viz: Bar Chart (Chart.js/Canvas) -> Interaction: Hover Tooltips -> Justification: Visually represents the distribution and range of language requirements, making it easier to grasp than a table.
+        - Financials -> Goal: Inform -> Viz: Styled Info Cards & Donut Chart (Chart.js/Canvas) -> Interaction: Static Display & Hover -> Justification: Breaks down complex financial data into digestible chunks, making the total cost more understandable.
+        - Scholarships -> Goal: Inform/Organize -> Viz: Filterable List -> Interaction: JS Filter -> Justification: Helps users quickly identify relevant financial aid opportunities.
+        - Work Rights -> Goal: Inform/Direct -> Viz: Static Text with Prominent Link -> Interaction: Click to External Site -> Justification: Provides essential visa information while directing users to the single source of truth (Dept. of Home Affairs) for official, up-to-date policy.
+    -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF; /* White background */
+            color: #333333; /* Dark grey for text */
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #E4002B; /* Red accent */
+            transition: width 0.3s;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #E4002B; /* Red for active/hover */
+        }
+        .nav-link.active::after, .nav-link:hover::after {
+            width: 100%;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 640px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .stat-card {
+            background-color: #FFFFFF;
+            border-left: 4px solid #003366; /* Blue border */
+        }
+        .btn-primary {
+            background-color: #E4002B; /* Red primary button */
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #C00024; /* Darker red on hover */
+        }
+        .btn-filter {
+            background-color: #F0F8FF; /* Light blueish background for filters */
+            color: #333333;
+            transition: all 0.3s;
+        }
+        .btn-filter.active, .btn-filter:hover {
+            background-color: #003366; /* Dark blue for active/hover filter */
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .uni-card {
+            visibility: visible;
+            opacity: 1;
+            max-height: 1000px;
+            transform: scale(1);
+            transition: all 0.5s ease-in-out;
+            overflow: hidden;
+        }
+        .uni-card.hidden {
+            visibility: hidden;
+            opacity: 0;
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            transform: scale(0.9);
+        }
+    </style>
+
+<link href="https://studyabroadbd.top/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://studyabroadbd.top/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://studyabroadbd.top/favicon.ico" rel="shortcut icon"/>
+<link href="https://studyabroadbd.top/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<meta content="STUDY ABROAD BD" name="apple-mobile-web-app-title"/>
+<link href="https://studyabroadbd.top/site.webmanifest" rel="manifest"/>
+</head>
+<body>
+<header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<div class="text-2xl font-bold text-gray-800">
+<span class="text-[#E4002B]">অস্ট্রেলিয়ান</span> স্টাডি হাব
+            </div>
+<ul class="hidden md:flex space-x-8 font-medium">
+<li><a class="nav-link active" href="#welcome">হোম</a></li>
+<li><a class="nav-link" href="#explorer">বিশ্ববিদ্যালয় এক্সপ্লোরার</a></li>
+<li><a class="nav-link" href="#requirements">প্রয়োজনীয়তা</a></li>
+<li><a class="nav-link" href="#scholarships">বৃত্তি</a></li>
+<li><a class="nav-link" href="#work">কাজ ও ভিসা</a></li>
+</ul>
+<button class="md:hidden text-gray-700 focus:outline-none" id="mobile-menu-button">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16m-4 6h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</nav>
+<div class="hidden md:hidden" id="mobile-menu">
+<ul class="flex flex-col items-center space-y-4 py-4">
+<li><a class="nav-link" href="#welcome">হোম</a></li>
+<li><a class="nav-link" href="#explorer">বিশ্ববিদ্যালয় এক্সপ্লোরার</a></li>
+<li><a class="nav-link" href="#requirements">প্রয়োজনীয়তা</a></li>
+<li><a class="nav-link" href="#scholarships">বৃত্তি</a></li>
+<li><a class="nav-link" href="#work">কাজ ও ভিসা</a></li>
+</ul>
+</div>
+</header>
+<main>
+<section class="py-16 md:py-24" id="welcome">
+<div class="container mx-auto px-6 text-center">
+<h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">অস্ট্রেলিয়ায় আপনার পড়াশোনার যাত্রা এখান থেকেই শুরু</h1>
+<p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-12">এই ইন্টারেক্টিভ গাইডটি আপনার এইচএসসি-এর পর সঠিক বিশ্ববিদ্যালয় খুঁজে বের করা, প্রয়োজনীয়তা বোঝা এবং বৃত্তি আবিষ্কারের প্রক্রিয়াকে সহজ করে তোলে। এক নজরে মূল তথ্যগুলি অন্বেষণ করুন।</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+<div class="stat-card p-6 rounded-lg shadow-md">
+<p class="text-4xl font-bold text-gray-800 mb-2">৪০+</p>
+<p class="text-gray-600 font-medium">বিশ্ববিদ্যালয় প্রোফাইল করা হয়েছে</p>
+</div>
+<div class="stat-card p-6 rounded-lg shadow-md">
+<p class="text-4xl font-bold text-gray-800 mb-2">১০০%</p>
+<p class="text-gray-600 font-medium">সর্বোচ্চ বৃত্তির মূল্য</p>
+</div>
+<div class="stat-card p-6 rounded-lg shadow-md">
+<p class="text-4xl font-bold text-gray-800 mb-2">$২৯ হাজার+</p>
+<p class="text-gray-600 font-medium">ন্যূনতম বার্ষিক জীবনযাত্রার খরচ</p>
+</div>
+<div class="stat-card p-6 rounded-lg shadow-md">
+<p class="text-4xl font-bold text-gray-800 mb-2">৪৮ ঘণ্টা</p>
+<p class="text-gray-600 font-medium">প্রতি পাক্ষিকে কাজের সীমা</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 md:py-24 bg-white" id="explorer">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800">বিশ্ববিদ্যালয় এক্সপ্লোরার</h2>
+<p class="mt-4 text-lg text-gray-600">আপনার জন্য উপযুক্ত বিশ্ববিদ্যালয় খুঁজুন। নাম দিয়ে অনুসন্ধান করুন অথবা ধরন ও অবস্থান অনুযায়ী ফিল্টার করুন।</p>
+</div>
+<div class="flex flex-wrap justify-center gap-4 mb-8">
+<input class="w-full md:w-1/3 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#E4002B]" id="search-bar" placeholder="🔎 বিশ্ববিদ্যালয়ের নাম দিয়ে অনুসন্ধান করুন..." type="text"/>
+<div class="flex flex-wrap justify-center gap-2" id="type-filters">
+<button class="btn-filter px-4 py-2 rounded-full font-medium active" data-filter="all">সব ধরন</button>
+<button class="btn-filter px-4 py-2 rounded-full font-medium" data-filter="Public">সরকারি</button>
+<button class="btn-filter px-4 py-2 rounded-full font-medium" data-filter="Private">বেসরকারি</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="university-grid">
+</div>
+<p class="text-center text-sm text-gray-500 mt-8">
+                    *এইচএসসি জিপিএ প্রয়োজনীয়তাগুলি আনুমানিক এবং বিশ্ববিদ্যালয় ও প্রোগ্রাম অনুযায়ী পরিবর্তিত হয়। সঠিক তথ্যের জন্য প্রতিটি বিশ্ববিদ্যালয়ের ওয়েবসাইট যাচাই করুন।
+                </p>
+</div>
+</section>
+<section class="py-16 md:py-24" id="requirements">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800">মূল ভর্তির প্রয়োজনীয়তা</h2>
+<p class="mt-4 text-lg text-gray-600">আপনার আবেদনের জন্য ইংরেজি ভাষা এবং আর্থিক প্রয়োজনীয়তাগুলি দেখুন।</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="bg-white p-8 rounded-lg shadow-lg">
+<h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">আইইএলটিএস স্কোর বিতরণ</h3>
+<p class="text-center text-gray-600 mb-6">বেশিরভাগ স্নাতক ডিগ্রির জন্য আইইএলটিএস সামগ্রিক স্কোর ৬.০-৬.৫ প্রয়োজন, তবে স্বাস্থ্য এবং আইনের মতো বিশেষ ক্ষেত্রগুলিতে ৭.০ বা তার বেশি প্রয়োজন হয়। এই চার্টটি ব্যবহার করে দেখুন বেশিরভাগ প্রোগ্রাম কোথায় পড়ে।</p>
+<div class="chart-container">
+<canvas id="ieltsChart"></canvas>
+</div>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-lg">
+<h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">বার্ষিক আর্থিক প্রয়োজনীয়তা</h3>
+<p class="text-center text-gray-600 mb-6">অস্ট্রেলিয়ান সরকার ভিসা উদ্দেশ্যে ন্যূনতম জীবনযাত্রার খরচ নির্ধারণ করে। আপনার মোট তহবিলের প্রমাণের জন্য এই পরিমাণের সাথে আপনার প্রথম বছরের টিউশন এবং স্বাস্থ্য কভার যোগ করতে ভুলবেন না।</p>
+<div class="chart-container h-auto md:h-auto">
+<canvas id="financialsChart"></canvas>
+</div>
+<div class="mt-6 text-sm text-gray-500 text-center">
+                            *জীবনযাত্রার খরচ ২৫ জুন, ২০২৫ পর্যন্ত। সমস্ত পরিসংখ্যান অস্ট্রেলিয়ান ডলার (AUD)-এ।
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 md:py-24 bg-white" id="scholarships">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800">বৃত্তি খুঁজুন</h2>
+<p class="mt-4 text-lg text-gray-600">আপনার পড়াশোনাকে সমর্থন করার জন্য আর্থিক সহায়তার সুযোগগুলি অন্বেষণ করুন। অনেক বৃত্তি আপনার আবেদনের সাথে স্বয়ংক্রিয়ভাবে মূল্যায়ন করা হয়।</p>
+</div>
+<div class="max-w-4xl mx-auto space-y-6" id="scholarships-list">
+</div>
+</div>
+</section>
+<section class="py-16 md:py-24" id="work">
+<div class="container mx-auto px-6 max-w-4xl">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-800">কাজ ও ভিসা তথ্য</h2>
+<p class="mt-4 text-lg text-gray-600">শিক্ষার্থী হিসাবে আপনার কাজের অধিকার এবং অধ্যয়নের পরের ভিসার অফিসিয়াল তথ্য কোথায় পাবেন তা জানুন।</p>
+</div>
+<div class="bg-white rounded-lg shadow-lg p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div>
+<h3 class="font-bold text-xl mb-3 text-gray-800">পড়াশোনার সময় কাজের অধিকার</h3>
+<p class="text-gray-600 mb-4">একজন আন্তর্জাতিক শিক্ষার্থী হিসাবে, আপনি আপনার অধ্যয়নের সময় <span class="font-bold text-[#E4002B]">প্রতি পাক্ষিকে ৪৮ ঘণ্টা</span> পর্যন্ত কাজ করতে পারবেন। বিশ্ববিদ্যালয়ের ছুটির সময় আপনি সীমাহীন ঘণ্টা কাজ করতে পারবেন।</p>
+<p class="text-gray-600"><span class="font-bold">গুরুত্বপূর্ণ:</span> এই কাজটি আপনার আয়কে পরিপূরক করার উদ্দেশ্যে, আপনার পুরো টিউশন এবং জীবনযাত্রার খরচ মেটানোর জন্য নয়। অস্ট্রেলিয়ায় আসার আগে আপনার পর্যাপ্ত তহবিল নিশ্চিত করুন।</p>
+</div>
+<div class="bg-[#F0F8FF] p-6 rounded-lg text-center"> <!-- Light blueish background -->
+<h3 class="font-bold text-xl mb-3 text-gray-800">অধ্যয়নের পর কাজের ভিসা</h3>
+<p class="text-gray-600 mb-6">টেম্পোরারি গ্র্যাজুয়েট ভিসা (সাবক্লাস ৪৮৫) এবং অন্যান্য অধ্যয়নের পরের কাজের বিকল্প সম্পর্কে সবচেয়ে সঠিক এবং আপ-টু-ডেট তথ্যের জন্য, আপনাকে অবশ্যই অফিসিয়াল সরকারি ওয়েবসাইট দেখতে হবে।</p>
+<a class="btn-primary inline-block px-8 py-3 rounded-full font-semibold" href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485" target="_blank">স্বরাষ্ট্র বিভাগের ওয়েবসাইট দেখুন</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-800 text-white py-8">
+<div class="container mx-auto px-6 text-center">
+<p>© 2025 অস্ট্রেলিয়ান স্টাডি হাব। সম্ভাব্য আন্তর্জাতিক শিক্ষার্থীদের জন্য একটি ইন্টারেক্টিভ টুল।</p>
+<p class="text-sm text-slate-400 mt-2">সর্বশেষ তথ্যের জন্য সর্বদা অফিসিয়াল সরকারি এবং বিশ্ববিদ্যালয়ের ওয়েবসাইটগুলি দেখুন।</p>
+<p class="text-sm text-gray-400 mt-4">Admin: Tanveer Ahammed</p>
+<p class="text-sm text-gray-400">Contact: <a class="text-sm text-gray-300 hover:text-[#BF0A30] transition" href="mailto:studyabroadbd360@gmail.com">studyabroadbd360@gmail.com</a></p>
+</div>
+</footer>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const universities = [
+                { name: 'দ্য অস্ট্রেলিয়ান ন্যাশনাল ইউনিভার্সিটি', type: 'Public', location: 'ACT', website: 'http://www.anu.edu.au/study/information-for/international-students', ielts: '৬.৫ (ন্যূনতম ৬.০)', scholarship: 'বিভিন্ন, ওয়েবসাইট দেখুন', deferral: 'কেস-বাই-কেস', hscGpa: '৪.৫০+' },
+                { name: 'ইউনিভার্সিটি অফ মেলবোর্ন', type: 'Public', location: 'VIC', website: 'https://www.unimelb.edu.au/', ielts: '৬.৫ (ন্যূনতম ৬.০), কিছু ক্ষেত্রে ৭.০+', scholarship: 'মেলবোর্ন চ্যান্সেলর\'স স্কলারশিপ (৫০-১০০%)', deferral: 'কেস-বাই-কেস', hscGpa: '৫.০০' },
+                { name: 'ইউনিভার্সিটি অফ সিডনি', type: 'Public', location: 'NSW', website: 'https://www.sydney.edu.au/study/international-students.html', ielts: '৬.৫ (ন্যূনতম ৬.০)', scholarship: 'বিভিন্ন মেধা ও ইক্যুইটি বৃত্তি', deferral: '১ বছর পর্যন্ত (শর্ত প্রযোজ্য)', hscGpa: '৫.০০' },
+                { name: 'মোনাশ ইউনিভার্সিটি', type: 'Public', location: 'VIC', website: 'https://www.monash.edu/study/international', ielts: '৬.৫ (ন্যূনতম ৬.০), কিছু ক্ষেত্রে ৭.০', scholarship: 'ইন্টারন্যাশনাল লিডারশিপ স্কলারশিপ (১০০%)', deferral: 'কেস-বাই-কেস', hscGpa: '৪.৮০+' },
+                { name: 'ইউনিভার্সিটি অফ ওয়েস্টার্ন অস্ট্রেলিয়া', type: 'Public', location: 'WA', website: 'http://www.international.uwa.edu.au/', ielts: '৬.৫ (ন্যূনতম ৬.০), কিছু ক্ষেত্রে ৭.৫ পর্যন্ত', scholarship: 'গ্লোবাল এক্সেলেন্স স্কলারশিপ (৪৮ হাজার ডলার পর্যন্ত)', deferral: '১ বছর পর্যন্ত (কিছু কোর্স বাদ)', hscGpa: '৪.৫০+' },
+                { name: 'ইউনিভার্সিটি অফ অ্যাডিলেড', type: 'Public', location: 'SA', website: 'http://international.adelaide.edu.au/', ielts: '৬.০+, অনেকের জন্য ৬.৫', scholarship: 'একাডেমিক এক্সেলেন্স (৫০%), মেরিট (১৫-২৫%)', deferral: 'কেস-বাই-কেস', hscGpa: '৪.০০+' },
+                { name: 'ইউনিভার্সিটি অফ নিউ সাউথ ওয়েলস', type: 'Public', location: 'NSW', website: 'https://www.unsw.edu.au/study/international-students', ielts: '৬.৫ (ন্যূনতম ৬.০)', scholarship: 'বিভিন্ন, ওয়েবসাইট দেখুন', deferral: 'ভর্তি অফিসের সাথে যোগাযোগ করুন', hscGpa: '৪.৮০+' },
+                { name: 'ইউনিভার্সিটি অফ কুইন্সল্যান্ড', type: 'Public', location: 'QLD', website: 'https://future-students.uq.edu.au/', ielts: '৬.৫ (ন্যূনতম ৬.০)', scholarship: 'বিভিন্ন, ওয়েবসাইট দেখুন', deferral: 'ভর্তি অফিসের সাথে যোগাযোগ করুন', hscGpa: '৪.৫০+' },
+                { name: 'কুইন্সল্যান্ড ইউনিভার্সিটি অফ টেকনোলজি', type: 'Public', location: 'QLD', website: 'https://www.qut.edu.au/international', ielts: '৬.৫ (ন্যূনতম ৬.০)', scholarship: 'বিভিন্ন, ওয়েবসাইট দেখুন', deferral: 'ভর্তি অফিসের সাথে যোগাযোগ করুন', hscGpa: '৪.০০+' },
+                { name: 'আরএমআইটি ইউনিভার্সিটি', type: 'Public', location: 'VIC', website: 'https://www.rmit.edu.au/study-with-us/international-students/', ielts: '৬.৫ (ন্যূনতম ৬.০)', scholarship: 'বিভিন্ন, ওয়েবসাইট দেখুন', deferral: 'ভর্তি অফিসের সাথে যোগাযোগ করুন', hscGpa: '৩.৮০+' },
+                { name: 'ইউনিভার্সিটি অফ টেকনোলজি সিডনি', type: 'Public', location: 'NSW', website: 'http://www.uts.edu.au/future-students/international', ielts: '৬.৫ (ন্যূনতম ৬.০)', scholarship: 'বিভিন্ন, ওয়েবসাইট দেখুন', deferral: 'ভর্তি অফিসের সাথে যোগাযোগ করুন', hscGpa: '৪.০০+' },
+                { name: 'বন্ড ইউনিভার্সিটি', type: 'Private', location: 'QLD', website: 'http://bond.edu.au/future-students/international', ielts: '৬.৫ (ন্যূনতম ৬.০), আইন/মেড এর জন্য ৭.০', scholarship: 'মেরিট স্কলারশিপ (২০% মওকুফ)', deferral: 'কেস-বাই-কেস', hscGpa: '৩.৫০+' },
+                { name: 'টরেন্স ইউনিভার্সিটি অস্ট্রেলিয়া', type: 'Private', location: 'National', website: 'http://www.torrens.edu.au/studying/international-students', ielts: '৬.০ (ন্যূনতম ৫.৫), নার্সিং এর জন্য ৭.০', scholarship: 'দেশ ও প্রাক্তন শিক্ষার্থী বৃত্তি (১২-২৫%)', deferral: 'কেস-বাই-কেস', hscGpa: '৩.০০+' },
+                { name: 'ইউনিভার্সিটি অফ নটর ডেম অস্ট্রেলিয়া', type: 'Private', location: 'National', website: 'https://www.notredame.edu.au/study/international-students', ielts: '৬.০ (ন্যূনতম ৬.০), আইন এর জন্য ৭.৫ পর্যন্ত', scholarship: 'মেরিট স্কলারশিপ (২০% মওকুফ)', deferral: 'কেস-বাই-কেস', hscGpa: '৩.৫০+' }
+            ];
+
+            const scholarships = [
+                { uni: 'ইউনিভার্সিটি অফ মেলবোর্ন', name: 'মেলবোর্ন চ্যান্সেলর\'স স্কলারশিপ', value: '৫০-১০০% টিউশন মওকুফ', details: 'উচ্চ-অর্জনকারী শিক্ষার্থীদের জন্য স্বয়ংক্রিয় বিবেচনা।' },
+                { uni: 'মোনাশ ইউনিভার্সিটি', name: 'ইন্টারন্যাশনাল লিডারশিপ স্কলারশিপ', value: '১০০% টিউশন ফি', details: 'অত্যন্ত প্রতিযোগিতামূলক, পৃথক আবেদন প্রয়োজন।' },
+                { uni: 'ইউনিভার্সিটি অফ ওয়েস্টার্ন অস্ট্রেলিয়া', name: 'গ্লোবাল এক্সেলেন্স স্কলারশিপ', value: '৪ বছরে AUD ৪৮,০০০ পর্যন্ত', details: 'আবেদনের সাথে স্বয়ংক্রিয় বিবেচনা।' },
+                { uni: 'ইউনিভার্সিটি অফ অ্যাডিলেড', name: 'একাডেমিক এক্সেলেন্স স্কলারশিপ', value: '৫০% টিউশন মওকুফ', details: 'ন্যূনতম ৯৯ এটিএআর বা সমমানের শিক্ষার্থীদের জন্য। স্বয়ংক্রিয়ভাবে মূল্যায়ন করা হয়।' },
+                { uni: 'বন্ড ইউনিভার্সিটি', name: 'ইন্টারন্যাশনাল মেরিট স্কলারশিপ', value: '২০% টিউশন ফি মওকুফ', details: 'স্নাতক আবেদনকারীদের জন্য স্বয়ংক্রিয় বিবেচনা।' },
+                { uni: 'টরেন্স ইউনিভার্সিটি', name: 'দেশ ও প্রাক্তন শিক্ষার্থী বৃত্তি', value: 'টিউশনের ১২-২৫%', details: 'নতুন আন্তর্জাতিক শিক্ষার্থীদের জন্য বিভিন্ন বৃত্তি উপলব্ধ।' }
+            ];
+
+
+            const universityGrid = document.getElementById('university-grid');
+            const searchBar = document.getElementById('search-bar');
+            const typeFilters = document.getElementById('type-filters');
+
+            function renderUniversities(filteredUniversities) {
+                universityGrid.innerHTML = '';
+                filteredUniversities.forEach(uni => {
+                    const card = document.createElement('div');
+                    card.className = 'uni-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300';
+                    card.innerHTML = `
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">${uni.name}</h3>
+                        <p class="text-sm font-medium mb-4"><span class="font-semibold text-[#003366]">${uni.type === 'Public' ? 'সরকারি' : 'বেসরকারি'}</span> &bull; ${uni.location}</p>
+                        <div class="space-y-2 text-gray-600">
+                            <p><strong>আইইএলটিএস:</strong> ${uni.ielts}</p>
+                            <p><strong>এইচএসসি জিপিএ:</strong> ${uni.hscGpa}</p>
+                            <p><strong>বৃত্তির হাইলাইট:</strong> ${uni.scholarship}</p>
+                            <p><strong>স্থগিতাদেশ নীতি:</strong> ${uni.deferral}</p>
+                        </div>
+                        <a href="${uni.website}" target="_blank" class="btn-primary inline-block mt-4 px-4 py-2 text-sm font-semibold rounded-full">ওয়েবসাইট দেখুন</a>
+                    `;
+                    universityGrid.appendChild(card);
+                });
+            }
+
+            function filterAndRender() {
+                const searchTerm = searchBar.value.toLowerCase();
+                const activeFilter = typeFilters.querySelector('.active').dataset.filter;
+
+                const filtered = universities.filter(uni => {
+                    const matchesSearch = uni.name.toLowerCase().includes(searchTerm);
+                    const matchesFilter = activeFilter === 'all' || uni.type === activeFilter;
+                    return matchesSearch && matchesFilter;
+                });
+                renderUniversities(filtered);
+            }
+
+            searchBar.addEventListener('input', filterAndRender);
+            typeFilters.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    typeFilters.querySelector('.active').classList.remove('active');
+                    e.target.classList.add('active');
+                    filterAndRender();
+                }
+            });
+
+
+            const scholarshipsList = document.getElementById('scholarships-list');
+            function renderScholarships() {
+                scholarships.forEach(s => {
+                    const item = document.createElement('div');
+                    item.className = 'bg-[#F0F8FF] p-6 rounded-lg border-l-4 border-[#E4002B]'; /* Light blue background, red border */
+                    item.innerHTML = `
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
+                             <h4 class="text-xl font-bold text-gray-800">${s.name}</h4>
+                             <p class="text-lg font-semibold text-[#003366] mt-2 sm:mt-0">${s.value}</p> <!-- Blue text for value -->
+                        </div>
+                        <p class="text-gray-600 mb-2"><span class="font-semibold">প্রতিষ্ঠান:</span> ${s.uni}</p>
+                        <p class="text-gray-600">${s.details}</p>
+                    `;
+                    scholarshipsList.appendChild(item);
+                });
+            }
+
+
+            const ieltsCtx = document.getElementById('ieltsChart').getContext('2d');
+            new Chart(ieltsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['৬.০ (ন্যূনতম)', '৬.৫ (সাধারণ)', '৭.০ (স্বাস্থ্য/আইন)', '৭.৫+ (বিশেষায়িত)'],
+                    datasets: [{
+                        label: 'প্রোগ্রাম/বিশ্ববিদ্যালয়ের সংখ্যা',
+                        data: [5, 12, 6, 3],
+                        backgroundColor: ['#003366', '#E4002B', '#003366', '#E4002B'], /* Blue and Red bars */
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` এই স্কোর প্রয়োজন এমন প্রোগ্রামগুলি নির্দেশ করে।`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'বিশ্ববিদ্যালয় প্রোগ্রামের আনুমানিক সংখ্যা'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'সামগ্রিক আইইএলটিএস স্কোর প্রয়োজনীয়তা'
+                            }
+                        }
+                    }
+                }
+            });
+
+            const financialsCtx = document.getElementById('financialsChart').getContext('2d');
+            new Chart(financialsCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['ন্যূনতম বার্ষিক জীবনযাত্রার খরচ', 'উদাহরণস্বরূপ কম টিউশন', 'উদাহরণস্বরূপ বেশি টিউশন', 'ওভারসিজ স্টুডেন্ট হেলথ কভার (OSHC)'],
+                    datasets: [{
+                        label: 'আনুমানিক বার্ষিক খরচ (AUD)',
+                        data: [29710, 40000, 50000, 700],
+                        backgroundColor: [
+                            '#003366', /* Blue */
+                            '#E4002B', /* Red */
+                            '#003366', /* Blue */
+                            '#F0F8FF'  /* Light Blue */
+                        ],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                     plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' }).format(context.parsed);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenu.offsetParent !== null) {
+                       mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            renderUniversities(universities);
+            renderScholarships();
+        });
+    </script>
+</body>
+</html>

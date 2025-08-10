@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="bn">
+<head><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0ZMFT4DXBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0ZMFT4DXBG');
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- SEO: Meta Title updated to include the main keyword -->
+<title>Study Abroad: বিদেশে উচ্চশিক্ষা - বাংলাদেশী শিক্ষার্থীদের জন্য গাইড</title>
+<!-- SEO: Meta Description added with keywords -->
+<meta name="description" content="Bangladeshi students looking to study abroad can find comprehensive guidance here. Compare countries, check requirements, and find scholarships for your higher education journey. বিদেশে উচ্চশিক্ষার জন্য আপনার বিশ্বস্ত গাইড।"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- SEO: JSON-LD Schema Markup for Website and FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Study Abroad BD",
+  "url": "https://studyabroadbd.top/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://studyabroadbd.top/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "আবেদন ও প্রস্তুতির কৌশল কি?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "কমপক্ষে এক বছর আগে প্রস্তুতি শুরু করুন। পাসপোর্ট, ট্রান্সক্রিপ্ট সংগ্রহ করুন এবং IELTS/GRE/SAT-এর মতো পরীক্ষার জন্য পড়াশোনা শুরু করুন। একটি আকর্ষণীয় স্টেটমেন্ট অফ পারপাস (SOP) তৈরি করুন এবং শিক্ষকদের কাছ থেকে শক্তিশালী সুপারিশপত্র (LOR) সংগ্রহ করুন।"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "আর্থিক পরিকল্পনা কিভাবে করবো?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "সরকারি, বিশ্ববিদ্যালয় এবং বাহ্যিক স্কলারশিপের মিশ্রণের জন্য আবেদন করুন। আপনার ভিসার জন্য প্রয়োজনীয় নির্দিষ্ট আর্থিক প্রমাণ (যেমন: ব্লকড অ্যাকাউন্ট, GIC, ব্যাংক স্টেটমেন্ট) বুঝুন এবং একটি বিস্তারিত বাজেট তৈরি করুন।"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ভিসা ও সাংস্কৃতিক অভিযোজন এর জন্য কি করতে হবে?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "সর্বশেষ প্রয়োজনীয়তার জন্য সর্বদা আপনার লক্ষ্য দেশের অফিসিয়াল সরকারি অভিবাসন ওয়েবসাইট যাচাই করুন। সাক্ষাৎকারের জন্য বাংলাদেশে আপনার শক্তিশালী সংযোগ ব্যাখ্যা করার জন্য প্রস্তুত থাকুন এবং স্থানীয় রীতিনীতি সম্পর্কে গবেষণা করুন।"
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+        /* --- Base & Typography --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4, #ecfeff, #fffbeb); /* Light Green -> Light Cyan -> Light Yellow */
+        }
+
+        /* --- Animations & Transitions --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+           opacity: 0;
+           transform: translateY(20px);
+           transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+           opacity: 1;
+           transform: translateY(0);
+        }
+
+        /* --- Component Styles --- */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+        }
+        @media (max-width: 768px) {
+            .chart-container { height: 300px; }
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #9b59b6; /* Vibrant Purple */
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #8e44ad; /* Strong Purple */
+        }
+        
+        /* Modern Card Style */
+        .card-shadow {
+            box-shadow: 0 4px 15px -2px rgb(0 0 0 / 0.06);
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #e5e7eb;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .card-shadow:hover {
+            box-shadow: 0 10px 20px -3px rgb(0 0 0 / 0.1);
+            transform: translateY(-5px);
+            border-color: #9b59b6; /* Vibrant Purple */
+        }
+
+        .country-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+        }
+        .country-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+            border-color: #2ecc71; /* Vibrant Green */
+        }
+        
+        /* Refined CTA Button Style */
+        .cta-button {
+            color: white;
+            padding: 14px 36px;
+            border-radius: 8px; /* rounded-lg */
+            font-weight: 700; /* font-bold */
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            background-image: linear-gradient(to right, #2ecc71, #3498db, #9b59b6);
+            box-shadow: 0 4px 20px 0 rgb(52 152 219 / 0.3);
+            background-size: 200% auto;
+        }
+        .cta-button:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px 0 rgb(155 89 182 / 0.4);
+        }
+        
+        .hero-section {
+            background: linear-gradient(45deg, #2ecc71, #3498db, #9b59b6); /* Green -> Blue -> Purple */
+            position: relative;
+            padding: 8rem 1rem;
+            color: white;
+            border-radius: 1.5rem; /* rounded-3xl */
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .contact-button-green, .contact-button-blue {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgb(0 0 0 / 0.1);
+            color: white;
+        }
+        .contact-button-green:hover, .contact-button-blue:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 6px 20px 0 rgb(0 0 0 / 0.12);
+        }
+        .contact-button-green { background-color: #2ecc71; } /* Vibrant Green */
+        .contact-button-green:hover { background-color: #27ae60; } /* Darker Green */
+        .contact-button-blue { background-color: #9b59b6; } /* Vibrant Purple */
+        .contact-button-blue:hover { background-color: #8e44ad; } /* Darker Purple */
+        
+        /* Accordion Icon Animation */
+        .accordion-header .accordion-icon {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            color: #9b59b6; /* Vibrant Purple */
+        }
+        .accordion-item.is-open .accordion-header .accordion-icon {
+            transform: rotate(135deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.5s ease;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .accordion-item.is-open .accordion-content {
+            max-height: 500px; /* Adjust as needed */
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+        }
+
+        /* AI Assistant Styles */
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .ai-loader {
+            width: 40px; height: 40px; border: 4px solid #e0e7ff;
+            border-top-color: #8e44ad; border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        .ai-result-card {
+            background: linear-gradient(135deg, #f0fdf4, #ecfeff);
+            border: 1px solid #bbf7d0; border-radius: 12px;
+            padding: 1.5rem; margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        .ai-result-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        
+        /* Video Aspect Ratio */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+<link href="https://studyabroadbd.top/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://studyabroadbd.top/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://studyabroadbd.top/favicon.ico" rel="shortcut icon"/>
+<link href="https://studyabroadbd.top/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<meta content="STUDY ABROAD BD" name="apple-mobile-web-app-title"/>
+<link href="https://studyabroadbd.top/site.webmanifest" rel="manifest"/>
+</head>
+<body class="text-slate-800">
+<header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<!-- SEO: Added alt tag with keyword -->
+<img alt="Study Abroad BD Logo" class="h-12" src="logo.png" width="48" height="48"/>
+<h1 class="text-xl md:text-2xl font-extrabold" style="color: #27ae60;">Study Abroad BD</h1>
+</div>
+<div class="hidden md:flex items-center space-x-8 text-lg text-gray-600">
+<a class="nav-link active" href="#home">হোম</a>
+<a class="nav-link" href="#comparison">তুলনা</a>
+<a class="nav-link" href="#ai-assistant">AI এসিস্ট্যান্ট</a>
+<a class="nav-link" href="#tips">টিপস</a>
+<a class="nav-link text-blue-600 hover:text-blue-800" href="researchedweb.html">গবেষণা</a>
+<a class="nav-link" href="aboutus.html">আমাদের সম্পর্কে</a>
+</div>
+<button class="md:hidden text-slate-800 focus:outline-none" id="mobile-menu-button">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</nav>
+<div class="hidden md:hidden px-6 pt-2 pb-4" id="mobile-menu">
+<a class="block py-2 text-lg nav-link" href="#home">হোম</a>
+<a class="block py-2 text-lg nav-link" href="#comparison">দেশ তুলনা করুন</a>
+<a class="block py-2 text-lg nav-link" href="#ai-assistant">AI এসিস্ট্যান্ট</a>
+<a class="block py-2 text-lg nav-link" href="#tips">টিপস ও রিসোর্স</a>
+<a class="block py-2 text-lg nav-link text-blue-600 hover:text-blue-800" href="researchedweb.html">আমাদের গবেষণা</a>
+<a class="block py-2 text-lg nav-link" href="aboutus.html">আমাদের সম্পর্কে</a>
+</div>
+</header>
+<main class="container mx-auto px-4 sm:px-6 py-12 md:py-16">
+<section class="hero-section mb-20" id="home">
+<div class="hero-content max-w-4xl mx-auto">
+<!-- SEO: H2 tag updated to be more direct -->
+<h2 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">বিদেশে উচ্চশিক্ষার বিশ্বস্ত গাইড</h2>
+<!-- SEO: Paragraph updated to match the new headline -->
+<p class="max-w-3xl mx-auto text-lg md:text-xl text-purple-100 mb-10">সঠিক তথ্য ও পরিকল্পনাই বিদেশে উচ্চশিক্ষার প্রথম ধাপ। বাংলাদেশী শিক্ষার্থীদের জন্য আমাদের এই <strong>Study Abroad</strong> গাইডটি আপনাকে বিশ্বের সেরা বিশ্ববিদ্যালয় খুঁজে পেতে, আবেদন প্রক্রিয়া বুঝতে এবং স্কলারশিপের মাধ্যমে আপনার স্বপ্নের ক্যারিয়ার গড়তে সাহায্য করবে।</p>
+<a class="cta-button" href="#country-selection-intro">আপনার যাত্রা শুরু করুন</a>
+</div>
+</section>
+<section class="text-center mb-16" id="country-selection-intro">
+<h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">আপনার পছন্দের দেশ নির্বাচন করুন</h3>
+<p class="max-w-2xl mx-auto text-lg text-slate-600">নিচের দেশগুলো থেকে আপনার পছন্দের দেশটি নির্বাচন করে সেই দেশের উচ্চশিক্ষা, ভিসা, এবং কাজের সুযোগ সম্পর্কে বিস্তারিত জানুন।</p>
+</section>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5 md:gap-6 mb-20" id="country-selector">
+</div>
+<section class="hidden p-6 sm:p-8 md:p-12 rounded-2xl card-shadow" id="details-section">
+<div class="text-center mb-12">
+<h2 class="text-4xl md:text-5xl font-extrabold" id="details-country-name" style="color: #8e44ad;"></h2>
+<div class="mt-5 max-w-4xl mx-auto text-lg text-slate-700 p-6 rounded-xl" id="country-overview" style="background-color: #fcf4ff; border: 1px solid #f3e8ff;"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+<div class="p-6 rounded-xl card-shadow">
+<h3 class="text-2xl font-bold mb-5 text-center text-slate-800">একাডেমিক প্রয়োজনীয়তা (GPA/CGPA)</h3>
+<p class="text-slate-600 mb-5 text-center" id="academic-summary"></p>
+<div class="chart-container"><canvas id="academicChart"></canvas></div>
+</div>
+<div class="p-6 rounded-xl card-shadow">
+<h3 class="text-2xl font-bold mb-5 text-center text-slate-800">ইংরেজি দক্ষতা (IELTS)</h3>
+<p class="text-slate-600 mb-5 text-center" id="ielts-summary"></p>
+<div class="chart-container"><canvas id="ieltsChart"></canvas></div>
+</div>
+<div class="p-6 rounded-xl card-shadow lg:col-span-2">
+<h3 class="text-2xl font-bold mb-5 text-center text-slate-800">তহবিল ও স্কলারশিপ</h3>
+<p class="text-slate-600 mb-8 text-center max-w-3xl mx-auto" id="funding-summary"></p>
+<div class="grid md:grid-cols-2 gap-8">
+<div>
+<h4 class="text-xl font-semibold mb-4" style="color: #8e44ad;">কিছু প্রধান স্কলারশিপ</h4>
+<ul class="space-y-3 list-disc list-inside text-slate-700" id="scholarship-list"></ul>
+</div>
+<div class="p-6 rounded-lg" style="background-color: #f0fdf4; border: 1px solid #bbf7d0;">
+<h4 class="text-xl font-semibold mb-4" style="color: #27ae60;">ভিসার জন্য আর্থিক প্রয়োজনীয়তা</h4>
+<div class="space-y-2" id="financial-proof"></div>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-xl card-shadow lg:col-span-2">
+<h3 class="text-2xl font-bold mb-5 text-center text-slate-800">কাজের সুযোগ</h3>
+<p class="text-slate-600 mb-8 text-center max-w-3xl mx-auto" id="work-summary"></p>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="bg-gray-100 p-6 rounded-lg">
+<h4 class="text-xl font-semibold mb-3">পার্ট-টাইম কাজ (পড়াশোনার সময়)</h4>
+<div class="space-y-2 text-slate-700" id="part-time-work"></div>
+</div>
+<div class="bg-gray-100 p-6 rounded-lg">
+<h4 class="text-xl font-semibold mb-3">স্নাতকোত্তর কাজের অনুমতি</h4>
+<div class="space-y-2 text-slate-700" id="post-study-work"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 text-center space-y-4 sm:space-y-0 sm:space-x-4">
+<a class="cta-button text-sm" href="index1.html">HSC পাশ করা শিক্ষার্থীদের জন্য</a>
+<a class="cta-button text-sm" href="index2.html">বিশ্ববিদ্যালয় গ্র্যাজুয়েটদের জন্য</a>
+</div>
+</section>
+<div class="my-20 h-px bg-slate-200"></div>
+<section class="text-center mb-20" id="comparison">
+<h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">দেশ অনুযায়ী Study Abroad মেট্রিক তুলনা করুন</h2>
+<p class="max-w-3xl mx-auto text-lg text-slate-600 mb-10">ভিসা অনুমোদনের হার বা পার্ট-টাইম কাজের ঘন্টার মতো গুরুত্বপূর্ণ বিষয়গুলির উপর ভিত্তি করে শীর্ষ গন্তব্যগুলি ভিজ্যুয়ালি তুলনা করে আপনার ব্যক্তিগত এবং আর্থিক লক্ষ্যের সাথে সেরা দেশটি খুঁজুন।</p>
+<div class="mb-8 max-w-sm mx-auto">
+<label class="sr-only" for="metric-selector">মেট্রিক নির্বাচন করুন</label>
+<select class="w-full p-3 border border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:border-purple-500 text-lg" id="metric-selector" style="--tw-ring-color: #9b59b6;">
+<option value="visaApproval">ভিসা অনুমোদনের হার (২০২৫)</option>
+<option value="partTimeHours">পার্ট-টাইম কাজের ঘন্টা / সপ্তাহ</option>
+<option value="minIeltsUG">ন্যূনতম IELTS (স্নাতক)</option>
+<option value="minIeltsPG">ন্যূনতম IELTS (স্নাতকোত্তর)</option>
+<option value="minGpaHSC">ন্যূনতম GPA (HSC)</option>
+<option value="minCgpaUG">ন্যূনতম CGPA (স্নাতক ডিগ্রি)</option>
+</select>
+</div>
+<div class="chart-container p-4 rounded-xl card-shadow">
+<canvas id="comparisonChart"></canvas>
+</div>
+</section>
+<div class="my-20 h-px bg-slate-200"></div>
+
+<section id="ai-assistant" class="mb-20">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">AI Personal Assistant for Study Abroad</h2>
+        <p class="max-w-2xl mx-auto text-lg text-slate-600">আপনার তথ্য দিন, আমাদের AI আপনার জন্য সেরা দেশের সুপারিশ করবে।</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto p-6 sm:p-8 rounded-2xl card-shadow">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <label for="ai-qualification" class="font-semibold text-slate-700 block mb-2">আপনার শিক্ষাগত যোগ্যতা</label>
+                <select id="ai-qualification" class="w-full p-3 border border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+                    <option value="gpa">HSC (GPA)</option>
+                    <option value="cgpa">University (CGPA)</option>
+                </select>
+            </div>
+            <div>
+                <label for="ai-score" id="ai-score-label" class="font-semibold text-slate-700 block mb-2">আপনার HSC GPA (৫ এর মধ্যে)</label>
+                <input type="number" id="ai-score" placeholder="যেমন: 4.5" class="w-full p-3 border border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+            </div>
+             <div>
+                <label for="ai-ielts" class="font-semibold text-slate-700 block mb-2">আপনার IELTS স্কোর</label>
+                <input type="number" id="ai-ielts" placeholder="যেমন: 6.5" class="w-full p-3 border border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+            </div>
+            <div>
+                <label for="ai-budget" class="font-semibold text-slate-700 block mb-2">আপনার বাজেট (লাখ টাকায়)</label>
+                <input type="number" id="ai-budget" placeholder="যেমন: 25" class="w-full p-3 border border-slate-300 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+            </div>
+        </div>
+
+        <div class="text-center mt-6">
+            <button id="ai-recommend-button" class="cta-button inline-flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.572L16.5 21.75l-.398-1.178a3.375 3.375 0 00-2.455-2.456L12.75 18l1.178-.398a3.375 3.375 0 002.455-2.456L16.5 14.25l.398 1.178a3.375 3.375 0 002.456 2.456L20.25 18l-1.178.398a3.375 3.375 0 00-2.456 2.456z" />
+                </svg>
+                Ai Suggestion
+            </button>
+        </div>
+        
+        <div id="ai-output" class="mt-8 text-center hidden"></div>
+    </div>
+</section>
+
+<section id="tips">
+<h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900">প্রয়োজনীয় টিপস ও রিসোর্স</h2>
+<p class="max-w-3xl mx-auto text-lg text-slate-600 mb-12 text-center">আপনার study abroad যাত্রার সাধারণ চ্যালেঞ্জগুলি মোকাবেলা করার জন্য কিছু ব্যবহারিক পরামর্শ এবং সবচেয়ে সঠিক তথ্যের জন্য অফিসিয়াল রিসোর্সগুলির লিঙ্ক এখানে দেওয়া হলো।</p>
+<div class="max-w-4xl mx-auto space-y-4">
+<div class="accordion-item rounded-lg card-shadow">
+<button class="accordion-header w-full flex justify-between items-center p-5 text-left text-xl font-semibold text-slate-800">
+<h4>আবেদন ও প্রস্তুতির কৌশল</h4>
+<span class="accordion-icon font-bold text-3xl">+</span>
+</button>
+<div class="accordion-content px-5">
+<ul class="list-disc list-inside space-y-3 text-slate-700">
+<li><strong>তাড়াতাড়ি শুরু করুন:</strong> কমপক্ষে এক বছর আগে প্রস্তুতি শুরু করুন। পাসপোর্ট, ট্রান্সক্রিপ্ট সংগ্রহ করুন এবং IELTS/GRE/SAT-এর মতো পরীক্ষার জন্য পড়াশোনা শুরু করুন।</li>
+<li><strong>শক্তিশালী আবেদন:</strong> একটি আকর্ষণীয় স্টেটমেন্ট অফ পারপাস (SOP) তৈরি করুন এবং শিক্ষকদের কাছ থেকে শক্তিশালী সুপারিশপত্র (LOR) সংগ্রহ করুন যারা আপনাকে ভালোভাবে চেনেন।</li>
+<li><strong>সামগ্রিক প্রোফাইল:</strong> অতিরিক্ত পাঠ্যক্রমিক কার্যক্রম, স্বেচ্ছাসেবামূলক কাজ এবং ইন্টার্নশিপ হাইলাইট করুন। বিশ্ববিদ্যালয়গুলি সুষম ব্যক্তিত্বের সন্ধান করে।</li>
+<li><strong>যোগাযোগ করুন:</strong> নির্দিষ্ট প্রশ্ন থাকলে ভর্তি অফিসে ইমেল করতে দ্বিধা করবেন না। এটি আপনার উদ্যোগ প্রদর্শন করবে।</li>
+</ul>
+</div>
+</div>
+<div class="accordion-item rounded-lg card-shadow">
+<button class="accordion-header w-full flex justify-between items-center p-5 text-left text-xl font-semibold text-slate-800">
+<h4>আর্থিক পরিকল্পনা</h4>
+<span class="accordion-icon font-bold text-3xl">+</span>
+</button>
+<div class="accordion-content px-5">
+<ul class="list-disc list-inside space-y-3 text-slate-700">
+<li><strong>বহুমুখী স্কলারশিপ পদ্ধতি:</strong> সরকারি, বিশ্ববিদ্যালয় এবং বাহ্যিক স্কলারশিপের মিশ্রণের জন্য আবেদন করুন। একটি একক পূর্ণ স্কলারশিপের উপর নির্ভর করবেন না।</li>
+<li><strong>তহবিলের প্রমাণ:</strong> আপনার ভিসার জন্য প্রয়োজনীয় নির্দিষ্ট আর্থিক প্রমাণ (যেমন: ব্লকড অ্যাকাউন্ট, GIC, ব্যাংক স্টেটমেন্ট) বুঝুন। এই কাগজপত্রগুলি যত্ন সহকারে প্রস্তুত করুন।</li>
+<li><strong>বাজেটিং:</strong> টিউশন, জীবনযাত্রার খরচ, স্বাস্থ্য বীমা এবং ভ্রমণের জন্য একটি বিস্তারিত বাজেট তৈরি করুন। আনুমানিক খরচের জন্য বিশ্ববিদ্যালয়ের ওয়েবসাইট ব্যবহার করুন।</li>
+</ul>
+</div>
+</div>
+<div class="accordion-item rounded-lg card-shadow">
+<button class="accordion-header w-full flex justify-between items-center p-5 text-left text-xl font-semibold text-slate-800">
+<h4>ভিসা ও সাংস্কৃতিক অভিযোজন</h4>
+<span class="accordion-icon font-bold text-3xl">+</span>
+</button>
+<div class="accordion-content px-5">
+<ul class="list-disc list-inside space-y-3 text-slate-700">
+<li><strong>আপডেট থাকুন:</strong> ভিসার নিয়ম পরিবর্তন হয়। সর্বশেষ প্রয়োজনীয়তার জন্য সর্বদা আপনার লক্ষ্য দেশের অফিসিয়াল সরকারি অভিবাসন ওয়েবসাইট যাচাই করুন।</li>
+<li><strong>যোগসূত্র প্রদর্শন করুন:</strong> সাক্ষাৎকারের জন্য (বিশেষত USA-এর জন্য), বাংলাদেশে আপনার শক্তিশালী সংযোগ (পরিবার, সম্পত্তি, চাকরির সম্ভাবনা) ব্যাখ্যা করার জন্য প্রস্তুত থাকুন যাতে অ-অভিবাসী উদ্দেশ্য প্রমাণ করা যায়।</li>
+<li><strong>সাংস্কৃতিক প্রস্তুতি:</strong> স্থানীয় রীতিনীতি, সামাজিক শিষ্টাচার এবং একাডেমিক নিয়ম সম্পর্কে গবেষণা করুন। বিশ্ববিদ্যালয়ের ওরিয়েন্টেশন ইভেন্টগুলিতে অংশ নিন এবং ছাত্র ক্লাবগুলিতে যোগ দিন।</li>
+<li><strong>যোগাযোগ করুন:</strong> বিদেশে যাওয়ার আগেই আপনার গন্তব্য শহরের বাংলাদেশী ছাত্র সংগঠনগুলির সাথে সামাজিক যোগাযোগ মাধ্যমে যুক্ত হন।</li>
+</ul>
+</div>
+</div>
+<div class="accordion-item rounded-lg card-shadow">
+<button class="accordion-header w-full flex justify-between items-center p-5 text-left text-xl font-semibold text-slate-800">
+<h4>অফিসিয়াল রিসোর্স ও পরামর্শদাতা</h4>
+<span class="accordion-icon font-bold text-3xl">+</span>
+</button>
+<div class="accordion-content px-5">
+<p class="mb-4">সর্বদা অফিসিয়াল সূত্র থেকে তথ্য যাচাই করুন। স্বনামধন্য পরামর্শদাতারাও অনেক সাহায্য করতে পারেন।</p>
+<ul class="list-disc list-inside space-y-3 text-slate-700" id="resource-list">
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SEO: New video section added -->
+<section id="student-experience" class="my-20">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">প্রতারণা এড়িয়ে চলতে এক্সপার্ট এর বক্তব্য শুনুন: ATM Sir</h2>
+    </div>
+    <div class="max-w-4xl mx-auto video-container rounded-lg overflow-hidden shadow-xl">
+        <iframe 
+            src="https://www.youtube.com/embed/6HlcBK-d-iU" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+<section class="text-center text-white p-8 sm:p-12 rounded-2xl mt-20" id="support-message" style="background: linear-gradient(135deg, #2ecc71, #3498db, #9b59b6);">
+<h3 class="text-3xl font-bold mb-4">যোগাযোগ এবং সমর্থন</h3>
+<p class="max-w-3xl mx-auto text-lg text-purple-100 mb-8">
+                আপনার মূল্যবান মতামত, পরামর্শ, বা অভিযোগ আমাদের জানানোর জন্য, অথবা সাম্প্রতিক আপডেট পেতে আমাদের ফেসবুক গ্রুপে যোগ দিন। আপনার সহযোগিতা আমাদের এই প্ল্যাটফর্মটিকে আরও নির্ভুল এবং কার্যকর রাখতে সাহায্য করবে।
+            </p>
+<div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+<a class="contact-button-green" href="https://forms.gle/RtJuaCfprcVoUv2AA" rel="noopener noreferrer" target="_blank">পরামর্শ/অভিযোগের জন্য ফর্ম</a>
+<a class="contact-button-blue" href="https://www.facebook.com/studyabroadbd.top" rel="noopener noreferrer" target="_blank">ফেসবুক গ্রুপে যোগ দিন</a>
+</div>
+</section>
+</main>
+<footer class="text-slate-300 mt-20" style="background-color: rgb(23, 23, 23);">
+<div class="container mx-auto px-6 py-8 text-center">
+<p>© ২০২৫ Study Abroad BD</p>
+<p class="text-sm text-slate-400 mt-2">সর্বশেষ তথ্যের জন্য সর্বদা অফিসিয়াল সরকারি এবং বিশ্ববিদ্যালয়ের ওয়েবসাইটগুলি দেখুন।</p>
+<p class="text-sm mt-2">Admin: Tanveer Ahammed | Contact: <a class="text-sm text-gray-300 hover:text-green-400 transition" href="mailto:studyabroadbd360@gmail.com">studyabroadbd360@gmail.com</a><p></p>
+</p></div>
+</footer>
+<script>
+        // --- COMPLETE DATA & CHART LOGIC ---
+        const studyAbroadData = {
+            Canada: {
+                overview: "কানাডা উচ্চ ভিসা অনুমোদন, পোস্ট-গ্র্যাজুয়েশন ওয়ার্ক পারমিট (PGWP) এর মাধ্যমে স্থায়ী বসবাসের (PR) স্পষ্ট পথ এবং বিশ্বমানের বিশ্ববিদ্যালয়গুলির জন্য একটি প্রধান গন্তব্য।",
+                academics: { labels: ["স্নাতক", "মাস্টার্স", "পিএইচডি"], gpa: [4.5, 3.0, 3.2], summary: "কানাডায় স্নাতকের জন্য HSC-তে ন্যূনতম GPA 4.5 (৫ এর মধ্যে) এবং স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে ন্যূনতম CGPA 3.0 (৪ এর মধ্যে) প্রয়োজন হতে পারে। বিশ্ববিদ্যালয় ও কোর্সভেদে এই প্রয়োজনীয়তা পরিবর্তিত হয়।" },
+                ielts: { scores: [6.5, 6.5, 6.5], summary: "কানাডায় IELTS এর সাধারণ প্রয়োজনীয়তা ৬.৫, তবে SDS প্রোগ্রামের জন্য ব্যান্ড স্কোর ৬.০ প্রয়োজন। আরও বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["স্টাডি ইন কানাডা স্কলারশিপস (SICS)", "ইউনিভার্সিটি ডি মন্ট্রিয়ল এক্সাম্পশন স্কলারশিপস", "ভ্যানিয়ার কানাডা গ্র্যাজুয়েট স্কলারশিপস (পিএইচডি)"], proof: "১ বছরের জীবনযাত্রার খরচ ($20,635 CAD) + টিউশনের জন্য তহবিলের প্রমাণ। SDS আবেদনের জন্য $10,000 CAD এর একটি GIC বাধ্যতামূলক।", summary: "কানাডায় বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "সেশনের সময় ক্যাম্পাসের বাইরে ২৪ ঘন্টা/সপ্তাহ (নভেম্বর ২০২৪ থেকে কার্যকর)। বিরতির সময় সীমাহীন ঘন্টা।", postStudy: "পোস্ট-গ্র্যাজুয়েশন ওয়ার্ক পারমিট (PGWP) ৩ বছর পর্যন্ত উপলব্ধ, যা PR-এর জন্য একটি স্পষ্ট পথ প্রদান করে।", summary: "কানাডায় পড়াশোনার সময় এবং পরে কাজের সুযোগ রয়েছে যা স্থায়ী বসবাসের পথ তৈরি করতে পারে।" },
+                visaApproval: 82, partTimeHours: 24, minGpaHSC: 4.5, minCgpaUG: 3.0, minIeltsUG: 6.5, minIeltsPG: 6.5, annualCostBDT: 41,
+            },
+            UK: {
+                overview: "অক্সফোর্ড এবং কেমব্রিজের মতো বিশ্বমানের বিশ্ববিদ্যালয়গুলির আবাসস্থল, যা স্বল্প সময়ের কোর্স এবং ২ বছরের স্নাতকোত্তর কাজের ভিসা (গ্র্যাজুয়েট রুট) অফার করে।",
+                academics: { labels: ["ফাউন্ডেশন", "স্নাতক", "মাস্টার্স"], gpa: [4.0, 4.5, 2.8], summary: "যুক্তরাজ্যে স্নাতকের জন্য HSC-তে সাধারণত GPA 4.5 (৫ এর মধ্যে) প্রয়োজন। স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে ন্যূনতম CGPA 2.8 (৪ এর মধ্যে) প্রয়োজন হতে পারে। ভালো বিশ্ববিদ্যালয়গুলির জন্য উচ্চতর ফলাফল প্রয়োজন।" },
+                ielts: { scores: [5.5, 6.5, 6.5], summary: "যুক্তরাজ্যে IELTS এর সাধারণ প্রয়োজনীয়তা ৬.০-৭.০। কিছু ক্ষেত্রে MOI লেটার দিয়ে ছাড় পাওয়া যেতে পারে। বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["চেভেনিং স্কলারশিপস (স্নাতকোত্তর)", "কমনওয়েলথ স্কলারশিপস (স্নাতকোত্তর)", "গ্রেট স্কলারশিপস (স্নাতকোত্তর)"], proof: "১ বছরের টিউশন ফি + জীবনযাত্রার খরচ (লন্ডনে প্রায় £১,৩৩৪/মাস, অন্যান্য স্থানে £১,০২৩/মাস) ২৮ দিনের জন্য কভার করার তহবিলের প্রমাণ।", summary: "যুক্তরাজ্যে বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "সেমিস্টারের সময় ২০ ঘন্টা/সপ্তাহ। ছুটির সময় পূর্ণ-সময়।", postStudy: "গ্র্যাজুয়েট রুট ভিসা স্নাতকদের পড়াশোনা শেষ করার পর ২ বছর (পিএইচডিদের জন্য ৩ বছর) পর্যন্ত থাকতে এবং কাজ করতে দেয়।", summary: "যুক্তরাজ্যে পড়াশোনার সময় এবং পরে কাজের সুযোগ রয়েছে।" },
+                visaApproval: 78, partTimeHours: 20, minGpaHSC: 4.5, minCgpaUG: 2.8, minIeltsUG: 6.5, minIeltsPG: 6.5, annualCostBDT: 45,
+            },
+            USA: {
+                overview: "STEM শিক্ষায় বিশ্বনেতা, মর্যাদাপূর্ণ বিশ্ববিদ্যালয় এবং বিশাল গবেষণা সুযোগ সহ। স্নাতকোত্তর কাজের অভিজ্ঞতার জন্য অপশনাল প্র্যাকটিক্যাল ট্রেনিং (OPT) অফার করে।",
+                academics: { labels: ["স্নাতক", "মাস্টার্স", "পিএইচডি"], gpa: [4.0, 3.0, 3.2], summary: "মার্কিন যুক্তরাষ্ট্রে স্নাতকের জন্য HSC-তে ভালো GPA (সাধারণত 4.0+) এবং SAT/ACT স্কোর প্রয়োজন। স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে CGPA 3.0+ (৪ এর মধ্যে) এবং GRE/GMAT স্কোর প্রয়োজন হয়।" },
+                ielts: { scores: [6.0, 6.5, 6.5], summary: "মার্কিন যুক্তরাষ্ট্রে IELTS এর সাধারণ প্রয়োজনীয়তা ৬.৫। উচ্চ স্কোর স্কলারশিপের সম্ভাবনা বাড়ায়। বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["ফুলব্রাইট প্রোগ্রাম (স্নাতকোত্তর)", "হিউবার্ট এইচ. হামফ্রে ফেলোশিপ", "এমপাওয়ার ফাইন্যান্সিং স্কলারশিপস"], proof: "প্রথম বছরের পড়াশোনা কভার করার জন্য তরল সম্পদের প্রমাণ (I-20 ফর্মে আনুমানিক)। প্রায়শই কমপক্ষে $25,000 ব্যাংক ব্যালেন্স দেখাতে হয়।", summary: "মার্কিন যুক্তরাষ্ট্রে বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "সেশনের সময় ক্যাম্পাসে ২০ ঘন্টা/সপ্তাহ পর্যন্ত। ক্যাম্পাসের বাইরে কাজ অত্যন্ত সীমাবদ্ধ।", postStudy: "অপশনাল প্র্যাকটিক্যাল ট্রেনিং (OPT) ১২ মাস পর্যন্ত। যোগ্য STEM স্নাতকদের জন্য ২৪ মাসের STEM এক্সটেনশন উপলব্ধ।", summary: "মার্কিন যুক্তরাষ্ট্রে পড়াশোনার সময় এবং পরে কাজের সুযোগ রয়েছে।" },
+                visaApproval: 65, partTimeHours: 20, minGpaHSC: 4.0, minCgpaUG: 3.0, minIeltsUG: 6.0, minIeltsPG: 6.5, annualCostBDT: 48,
+            },
+            Australia: {
+                overview: "এর মানসম্মত শিক্ষা, শিথিল অভিবাসন নীতি এবং জীবনযাত্রার খরচ মেটাতে উল্লেখযোগ্য পার্ট-টাইম কাজের সুযোগের জন্য পরিচিত। স্পষ্ট PR পথ রয়েছে।",
+                academics: { labels: ["স্নাতক", "স্নাতকোত্তর"], gpa: [4.0, 2.8], summary: "অস্ট্রেলিয়ায় স্নাতকের জন্য HSC-তে GPA 4.0+ (৫ এর মধ্যে) এবং স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে CGPA 2.8+ (৪ এর মধ্যে) প্রয়োজন হতে পারে। কিছু ক্ষেত্রে কম ফলাফলের জন্য ফাউন্ডেশন বা ডিপ্লোমা কোর্স করা যায়।" },
+                ielts: { scores: [6.5, 6.5], summary: "অস্ট্রেলিয়ায় IELTS এর সাধারণ প্রয়োজনীয়তা ৬.৫। কিছু ক্ষেত্রে ছাড় পাওয়া যেতে পারে। বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["অস্ট্রেলিয়া অ্যাওয়ার্ডস স্কলারশিপস", "অস্ট্রেলিয়ান গভর্মেন্ট রিসার্চ ট্রেনিং প্রোগ্রাম (RTP)", "মনাশ ইন্টারন্যাশনাল লিডারশিপ স্কলারশিপ (১০০% টিউশন)"], proof: "১ বছরের টিউশন + জীবনযাত্রার খরচ (প্রায় AUD 29,710/বছর) কভার করার জন্য পর্যাপ্ত তহবিলের প্রমাণ।", summary: "অস্ট্রেলিয়ায় বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "সেশনের সময় প্রতি পাক্ষিকে ৪৮ ঘন্টা পর্যন্ত (২৪ ঘন্টা/সপ্তাহ)। বিরতির সময় সীমাহীন ঘন্টা।", postStudy: "টেম্পোরারি গ্র্যাজুয়েট ভিসার পোস্ট-স্টাডি ওয়ার্ক স্ট্রিম যোগ্যতার উপর নির্ভর করে ২ থেকে ৪ বছর পর্যন্ত থাকার অনুমতি দেয়।", summary: "অস্ট্রেলিয়ায় পড়াশোনার সময় এবং পরে কাজের সুযোগ রয়েছে যা স্থায়ী বসবাসের পথ তৈরি করতে পারে।" },
+                visaApproval: 73, partTimeHours: 24, minGpaHSC: 4.0, minCgpaUG: 2.8, minIeltsUG: 6.5, minIeltsPG: 6.5, annualCostBDT: 52,
+            },
+            Germany: {
+                overview: "সরকারি বিশ্ববিদ্যালয়গুলিতে (অধিকাংশ প্রোগ্রামের জন্য) টিউশন-মুক্ত শিক্ষা, উচ্চ-চাহিদা সম্পন্ন কোর্স এবং স্নাতকোত্তর কর্মসংস্থানের শক্তিশালী সুযোগ অফার করে একটি আকর্ষণীয় গন্তব্য।",
+                academics: { labels: ["স্নাতক", "স্নাতকোত্তর"], gpa: [5.0, 3.0], summary: "জার্মানির সরকারি বিশ্ববিদ্যালয়গুলিতে সরাসরি স্নাতকে ভর্তির জন্য HSC-তে GPA 5.0 (৫ এর মধ্যে) প্রয়োজন। স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে CGPA 3.0+ (৪ এর মধ্যে) প্রয়োজন হতে পারে।" },
+                ielts: { scores: [6.5, 6.5], summary: "জার্মানিতে ইংরেজি-মাধ্যম প্রোগ্রামের জন্য IELTS ৬.0-৬.৫ প্রয়োজন। জার্মান-মাধ্যম প্রোগ্রামের জন্য জার্মান ভাষার দক্ষতা প্রয়োজন। বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["DAAD স্কলারশিপ (অত্যন্ত মর্যাদাপূর্ণ)", "ডয়চল্যান্ডস্টিপেন্ডিয়াম", "ইরাসমাস+"], proof: "এক বছরের জীবনযাত্রার খরচ কভার করার জন্য প্রায় €11,208 সহ একটি ব্লকড অ্যাকাউন্ট (Sperrkonto) বাধ্যতামূলক।", summary: "জার্মানিতে বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "প্রতি বছর ১৪০ পূর্ণ দিন বা ২৮০ অর্ধ-দিন পর্যন্ত। অথবা সেমিস্টারের সময় ২০ ঘন্টা/সপ্তাহ পর্যন্ত।", postStudy: "স্নাতকরা চাকরি খোঁজার জন্য ১৮ মাসের রেসিডেন্স পারমিটের জন্য আবেদন করতে পারেন। ২ বছর কর্মসংস্থানের পর স্থায়ী বসবাসের পথ উপলব্ধ।", summary: "জার্মানিতে পড়াশোনার সময় এবং পরে কাজের সুযোগ রয়েছে যা স্থায়ী বসবাসের পথ তৈরি করতে পারে।" },
+                visaApproval: 89, partTimeHours: 20, minGpaHSC: 5.0, minCgpaUG: 3.0, minIeltsUG: 6.5, minIeltsPG: 6.5, annualCostBDT: 20,
+            },
+            Malaysia: {
+                overview: "কম টিউশন ফি, বাংলাদেশের সাথে সাংস্কৃতিক নৈকট্য এবং ক্রমবর্ধমান সংখ্যক আন্তর্জাতিকভাবে র‍্যাঙ্ক করা বিশ্ববিদ্যালয় ও শাখা ক্যাম্পাস সহ একটি বাজেট-বান্ধব বিকল্প।",
+                academics: { labels: ["স্নাতক", "স্নাতকোত্তর"], gpa: [4.0, 3.0], summary: "মালয়েশিয়ায় স্নাতকের জন্য HSC-তে GPA 4.0+ (৫ এর মধ্যে) এবং স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে CGPA 3.0+ (৪ এর মধ্যে) একটি সাধারণ প্রয়োজনীয়তা। প্রয়োজনীয়তা বিশ্ববিদ্যালয়ভেদে ভিন্ন।" },
+                ielts: { scores: [5.5, 5.5], summary: "মালয়েশিয়ায় IELTS এর সাধারণ প্রয়োজনীয়তা ৫.৫+। কিছু ক্ষেত্রে ছাড় পাওয়া যেতে পারে। বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["মালয়েশিয়া ইন্টারন্যাশনাল স্কলারশিপ (MIS)", "মালয়েশিয়া কমনওয়েলথ স্কলারশিপ", "ইউনিভার্সিটি পুত্রা মালয়েশিয়া (UPM) স্কলারশিপস"], proof: "টিউশন এবং জীবনযাত্রার খরচ কভার করার জন্য পর্যাপ্ত তহবিলের প্রমাণ। পশ্চিমা দেশগুলির তুলনায় প্রয়োজনীয়তা সাধারণত কম।", summary: "মালয়েশিয়ায় বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "খুব সীমাবদ্ধ। সেমিস্টার বিরতির সময় এবং নির্দিষ্ট খাতে সর্বোচ্চ ২০ ঘন্টা/সপ্তাহ অনুমোদিত।", postStudy: "কোনো স্ট্যান্ডার্ড স্নাতকোত্তর কাজের ভিসার পথ নেই। স্নাতকের পর ওয়ার্ক পারমিটে রূপান্তর করা চ্যালেঞ্জিং।", summary: "মালয়েশিয়ায় পড়াশোনার সময় এবং পরে কাজের সুযোগ সীমিত।" },
+                visaApproval: 92, partTimeHours: 20, minGpaHSC: 4.0, minCgpaUG: 3.0, minIeltsUG: 5.5, minIeltsPG: 5.5, annualCostBDT: 8,
+            },
+             Singapore: {
+                overview: "শীর্ষস্থানীয় বৈশ্বিক বিশ্ববিদ্যালয় (NUS, NTU), বিশ্ব-স্বীকৃত ডিগ্রি, উচ্চ প্রারম্ভিক বেতন এবং বাংলাদেশের কাছাকাছি অবস্থানের জন্য পরিচিত।",
+                academics: { labels: ["স্নাতক", "মাস্টার্স"], gpa: [4.8, 3.2], summary: "সিঙ্গাপুরের শীর্ষ বিশ্ববিদ্যালয়গুলিতে স্নাতকের জন্য HSC-তে প্রায় GPA 4.8+ (৫ এর মধ্যে) এবং স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে CGPA 3.2+ (৪ এর মধ্যে) প্রয়োজন।" },
+                ielts: { scores: [6.0, 6.5], summary: "সিঙ্গাপুরে IELTS এর সাধারণ প্রয়োজনীয়তা ৬.০-৬.৫। বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["সিঙ্গাপুর ইন্টারন্যাশনাল গ্র্যাজুয়েট অ্যাওয়ার্ড (SINGA)", "এনইউএস রিসার্চ স্কলারশিপ", "এনটিইউ রিসার্চ স্কলারশিপ"], proof: "বার্ষিক জীবনযাত্রার খরচ এবং টিউশন ফি কভার করার জন্য পর্যাপ্ত তহবিল। প্রায় S$15,000 - S$20,000 প্রতি বছর।", summary: "সিঙ্গাপুরে বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "বিশ্ববিদ্যালয়ের অনুমোদনের উপর নির্ভর করে। সাধারণত ১৬ ঘন্টা/সপ্তাহ পর্যন্ত।", postStudy: "স্নাতকদের জন্য ১ বছর পর্যন্ত জব সার্চ ভিসা উপলব্ধ।", summary: "সিঙ্গাপুরে পড়াশোনার সময় এবং পরে কাজের সুযোগ রয়েছে।" },
+                visaApproval: 85, partTimeHours: 16, minGpaHSC: 4.8, minCgpaUG: 3.2, minIeltsUG: 6.0, minIeltsPG: 6.5, annualCostBDT: 25,
+            },
+            "New Zealand": {
+                overview: "৩ বছরের পোস্ট-স্টাডি ওয়ার্ক রাইটস, নিরাপদ পরিবেশ এবং PR পথ রয়েছে।",
+                academics: { labels: ["স্নাতক", "মাস্টার্স"], gpa: [4.0, 2.8], summary: "নিউজিল্যান্ডে স্নাতকের জন্য HSC-তে GPA 4.0+ (৫ এর মধ্যে) এবং স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে CGPA 2.8+ (৪ এর মধ্যে) প্রয়োজন হতে পারে।" },
+                ielts: { scores: [6.0, 6.5], summary: "নিউজিল্যান্ডে IELTS এর সাধারণ প্রয়োজনীয়তা ৬.০-৬.৫। বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["নিউজিল্যান্ড স্কলারশিপস", "ইউনিভার্সিটি অফ অকল্যান্ড ইন্টারন্যাশনাল স্টুডেন্ট স্কলারশিপ"], proof: "বার্ষিক জীবনযাত্রার খরচ (প্রায় NZD 20,000) এবং টিউশন ফি কভার করার জন্য তহবিল।", summary: "নিউজিল্যান্ডে বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "২০ ঘন্টা/সপ্তাহ পর্যন্ত।", postStudy: "৩ বছরের পোস্ট-স্টাডি ওয়ার্ক ভিসা।", summary: "নিউজিল্যান্ডে পড়াশোনার সময় এবং পরে কাজের সুযোগ রয়েছে।" },
+                visaApproval: 79, partTimeHours: 20, minGpaHSC: 4.0, minCgpaUG: 2.8, minIeltsUG: 6.0, minIeltsPG: 6.5, annualCostBDT: 35,
+            },
+            Norway: {
+                overview: "টিউশন-মুক্ত মাস্টার্স প্রোগ্রাম (ইংরেজি-মাধ্যম) অফার করে।",
+                academics: { labels: ["স্নাতক", "মাস্টার্স"], gpa: [4.5, 3.0], summary: "নরওয়েতে স্নাতকের জন্য HSC-তে ভালো GPA (সাধারণত 4.5+) এবং স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে CGPA 3.0+ (৪ এর মধ্যে) প্রয়োজন।" },
+                ielts: { scores: [6.0, 6.5], summary: "নরওয়েতে IELTS এর সাধারণ প্রয়োজনীয়তা ৬.০-৬.৫। বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["নোরওয়েজিয়ান গভর্মেন্ট স্কলারশিপস (Quota Scheme)", "ইউনিভার্সিটি অফ অসলো স্কলারশিপস"], proof: "বার্ষিক জীবনযাত্রার খরচ (প্রায় NOK 123,519) কভার করার জন্য তহবিল।", summary: "নরওয়েতে বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "২০ ঘন্টা/সপ্তাহ পর্যন্ত।", postStudy: "স্নাতকদের জন্য ১ বছর পর্যন্ত জব সার্চ ভিসা উপলব্ধ।", summary: "নরওয়েতে পড়াশোনার সময় এবং পরে কাজের সুযোগ রয়েছে।" },
+                visaApproval: 88, partTimeHours: 20, minGpaHSC: 4.5, minCgpaUG: 3.0, minIeltsUG: 6.0, minIeltsPG: 6.5, annualCostBDT: 15,
+            },
+            Netherlands: {
+                overview: "উদ্ভাবনের কেন্দ্র, উচ্চ কর্মসংস্থান এবং ২ বছরের পোস্ট-স্টাডি জব সার্চ ভিসা।",
+                academics: { labels: ["স্নাতক", "মাস্টার্স"], gpa: [4.5, 3.0], summary: "নেদারল্যান্ডসে স্নাতকের জন্য HSC-তে GPA 4.5+ (৫ এর মধ্যে) এবং স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে CGPA 3.0+ (৪ এর মধ্যে) প্রয়োজন হতে পারে।" },
+                ielts: { scores: [6.0, 6.5], summary: "নেদারল্যান্ডসে IELTS এর সাধারণ প্রয়োজনীয়তা ৬.০-৬.৫। বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["অরেঞ্জ টিউলিক স্কলারশিপ (OTS)", "হল্যান্ড স্কলারশিপ"], proof: "বার্ষিক জীবনযাত্রার খরচ (প্রায় €11,000) এবং টিউশন ফি কভার করার জন্য তহবিল।", summary: "নেদারল্যান্ডসে বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "১৬ ঘন্টা/সপ্তাহ পর্যন্ত।", postStudy: "২ বছরের পোস্ট-স্টাডি জব সার্চ ভিসা।", summary: "নেদারল্যান্ডসে পড়াশোনার সময় এবং পরে কাজের সুযোগ রয়েছে।" },
+                visaApproval: 75, partTimeHours: 16, minGpaHSC: 4.5, minCgpaUG: 3.0, minIeltsUG: 6.0, minIeltsPG: 6.5, annualCostBDT: 30,
+            },
+            China: {
+                overview: "সরকারি স্কলারশিপ, ইংরেজি-মাধ্যম MBBS প্রোগ্রাম এবং আধুনিক সুবিধা।",
+                academics: { labels: ["স্নাতক", "মাস্টার্স"], gpa: [3.5, 2.8], summary: "চীনে স্নাতকের জন্য HSC-তে GPA 3.5+ (৫ এর মধ্যে) এবং স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে CGPA 2.8+ (৪ এর মধ্যে) প্রয়োজন হতে পারে, বিশেষ করে স্কলারশিপের জন্য।" },
+                ielts: { scores: [5.5, 6.0], summary: "চীনে IELTS এর সাধারণ প্রয়োজনীয়তা ৫.৫-৬.০। বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["চাইনিজ গভর্মেন্ট স্কলারশিপ (CSC)", "ইউনিভার্সিটি স্কলারশিপস"], proof: "বার্ষিক জীবনযাত্রার খরচ এবং টিউশন ফি কভার করার জন্য তহবিল।", summary: "চীনে বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "নির্দিষ্ট নয়।", postStudy: "নির্দিষ্ট নয়।", summary: "চীনে পড়াশোনার সময় এবং পরে কাজের সুযোগ সম্পর্কে বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                visaApproval: 68, partTimeHours: 0, minGpaHSC: 3.5, minCgpaUG: 2.8, minIeltsUG: 5.5, minIeltsPG: 6.0, annualCostBDT: 10,
+            },
+            Finland: {
+                overview: "টিউশন-মুক্ত শিক্ষা, নিরাপদ জীবনযাপন এবং আন্তর্জাতিক শিক্ষার্থীদের জন্য বন্ধুত্বপূর্ণ পরিবেশ।",
+                academics: { labels: ["স্নাতক", "মাস্টার্স"], gpa: [4.5, 3.0], summary: "ফিনল্যান্ডে স্নাতকের জন্য HSC-তে GPA 4.5+ (৫ এর মধ্যে) এবং স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে CGPA 3.0+ (৪ এর মধ্যে) প্রয়োজন হতে পারে।" },
+                ielts: { scores: [6.0, 6.5], summary: "ফিনল্যান্ডে IELTS এর সাধারণ প্রয়োজনীয়তা ৬.০-৬.৫। বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["ফিনল্যান্ড স্কলারশিপ", "ইউনিভার্সিটি-নির্দিষ্ট স্কলারশিপ"], proof: "বার্ষিক জীবনযাত্রার খরচ (প্রায় €6,000 - €10,000) এবং টিউশন ফি কভার করার জন্য তহবিল।", summary: "ফিনল্যান্ডে বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "৩০ ঘন্টা/সপ্তাহ পর্যন্ত।", postStudy: "স্নাতকদের জন্য ১ বছর পর্যন্ত জব সার্চ ভিসা উপলব্ধ।", summary: "ফিনল্যান্ডে পড়াশোনার সময় এবং পরে কাজের সুযোগ রয়েছে।" },
+                visaApproval: 80, partTimeHours: 30, minGpaHSC: 4.5, minCgpaUG: 3.0, minIeltsUG: 6.0, minIeltsPG: 6.5, annualCostBDT: 18,
+            },
+            Sweden: {
+                overview: "উদ্ভাবন এবং স্থায়িত্বের নেতা, উচ্চ-মানের শিক্ষা, ইংরেজি-মাধ্যম প্রোগ্রাম এবং স্কলারশিপ।",
+                academics: { labels: ["স্নাতক", "মাস্টার্স"], gpa: [4.5, 3.0], summary: "সুইডেনে স্নাতকের জন্য HSC-তে GPA 4.5+ (৫ এর মধ্যে) এবং স্নাতকোত্তরের জন্য স্নাতক পর্যায়ে CGPA 3.0+ (৪ এর মধ্যে) প্রয়োজন হতে পারে।" },
+                ielts: { scores: [6.0, 6.5], summary: "সুইডেনে IELTS এর সাধারণ প্রয়োজনীয়তা ৬.০-৬.৫। বিস্তারিত তথ্যের জন্য আমাদের ডেডিকেটেড পেজ ভিজিট করুন।" },
+                funding: { scholarships: ["সুইডিশ ইনস্টিটিউট স্কলারশিপস (SIS)", "ইউনিভার্সিটি-নির্দিষ্ট স্কলারशिप"], proof: "বার্ষিক জীবনযাত্রার খরচ (প্রায় SEK 8,568 प्रति মাস) এবং টিউশন ফি কভার করার জন্য তহবিল।", summary: "সুইডেনে বিভিন্ন স্কলারশিপ এবং আর্থিক সহায়তার সুযোগ রয়েছে। ভিসা আবেদনের জন্য নির্দিষ্ট আর্থিক প্রমাণ প্রয়োজন।" },
+                work: { partTime: "নির্দিষ্ট নয়।", postStudy: "স্নাতকদের জন্য ৬ মাস পর্যন্ত জব সার্চ ভিসা উপলব্ধ।", summary: "সুইডেনে পড়াশোনার সময় এবং পরে কাজের সুযোগ রয়েছে।" },
+                visaApproval: 70, partTimeHours: 0, minGpaHSC: 4.5, minCgpaUG: 3.0, minIeltsUG: 6.0, minIeltsPG: 6.5, annualCostBDT: 28,
+            },
+        };
+
+        const resources = [
+            { name: "এডুকেশনইউএসএ বাংলাদেশ", url: "https://educationusa.state.gov/centers/educationusa-bangladesh" },
+            { name: "এডুকানাডা", url: "https://www.educanada.ca/" },
+            { name: "GOV.UK - ইউকেতে পড়াশোনা", url: "https://www.gov.uk/student-visa" },
+            { name: "স্টাডি অস্ট্রেলিয়া", url: "https://www.studyaustralia.gov.au/" },
+            { name: "DAAD - জার্মানিতে পড়াশোনা", url: "https://www.daad.de/en/" },
+            { name: "এডুকেশন মালয়েশিয়া", url: "https://educationmalaysia.gov.my/" },
+            { name: "IDP এডুকেশন বাংলাদেশ", url: "https://www.idp.com/bangladesh/" },
+            { name: "স্টাডি ইন সিঙ্গাপুর", url: "https://www.studyinsingapore.gov.sg/home" },
+            { name: "এডুকেশন নিউজিল্যান্ড", url: "https://www.studyinnewzealand.govt.nz/" },
+            { name: "স্টাডি ইন নরওয়ে", url: "https://studyinnorway.no/" },
+            { name: "স্টাডি ইন নেদারল্যান্ডস", url: "https://www.studyinnl.org/" },
+            { name: "স্টাডি ইন চায়না", url: "https://www.campuschina.org/" },
+            { name: "স্টাডি ইন ফিনল্যান্ড", url: "https://www.studyinfinland.fi/" },
+            { name: "স্টাডি ইন সুইডেন", url: "https://studyinsweden.se/" },
+        ];
+
+        let academicChart, ieltsChart, comparisonChart;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const countrySelector = document.getElementById('country-selector');
+            const detailsSection = document.getElementById('details-section');
+            const metricSelector = document.getElementById('metric-selector');
+            const resourceList = document.getElementById('resource-list');
+            
+            const countryCodes = {
+                Canada: 'ca', UK: 'gb', USA: 'us', Australia: 'au', Germany: 'de', Malaysia: 'my',
+                Singapore: 'sg', "New Zealand": 'nz', Norway: 'no', Netherlands: 'nl', China: 'cn', Finland: 'fi', Sweden: 'se'
+            };
+
+            function createBarChart(ctx, labels, data, chartLabel, backgroundColor, indexAxis = 'x', maxVal = null) {
+                return new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: chartLabel,
+                            data: data,
+                            backgroundColor: backgroundColor,
+                            borderColor: backgroundColor,
+                            borderWidth: 1,
+                            borderRadius: 5,
+                            barThickness: 'flex',
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: indexAxis,
+                        scales: {
+                            y: { 
+                                beginAtZero: true, 
+                                max: indexAxis === 'x' ? maxVal : null,
+                                grid: { color: '#e2e8f0' }, 
+                                ticks: { font: { weight: '600' } } 
+                            },
+                            x: { 
+                                beginAtZero: true,
+                                max: indexAxis === 'y' ? maxVal : null,
+                                grid: { display: indexAxis === 'y', color: '#e2e8f0' }, 
+                                ticks: { font: { weight: '600' } } 
+                            }
+                        },
+                        plugins: { 
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: '#1e293b',
+                                titleFont: { size: 14, weight: 'bold' },
+                                bodyFont: { size: 12 },
+                                displayColors: false,
+                                padding: 10,
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 1. Populate Country Selector
+            Object.keys(studyAbroadData).forEach(countryKey => {
+                const card = document.createElement('div');
+                card.className = 'country-card cursor-pointer p-4 rounded-lg card-shadow';
+                card.dataset.country = countryKey;
+                const countryCode = countryCodes[countryKey] || 'xx'; 
+                card.innerHTML = `
+                    <img src="https://flagcdn.com/w80/${countryCode}.png" 
+                         srcset="https://flagcdn.com/w160/${countryCode}.png 2x"
+                         width="80"
+                         alt="${countryKey} Flag for study abroad" class="h-12 mb-3 object-contain">
+                    <h4 class="font-bold text-lg text-slate-800">${countryKey}</h4>
+                `;
+                card.addEventListener('click', () => displayCountryDetails(countryKey));
+                countrySelector.appendChild(card);
+            });
+
+            // 2. Function to display details for a selected country
+            function displayCountryDetails(countryKey) {
+                const country = studyAbroadData[countryKey];
+                detailsSection.classList.remove('hidden');
+                document.getElementById('details-country-name').textContent = countryKey;
+                document.getElementById('country-overview').innerHTML = country.overview;
+                document.getElementById('academic-summary').textContent = country.academics.summary;
+                document.getElementById('ielts-summary').textContent = country.ielts.summary;
+                document.getElementById('funding-summary').textContent = country.funding.summary;
+                document.getElementById('work-summary').textContent = country.work.summary;
+
+                if (academicChart) academicChart.destroy();
+                academicChart = createBarChart(document.getElementById('academicChart').getContext('2d'), country.academics.labels, country.academics.gpa, 'Minimum GPA/CGPA', 'rgba(46, 204, 113, 0.8)', 'x', 5); // Vibrant Green
+                
+                if (ieltsChart) ieltsChart.destroy();
+                ieltsChart = createBarChart(document.getElementById('ieltsChart').getContext('2d'), country.academics.labels.slice(0, country.ielts.scores.length), country.ielts.scores, 'Minimum IELTS Score', 'rgba(52, 152, 219, 0.8)', 'x', 9); // Vibrant Blue
+
+                document.getElementById('scholarship-list').innerHTML = country.funding.scholarships.map(s => `<li>${s}</li>`).join('');
+                document.getElementById('financial-proof').innerHTML = `<p class="text-lg font-semibold" style="color: #27ae60;">${country.funding.proof}</p>`; // Darker Green for text
+                document.getElementById('part-time-work').innerHTML = `<p>${country.work.partTime}</p>`;
+                document.getElementById('post-study-work').innerHTML = `<p>${country.work.postStudy}</p>`;
+
+                detailsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // 3. Comparison Chart Logic
+            function updateComparisonChart(metric) {
+                const labels = Object.keys(studyAbroadData);
+                const data = labels.map(c => studyAbroadData[c][metric] || 0);
+                const chartLabel = metricSelector.options[metricSelector.selectedIndex].text;
+                
+                 const colors = [
+                    '#2ecc71', '#3498db', '#9b59b6', '#f1c40f', '#e67e22', '#e74c3c', 
+                    '#1abc9c', '#34495e', '#8e44ad', '#f39c12', '#c0392b', '#16a085', '#2980b9'
+                 ];
+                
+                let maxVal = null;
+                if (metric === 'minGpaHSC') {
+                    maxVal = 5.0;
+                } else if (metric === 'minCgpaUG') {
+                    maxVal = 4.0;
+                } else if (metric.includes('Ielts')) {
+                    maxVal = 9.0;
+                }
+
+                if (comparisonChart) comparisonChart.destroy();
+                comparisonChart = createBarChart(document.getElementById('comparisonChart').getContext('2d'), labels, data, chartLabel, colors, 'y', maxVal);
+                comparisonChart.options.plugins.title = { display: true, text: chartLabel, font: { size: 16, weight: 'bold' }, padding: { bottom: 20 } };
+                comparisonChart.update();
+            }
+
+            metricSelector.addEventListener('change', (e) => updateComparisonChart(e.target.value));
+            updateComparisonChart('visaApproval');
+
+            // 4. AI Assistant Logic
+            const aiQualification = document.getElementById('ai-qualification');
+            const aiScoreLabel = document.getElementById('ai-score-label');
+            const aiScoreInput = document.getElementById('ai-score');
+            const aiButton = document.getElementById('ai-recommend-button');
+            const aiOutput = document.getElementById('ai-output');
+
+            aiQualification.addEventListener('change', (e) => {
+                if (e.target.value === 'gpa') {
+                    aiScoreLabel.textContent = 'আপনার HSC GPA (৫ এর মধ্যে)';
+                    aiScoreInput.placeholder = 'যেমন: 4.5';
+                } else {
+                    aiScoreLabel.textContent = 'আপনার University CGPA (৪ এর মধ্যে)';
+                    aiScoreInput.placeholder = 'যেমন: 3.5';
+                }
+            });
+            
+            aiButton.addEventListener('click', () => {
+                const qualification = aiQualification.value;
+                const score = parseFloat(aiScoreInput.value);
+                const ielts = parseFloat(document.getElementById('ai-ielts').value);
+                const budget = parseFloat(document.getElementById('ai-budget').value);
+
+                if (isNaN(score) || isNaN(ielts) || isNaN(budget)) {
+                    aiOutput.innerHTML = `<p class="text-red-600 font-semibold">অনুগ্রহ করে সমস্ত তথ্য পূরণ করুন।</p>`;
+                    aiOutput.classList.remove('hidden');
+                    return;
+                }
+
+                aiOutput.classList.remove('hidden');
+                aiOutput.innerHTML = `<div class="ai-loader mx-auto"></div>`; // Show loader
+
+                setTimeout(() => { // Simulate AI thinking
+                    let recommendations = [];
+                    for (const countryName in studyAbroadData) {
+                        const country = studyAbroadData[countryName];
+                        let scoreValue = 0;
+                        let reasons = [];
+
+                        // Score based on GPA/CGPA
+                        if (qualification === 'gpa') {
+                            if (score >= country.minGpaHSC) {
+                                scoreValue += 30;
+                                reasons.push("আপনার GPA মিলে গেছে");
+                            } else if (score >= country.minGpaHSC - 0.5) {
+                                scoreValue += 10;
+                            }
+                        } else { // qualification is 'cgpa'
+                             if (score >= country.minCgpaUG) {
+                                scoreValue += 30;
+                                reasons.push("আপনার CGPA মিলে গেছে");
+                            } else if (score >= country.minCgpaUG - 0.5) {
+                                scoreValue += 10;
+                            }
+                        }
+
+                        // Score based on IELTS
+                        if (ielts >= country.minIeltsUG) {
+                            scoreValue += 30;
+                            reasons.push("আপনার IELTS স্কোর উপযুক্ত");
+                        } else if (ielts >= country.minIeltsUG - 0.5) {
+                            scoreValue += 10;
+                        }
+
+                        // Score based on Budget
+                        if (budget >= country.annualCostBDT) {
+                            scoreValue += 40;
+                            reasons.push("আপনার বাজেটের মধ্যে রয়েছে");
+                        } else if (budget >= country.annualCostBDT * 0.75) {
+                            scoreValue += 15;
+                        }
+                        
+                        // Bonus points
+                        scoreValue += country.visaApproval / 10; // Visa approval bonus
+                        if (country.work.postStudy.includes('PR') || country.work.postStudy.includes('3 year')) {
+                            scoreValue += 5; // Post-study work bonus
+                        }
+
+                        if (scoreValue > 40) { // Threshold for recommendation
+                           recommendations.push({ name: countryName, score: scoreValue, reasons: reasons.join(', ') });
+                        }
+                    }
+
+                    recommendations.sort((a, b) => b.score - a.score);
+                    
+                    let outputHtml = `<h3 class="text-2xl font-bold text-slate-800 mb-4">আপনার জন্য শীর্ষ সুপারিশ</h3>`;
+                    if (recommendations.length > 0) {
+                        recommendations.slice(0, 3).forEach((rec, index) => {
+                            outputHtml += `
+                                <div class="ai-result-card text-left">
+                                    <h4 class="text-xl font-bold" style="color: #8e44ad;">#${index + 1}: ${rec.name}</h4>
+                                    <p class="text-slate-600 mt-1"><strong class="text-slate-700">কারণ:</strong> ${rec.reasons}।</p>
+                                </div>
+                            `;
+                        });
+                    } else {
+                         outputHtml += `<p class="text-lg text-slate-700">দুঃখিত, আপনার প্রোফাইলের সাথে সরাসরি মেলে এমন কোনো দেশ খুঁজে পাওয়া যায়নি। আপনার GPA/CGPA, IELTS বা বাজেট বৃদ্ধি করার কথা বিবেচনা করতে পারেন।</p>`;
+                    }
+                    aiOutput.innerHTML = outputHtml;
+
+                }, 1500);
+            });
+
+            // 5. Other initializations
+            resources.forEach(resource => {
+                const li = document.createElement('li');
+                li.innerHTML = `<a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="font-semibold" style="color: #8e44ad; text-decoration: underline;">${resource.name}</a>`;
+                resourceList.appendChild(li);
+            });
+
+            document.querySelectorAll('.accordion-header').forEach(button => {
+                button.addEventListener('click', () => {
+                    button.parentElement.classList.toggle('is-open');
+                });
+            });
+
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('section, footer > div').forEach(section => {
+                section.classList.add('fade-in-section');
+                fadeObserver.observe(section);
+            });
+
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('header nav a').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-40% 0px -40% 0px' });
+            document.querySelectorAll('main section[id]').forEach(section => {
+                if (section.id) navObserver.observe(section);
+            });
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

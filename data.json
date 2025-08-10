@@ -1,0 +1,45 @@
+{
+  "universityData": [
+    { "name": "University of Toronto", "province": "Ontario", "type": "Public", "gpa": "4.8+", "url": "www.utoronto.ca" },
+    { "name": "University of British Columbia (UBC)", "province": "British Columbia", "type": "Public", "gpa": "4.8+", "url": "www.ubc.ca" },
+    { "name": "McGill University", "province": "Quebec", "type": "Public", "gpa": "4.7+", "url": "www.mcgill.ca" },
+    { "name": "University of Alberta", "province": "Alberta", "type": "Public", "gpa": "4.5+", "url": "www.ualberta.ca" },
+    { "name": "McMaster University", "province": "Ontario", "type": "Public", "gpa": "4.6+", "url": "www.mcmaster.ca" },
+    { "name": "Simon Fraser University", "province": "British Columbia", "type": "Public", "gpa": "4.2+", "url": "www.sfu.ca" },
+    { "name": "University of Waterloo", "province": "Ontario", "type": "Public", "gpa": "4.7+", "url": "www.uwaterloo.ca" },
+    { "name": "Dalhousie University", "province": "Nova Scotia", "type": "Public", "gpa": "4.0+", "url": "www.dal.ca" },
+    { "name": "University of Calgary", "province": "Alberta", "type": "Public", "gpa": "4.3+", "url": "www.ucalgary.ca" },
+    { "name": "York University", "province": "Ontario", "type": "Public", "gpa": "3.8+", "url": "www.yorku.ca" },
+    { "name": "University of Manitoba", "province": "Manitoba", "type": "Public", "gpa": "3.5+", "url": "www.umanitoba.ca" },
+    { "name": "University of Saskatchewan", "province": "Saskatchewan", "type": "Public", "gpa": "3.5+", "url": "www.usask.ca" },
+    { "name": "Concordia University", "province": "Quebec", "type": "Public", "gpa": "3.7+", "url": "www.concordia.ca" },
+    { "name": "Carleton University", "province": "Ontario", "type": "Public", "gpa": "4.0+", "url": "www.carleton.ca" },
+    { "name": "Queen's University", "province": "Ontario", "type": "Public", "gpa": "4.5+", "url": "www.queensu.ca" },
+    { "name": "Western University", "province": "Ontario", "type": "Public", "gpa": "4.4+", "url": "www.westernu.ca" },
+    { "name": "University of Ottawa", "province": "Ontario", "type": "Public", "gpa": "4.2+", "url": "www.uottawa.ca" },
+    { "name": "Lakehead University", "province": "Ontario", "type": "Public", "gpa": "3.5+", "url": "www.lakeheadu.ca" },
+    { "name": "Trent University", "province": "Ontario", "type": "Public", "gpa": "3.7+", "url": "www.trentu.ca" },
+    { "name": "Wilfrid Laurier University", "province": "Ontario", "type": "Public", "gpa": "4.0+", "url": "www.wlu.ca" },
+    { "name": "University of Guelph", "province": "Ontario", "type": "Public", "gpa": "4.0+", "url": "www.uoguelph.ca" },
+    { "name": "University of Windsor", "province": "Ontario", "type": "Public", "gpa": "3.8+", "url": "www.uwindsor.ca" },
+    { "name": "University of Regina", "province": "Saskatchewan", "type": "Public", "gpa": "3.5+", "url": "www.uregina.ca" },
+    { "name": "Trinity Western University", "province": "British Columbia", "type": "Private", "gpa": "3.5+", "url": "www.twu.ca" },
+    { "name": "Yorkville University", "province": "Ontario", "type": "Private", "gpa": "3.0+", "url": "www.yorkvilleu.ca" }
+  ],
+  "ieltsData": [
+    { "name": "U of Toronto", "score": 6.5, "bands": "6.0 each" },
+    { "name": "UBC", "score": 7.0, "bands": "Often 6.5 each" },
+    { "name": "McGill", "score": 6.5, "bands": "Often 6.0 each" },
+    { "name": "McMaster", "score": 6.5, "bands": "5.0 each" },
+    { "name": "U of Alberta", "score": 6.5, "bands": "5.0 L/R/W, 7.5 S" },
+    { "name": "Waterloo", "score": 6.5, "bands": "Often 6.0 each" },
+    { "name": "York U", "score": 6.0, "bands": "Often 5.5 each" },
+    { "name": "Dalhousie", "score": 6.5, "bands": "Often 6.0 each" }
+  ],
+  "fundsDataUpdated": {
+    "beforeSep2025": [20635, 25690, 31583, 38346, 43492, 49051, 54611],
+    "afterSep2025": [22895, 28502, 35040, 42543, 48252, 54420, 60589],
+    "additionalBefore": 5559,
+    "additionalAfter": 6170
+  }
+}

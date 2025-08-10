@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<link href="https://studyabroadbd.top/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://studyabroadbd.top/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://studyabroadbd.top/favicon.ico" rel="shortcut icon"/>
+<link href="https://studyabroadbd.top/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<meta content="STUDY ABROAD BD" name="apple-mobile-web-app-title"/>
+<link href="https://studyabroadbd.top/site.webmanifest" rel="manifest"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0ZMFT4DXBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0ZMFT4DXBG');
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>শেঙ্গেন স্টাডি হাব</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Montserrat:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Chosen Palette: Dynamic & Engaging - Primary Blue (#2563EB), Accent Green (#10B981), Soft Gray Background (#F8FAFC), White Cards, Dark Text (#1F2937) -->
+<!-- Application Structure Plan: A task-oriented, tab-based SPA. This structure is chosen over mirroring the report's linear format to allow users to directly access key decision-making information. The core is the 'Country & Career Explorer', a dashboard view that synthesizes financial and post-study work data. Other tabs provide focused tools for 'Admission Requirements' and 'Financial Planning'. This modular, non-linear approach enhances usability by letting users compare options and plan their journey based on their own priorities (e.g., budget, career goals) rather than the report's chapter order. -->
+<!-- Visualization & Content Choices: 
+        - Financial Requirements: Report Info -> Table of min. bank balances. Goal -> Compare. Method -> Interactive Bar Chart (Chart.js). Interaction -> Click a bar to update a detail card. Justification -> Instantly visualizes the significant variance in costs, a primary user concern.
+        - Post-Study Work Permits: Report Info -> Table of permit durations. Goal -> Compare. Method -> Interactive Bar Chart (Chart.js). Interaction -> Click a bar to update the same detail card, linking finances to career outcomes. Justification -> Clarifies the most complex and variable policy aspect.
+        - IELTS Requirements: Report Info -> Table of CEFR/IELTS scores. Goal -> Inform. Method -> Bar Chart (Chart.js). Justification -> Visually benchmarks language requirements more effectively than a table.
+        - Academic Gap Policy: Report Info -> Textual description. Goal -> Organize/Inform. Method -> Structured HTML cards. Justification -> Breaks down policy into clear, scannable guidelines.
+    -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #F8FAFC;
+            color: #1F2937;
+            transition: background-color 0.5s ease;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .chart-container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 800px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            height: 400px; 
+            max-height: 50vh; 
+        }
+        @media (min-width: 768px) { 
+            .chart-container { height: 500px; } 
+        }
+        .tab-active { 
+            border-color: #2563EB;
+            color: #2563EB; 
+            background-color: #EFF6FF;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+            transition: color 0.5s ease, border-color 0.5s ease, background-color 0.5s ease;
+        } 
+        .tab-inactive { 
+            border-color: transparent; 
+            color: #6B7280;
+        }
+        .content-section { display: none; }
+        .content-active { display: block; }
+        .hero-section {
+            background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+            color: #FFFFFF;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+            padding: 4rem 2rem;
+            transition: background 0.5s ease;
+        }
+        .section-heading {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #111827;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background-color: #10B981;
+            border-radius: 3px;
+            transition: background-color 0.5s ease;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 8px 16px -4px rgba(0,0,0,0.05), 0 4px 8px -2px rgba(0,0,0,0.03);
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px -6px rgba(0,0,0,0.1), 0 6px 12px -3px rgba(0,0,0,0.05);
+        }
+    </style>
+<style id="dynamic-styles"></style>
+</head>
+<body class="antialiased">
+<div class="min-h-screen" id="app-container">
+<header class="bg-white shadow-md sticky top-0 z-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center py-4">
+<div class="flex items-center space-x-3">
+<h1 class="text-2xl md:text-3xl font-extrabold text-blue-800 transition-colors duration-500" id="main-heading">শেঙ্গেন স্টাডি হাব</h1>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="hero-section text-center mb-12" id="hero-section">
+<h2 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-white">ইউরোপে আপনার অধ্যয়নের ইন্টারেক্টিভ যাত্রা</h2>
+<p class="max-w-4xl mx-auto text-lg md:text-xl text-blue-100 leading-relaxed">এই গাইডটি এইচএসসি পাশ করা শিক্ষার্থীদের জন্য তৈরি করা হয়েছে যারা শেঙ্গেন এলাকায় উচ্চশিক্ষা নিতে আগ্রহী। এখানে আপনি বিশ্ববিদ্যালয়ের প্রয়োজনীয়তা, আর্থিক পরিকল্পনার সরঞ্জাম এবং ক্যারিয়ারের সুযোগ সম্পর্কে জানতে পারবেন। সমস্ত তথ্য একটি বিস্তারিত সোর্স রিপোর্টের উপর ভিত্তি করে তৈরি, যা এখানে একটি সহজে ব্যবহারযোগ্য, ইন্টারেক্টিভ বিন্যাসে উপস্থাপন করা হয়েছে। <strong class="font-semibold text-blue-200">সর্বদা অফিসিয়াল বিশ্ববিদ্যালয় এবং ইমিগ্রেশন ওয়েবসাইট থেকে তথ্য যাচাই করুন।</strong></p>
+</div>
+<nav class="mb-8 flex flex-wrap -mb-px border-b-2 border-gray-200 bg-white rounded-t-lg shadow-sm" id="app-nav">
+<button class="nav-tab text-sm md:text-base font-semibold text-center py-3 px-4 border-b-2 rounded-t-lg transition-all duration-300 hover:bg-gray-50" data-tab="explorer">দেশ ও ক্যারিয়ার এক্সপ্লোরার</button>
+<button class="nav-tab text-sm md:text-base font-semibold text-center py-3 px-4 border-b-2 rounded-t-lg transition-all duration-300 hover:bg-gray-50" data-tab="admissions">ভর্তির প্রয়োজনীয়তা</button>
+<button class="nav-tab text-sm md:text-base font-semibold text-center py-3 px-4 border-b-2 rounded-t-lg transition-all duration-300 hover:bg-gray-50" data-tab="finances">আর্থিক পরিকল্পনা</button>
+<button class="nav-tab text-sm md:text-base font-semibold text-center py-3 px-4 border-b-2 rounded-t-lg transition-all duration-300 hover:bg-gray-50" data-tab="scholarships">বৃত্তি গাইড</button>
+<button class="nav-tab text-sm md:text-base font-semibold text-center py-3 px-4 border-b-2 rounded-t-lg transition-all duration-300 hover:bg-gray-50" data-tab="next-steps">আপনার পরবর্তী পদক্ষেপ</button>
+</nav>
+<div id="content-container">
+<!-- Country & Career Explorer Tab Content -->
+<section class="content-section" id="explorer-tab">
+<div class="text-center mb-12">
+<h2 class="section-heading">ইন্টারেক্টিভ দেশ এক্সপ্লোরার</h2>
+<p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">একটি দেশ বেছে নেওয়া আপনার সবচেয়ে বড় সিদ্ধান্ত। শেঙ্গেন এলাকা জুড়ে মূল আর্থিক এবং ক্যারিয়ারের কারণগুলি তুলনা করতে এই ইন্টারেক্টিভ চার্টগুলি ব্যবহার করুন। একটি দেশের বারে ক্লিক করে তার বিস্তারিত তথ্য দেখুন।</p>
+</div>
+<div class="grid lg:grid-cols-5 gap-8">
+<div class="lg:col-span-3">
+<div class="card p-6 rounded-lg mb-8">
+<h3 class="text-xl font-semibold text-center mb-4">তুলনা: ন্যূনতম বার্ষিক তহবিল প্রয়োজন</h3>
+<p class="text-center text-sm text-gray-500 mb-4">এই চার্টটি আপনার ছাত্র ভিসার জন্য প্রয়োজনীয় আনুমানিক ন্যূনতম তহবিল (ইউরোতে) দেখায়, যা এক বছরের জীবনযাত্রার খরচ কভার করে। এতে টিউশন ফি অন্তর্ভুক্ত নয়।</p>
+<div class="chart-container">
+<canvas id="financialsChart"></canvas>
+</div>
+</div>
+<div class="card p-6 rounded-lg">
+<h3 class="text-xl font-semibold text-center mb-4">তুলনা: পোস্ট-স্টাডি ওয়ার্ক পারমিটের সময়কাল</h3>
+<p class="text-center text-sm text-gray-500 mb-4">এই চার্টটি স্নাতক হওয়ার পর চাকরি খোঁজার জন্য আপনার পোস্ট-স্টাডি ভিসা এক্সটেনশনের সাধারণ সময়কাল (মাসে) দেখায়।</p>
+<div class="chart-container">
+<canvas id="workPermitChart"></canvas>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2">
+<div class="sticky top-24">
+<div class="card p-6 rounded-lg" id="country-card">
+<label class="block text-sm font-medium text-gray-700 mb-2" for="country-selector">অন্বেষণের জন্য একটি দেশ নির্বাচন করুন:</label>
+<select class="block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" id="country-selector"></select>
+<div class="mt-6" id="country-info-card"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Admission Requirements Tab Content -->
+<section class="content-section" id="admissions-tab">
+<div class="text-center mb-12">
+<h2 class="section-heading">মূল ভর্তির প্রয়োজনীয়তা</h2>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">আবেদন করার আগে, আপনাকে কিছু মৌলিক একাডেমিক এবং ভাষা দক্ষতার মানদণ্ড পূরণ করতে হবে। এগুলি ইউরোপ জুড়ে সাধারণত সামঞ্জস্যপূর্ণ, তবে নির্দিষ্ট বিশ্ববিদ্যালয় অনুযায়ী ভিন্ন হতে পারে।</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="space-y-8">
+<div class="card p-6">
+<h3 class="font-bold text-xl text-blue-700 mb-3">ইংরেজি দক্ষতা (IELTS) 🗣️</h3>
+<p class="text-gray-600 mb-4">বেশিরভাগ বিশ্ববিদ্যালয়ে IELTS স্কোর প্রয়োজন। ডানদিকের চার্টটি বিভিন্ন স্তর এবং তাদের সংশ্লিষ্ট স্কোরগুলি দেখায়। সাধারণত, স্নাতক প্রোগ্রামের জন্য আপনার 5.5-6.5 স্কোর প্রয়োজন হবে।</p>
+<ul class="space-y-2">
+<li><span class="font-semibold text-gray-800">B1 স্তর (IELTS 4.5–5.0):</span> কিছু ফাউন্ডেশন প্রোগ্রামের জন্য গৃহীত হতে পারে।</li>
+<li><span class="font-semibold text-gray-800">B2 স্তর (IELTS 5.5–6.5):</span> ব্যাচেলর ডিগ্রির জন্য সবচেয়ে সাধারণ প্রয়োজনীয়তা।</li>
+<li><span class="font-semibold text-gray-800">C1 স্তর (IELTS 7.0–7.5):</span> প্রায়শই মাস্টার্স প্রোগ্রাম এবং প্রতিযোগিতামূলক কোর্সের জন্য প্রয়োজন।</li>
+</ul>
+</div>
+<div class="card p-6">
+<h3 class="font-bold text-xl text-blue-700 mb-3">একাডেমিক ইয়ার গ্যাপ নীতি ⏳</h3>
+<p class="text-gray-600 mb-4">এইচএসসি-এর পর 1-2 বছরের বিরতি সাধারণত গ্রহণযোগ্য, যদি আপনি এটি ব্যাখ্যা করতে পারেন। আপনার উদ্দেশ্য বিবৃতি (SOP) ব্যবহার করে দেখান যে আপনি কীভাবে সময়টিকে গঠনমূলকভাবে ব্যবহার করেছেন।</p>
+<ul class="list-disc list-inside text-gray-600 space-y-1">
+<li><strong class="text-gray-800">আপনার গ্যাপকে কাজে লাগান:</strong> প্রাসঙ্গিক কাজ, স্বেচ্ছাসেবক বা দক্ষতা-নির্মাণের উপর জোর দিন।</li>
+<li><strong class="text-gray-800">প্রমাণ সরবরাহ করুন:</strong> আপনার দাবি সমর্থন করার জন্য সার্টিফিকেট, নিয়োগপত্র বা বেতন স্লিপ ব্যবহার করুন।</li>
+<li><strong class="text-gray-800">সৎ থাকুন:</strong> আপনার আবেদনে আপনার কারণগুলি স্পষ্টভাবে উল্লেখ করুন। একটি সু-ব্যাখ্যা করা গ্যাপ একটি শক্তি হতে পারে।</li>
+</ul>
+</div>
+</div>
+<div class="card p-6">
+<h3 class="font-semibold text-lg text-center text-blue-800 mb-4">IELTS সর্বনিম্ন স্কোর তুলনা 📊</h3>
+<div class="chart-container bg-white p-4 rounded-lg">
+<canvas id="ieltsChart"></canvas>
+</div>
+<p class="text-center text-sm text-gray-500 mt-2">বিস্তারিত জানতে বারগুলিতে হোভার করুন। এগুলি সাধারণ সর্বনিম্ন; প্রতিযোগিতামূলক প্রোগ্রামের জন্য উচ্চতর স্কোর প্রয়োজন হতে পারে।</p>
+</div>
+</div>
+</section>
+<!-- Financial Planning Tab Content -->
+<section class="content-section" id="finances-tab">
+<div class="text-center mb-12">
+<h2 class="section-heading">আর্থিক পরিকল্পনা টুলকিট</h2>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">আপনার ছাত্র ভিসার জন্য পর্যাপ্ত তহবিল প্রমাণ করা বাধ্যতামূলক। খরচ অনুমান করতে এবং প্রয়োজনীয়তাগুলি বুঝতে এই সরঞ্জামগুলি ব্যবহার করুন।</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="card p-6">
+<h3 class="font-bold text-xl text-blue-700 mb-3">তহবিল প্রমাণের ক্যালকুলেটর 🧮</h3>
+<p class="text-gray-600 mb-4">এক বছরের জীবনযাত্রার খরচের (টিউশন ফি ব্যতীত) জন্য প্রয়োজনীয় ন্যূনতম তহবিল অনুমান করুন। এই গণনাটি জার্মানির প্রয়োজনীয়তার উপর ভিত্তি করে তৈরি, যা একটি সাধারণ উচ্চ মানদণ্ড।</p>
+<div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+<label class="block font-medium text-gray-800 mb-2" for="familyMembers">আপনার আবেদনে মোট সদস্য সংখ্যা (নিজেকে সহ):</label>
+<input class="w-full p-2 border border-gray-300 rounded-md" id="familyMembers" max="10" min="1" type="number" value="1"/>
+<div class="mt-4 space-y-2" id="fundsResult"></div>
+</div>
+<p class="text-xs text-gray-500 mt-3">এই ক্যালকুলেটরটি সাধারণ শেঙ্গেন নির্দেশিকা অনুসারে একটি অনুমান। সবচেয়ে সঠিক তথ্যের জন্য সর্বদা আপনার নির্বাচিত দেশের অফিসিয়াল ইমিগ্রেশন ওয়েবসাইট দেখুন।</p>
+</div>
+<div class="card p-6">
+<h3 class="font-bold text-xl text-blue-700 mb-3">মূল আর্থিক নীতি 🏦</h3>
+<p class="text-gray-600 mb-4">ভিসা কর্মকর্তাদের দেখতে হবে যে আপনার তহবিল বৈধ এবং সহজে অ্যাক্সেসযোগ্য।</p>
+<ul class="space-y-3">
+<li class="flex items-start">
+<span class="text-green-500 font-bold mr-2 text-xl">✓</span>
+<div>
+<h4 class="font-semibold">অ্যাক্সেসযোগ্য তহবিল</h4>
+<p class="text-gray-600 text-sm">তহবিল সঞ্চয় অ্যাকাউন্টে থাকতে হবে। জার্মানির মতো দেশগুলির জন্য একটি 'ব্লকড অ্যাকাউন্ট' প্রয়োজন।</p>
+</div>
+</li>
+<li class="flex items-start">
+<span class="text-green-500 font-bold mr-2 text-xl">✓</span>
+<div>
+<h4 class="font-semibold">স্পনসরশিপ</h4>
+<p class="text-gray-600 text-sm">যদি স্পনসর করা হয়, তাহলে আপনার একটি অফিসিয়াল চিঠি এবং আপনার স্পনসরের ব্যাংক স্টেটমেন্ট প্রয়োজন।</p>
+</div>
+</li>
+<li class="flex items-start">
+<span class="text-red-500 font-bold mr-2 text-xl">✗</span>
+<div>
+<h4 class="font-semibold">অগ্রহণযোগ্য তহবিল</h4>
+<p class="text-gray-600 text-sm">ফিক্সড ডিপোজিট, সম্পত্তি, বিনিয়োগ পোর্টফোলিও, বা ক্রেডিট কার্ডের সীমা সাধারণত গৃহীত হয় না।</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Scholarship Guide Tab Content -->
+<section class="content-section" id="scholarships-tab">
+<div class="text-center mb-12">
+<h2 class="section-heading">বৃত্তি গাইড</h2>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">একটি বৃত্তি সুরক্ষিত করা বিদেশে অধ্যয়নের আর্থিক বোঝা উল্লেখযোগ্যভাবে হ্রাস করতে পারে। এখানে প্রধান প্রকারগুলি এবং সেগুলি কোথায় খুঁজতে হবে তা দেওয়া হল।</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="card p-6">
+<h3 class="font-bold text-xl text-blue-700 mb-3">EU-স্তরের প্রোগ্রাম 🇪🇺</h3>
+<p class="text-gray-600 mb-4">এই মর্যাদাপূর্ণ বৃত্তিগুলি ইউরোপীয় ইউনিয়ন দ্বারা অফার করা হয় এবং অত্যন্ত প্রতিযোগিতামূলক।</p>
+<h4 class="font-semibold text-gray-800">ইরাসমাস মুন্ডাস জয়েন্ট মাস্টার্স</h4>
+<p class="text-gray-600 text-sm">নির্দিষ্ট মাস্টার্স প্রোগ্রামগুলির জন্য সম্পূর্ণ অর্থায়িত বৃত্তি অফার করে যা ইউরোপের একাধিক বিশ্ববিদ্যালয়ে অনুষ্ঠিত হয়।</p>
+</div>
+<div class="card p-6">
+<h3 class="font-bold text-xl text-blue-700 mb-3">জাতীয় বৃত্তি 🇩 🇫🇷</h3>
+<p class="text-gray-600 mb-4">স্বতন্ত্র দেশগুলি প্রায়শই আন্তর্জাতিক শিক্ষার্থীদের জন্য তাদের নিজস্ব সরকার-অর্থায়িত বৃত্তি প্রোগ্রাম থাকে।</p>
+<h4 class="font-semibold text-gray-800">উদাহরণ:</h4>
+<ul class="list-disc list-inside text-gray-600 text-sm mt-2">
+<li><strong>DAAD বৃত্তি</strong> (জার্মানি)</li>
+<li><strong>আইফেল এক্সেলেন্স বৃত্তি</strong> (ফ্রান্স)</li>
+<li><strong>হল্যান্ড বৃত্তি</strong> (নেদারল্যান্ডস)</li>
+</ul>
+</div>
+<div class="card p-6">
+<h3 class="font-bold text-xl text-blue-700 mb-3">বিশ্ববিদ্যালয়-নির্দিষ্ট বৃত্তি 🎓</h3>
+<p class="text-gray-600 mb-4">এখানে আপনি সবচেয়ে বেশি সুযোগ পাবেন। বেশিরভাগ বিশ্ববিদ্যালয় তাদের নিজস্ব বৃত্তি অফার করে মেধা বা প্রয়োজনের ভিত্তিতে।</p>
+<h4 class="font-semibold text-gray-800">সেগুলি কীভাবে খুঁজে পাবেন:</h4>
+<p class="text-gray-600 text-sm">আপনি আগ্রহী বিশ্ববিদ্যালয়গুলির ওয়েবসাইটগুলির "অ্যাডমিশন", "আর্থিক সহায়তা" বা "বৃত্তি" বিভাগে সরাসরি যান।</p>
+</div>
+</div>
+</section>
+<!-- Next Steps Tab Content -->
+<section class="content-section" id="next-steps-tab">
+<div class="text-center mb-12">
+<h2 class="section-heading">আপনার সামনের পথ: প্রস্তাবিত পদক্ষেপসমূহ</h2>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">অত্যধিক মনে হচ্ছে? আপনার বিদেশে অধ্যয়নের যাত্রাকে পরিচালনাযোগ্য এবং সফল করতে এই কাঠামোগত পদ্ধতি অনুসরণ করুন।</p>
+</div>
+<div class="relative max-w-3xl mx-auto">
+<div class="hidden md:block absolute top-4 left-8 w-0.5 h-full bg-blue-200"></div>
+<div class="space-y-12">
+<div class="relative pl-20">
+<div class="absolute top-0 left-0 w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold z-10 shadow-lg">1</div>
+<div class="card p-6">
+<h3 class="text-xl font-semibold mb-2">লক্ষ্য দেশ নির্বাচন করুন</h3>
+<p class="text-gray-600">আপনার বাজেট এবং ক্যারিয়ারের লক্ষ্যগুলির সাথে মানানসই 2-3টি দেশ নির্বাচন করতে 'দেশ ও ক্যারিয়ার এক্সপ্লোরার' ব্যবহার করুন।</p>
+</div>
+</div>
+<div class="relative pl-20">
+<div class="absolute top-0 left-0 w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold z-10 shadow-lg">2</div>
+<div class="card p-6">
+<h3 class="text-xl font-semibold mb-2">বিশ্ববিদ্যালয় ও প্রোগ্রাম গবেষণা করুন</h3>
+<p class="text-gray-600">আপনার লক্ষ্য দেশগুলির অফিসিয়াল বিশ্ববিদ্যালয়ের ওয়েবসাইটগুলি দেখুন। নির্দিষ্ট প্রোগ্রামগুলি খুঁজুন এবং তাদের সঠিক ভর্তির প্রয়োজনীয়তাগুলি পরীক্ষা করুন।</p>
+</div>
+</div>
+<div class="relative pl-20">
+<div class="absolute top-0 left-0 w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold z-10 shadow-lg">3</div>
+<div class="card p-6">
+<h3 class="text-xl font-semibold mb-2">ভিসার নিয়মাবলী যাচাই করুন</h3>
+<p class="text-gray-600">আপনার নিজ দেশে আপনার লক্ষ্য দেশের অফিসিয়াল দূতাবাস বা কনস্যুলেট ওয়েবসাইট পরীক্ষা করুন। এটি 100% সঠিক ভিসা তথ্যের একমাত্র উৎস।</p>
+</div>
+</div>
+<div class="relative pl-20">
+<div class="absolute top-0 left-0 w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold z-10 shadow-lg">4</div>
+<div class="card p-6">
+<h3 class="text-xl font-semibold mb-2">প্রস্তুত হন ও আবেদন করুন</h3>
+<p class="text-gray-600">আপনার নথিগুলি সংগ্রহ করুন, একটি শক্তিশালী উদ্দেশ্য বিবৃতি লিখুন এবং সময়সীমার অনেক আগে আপনার আবেদন জমা দিন।</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<footer class="bg-gray-100 mt-12 py-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600">
+<div class="mb-4">
+<p class="font-semibold">Website Admin: Tanveer Ahammed</p>
+<p>Contact: <a class="text-sm text-gray-300 hover:text-[#BF0A30] transition" href="mailto:studyabroadbd360@gmail.com">studyabroadbd360@gmail.com</a></p>
+</div>
+<div class="text-sm text-gray-500">
+<p>সকল নীতি, ফি এবং প্রয়োজনীয়তা পরিবর্তন সাপেক্ষ। সবচেয়ে সঠিক এবং আপ-টু-ডেট তথ্যের জন্য সর্বদা অফিসিয়াল সরকারি এবং বিশ্ববিদ্যালয়ের উৎসগুলো দেখুন।</p>
+</div>
+</div>
+</footer>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Data for each country including new GPA, color theme, and universities properties
+            const countryData = [
+                { 
+                    name: 'জার্মানি', 
+                    financials: 11208, 
+                    workPermit: 18, 
+                    gpa: '৪.০ - ৫.০', 
+                    notes: 'তহবিল প্রমাণের জন্য একটি ব্লকড অ্যাকাউন্ট সবচেয়ে সাধারণ উপায়। ১৮ মাসের চাকরি খোঁজার ভিসার জন্য আপনার অধ্যয়নের ক্ষেত্রের সাথে সম্পর্কিত কাজ খুঁজে বের করা প্রয়োজন।', 
+                    colors: { primary: '#FFCE00', accent: '#000000', text: '#000000', cardText: '#000000' },
+                    universities: [
+                        { name: 'Technical University of Munich', website: 'https://www.tum.de/' },
+                        { name: 'Ludwig Maximilian University of Munich', website: 'https://www.lmu.de/en/' },
+                        { name: 'Heidelberg University', website: 'https://www.uni-heidelberg.de/en' },
+                        { name: 'RWTH Aachen University', website: 'https://www.rwth-aachen.de/go/id/a/?lidx=1' },
+                        { name: 'University of Freiburg', website: 'https://uni-freiburg.de/en/' },
+                        { name: 'Karlsruhe Institute of Technology (KIT)', website: 'https://www.kit.edu/english/' },
+                        { name: 'Humboldt University of Berlin', website: 'https://www.hu-berlin.de/en' },
+                        { name: 'Free University of Berlin', website: 'https://www.fu-berlin.de/en/' },
+                        { name: 'University of Hamburg', website: 'https://www.uni-hamburg.de/en.html' },
+                        { name: 'University of Bonn', website: 'https://www.uni-bonn.de/en/' },
+                        { name: 'University of Göttingen', website: 'https://www.uni-goettingen.de/en/1.html' },
+                        { name: 'University of Mannheim', website: 'https://www.uni-mannheim.de/en/' },
+                        { name: 'University of Stuttgart', website: 'https://www.uni-stuttgart.de/en/' },
+                        { name: 'TU Dresden', website: 'https://tu-dresden.de/en' }
+                    ]
+                },
+                { 
+                    name: 'ফ্রান্স', 
+                    financials: 7380, 
+                    workPermit: 24, 
+                    gpa: '৩.৫ - ৫.০', 
+                    notes: 'প্রতি মাসে ন্যূনতম €৬১৫ প্রয়োজন। মাস্টার্স গ্র্যাজুয়েটদের জন্য সাধারণত ২ বছরের পোস্ট-স্টাডি পারমিট পাওয়া যায়, যখন ব্যাচেলর গ্র্যাজুয়েটদের একটি নির্দিষ্ট ওয়ার্ক পারমিট প্রয়োজন।', 
+                    colors: { primary: '#0055A4', accent: '#EF4135', text: '#FFFFFF', cardText: '#0055A4' },
+                    universities: [
+                        { name: 'PSL Research University', website: 'https://psl.eu/en' },
+                        { name: 'Sorbonne University', website: 'https://www.sorbonne-universite.fr/en' },
+                        { name: 'École Polytechnique', website: 'https://www.polytechnique.edu/en' },
+                        { name: 'Université Paris-Saclay', website: 'https://www.universite-paris-saclay.fr/en' },
+                        { name: 'Sciences Po', website: 'https://www.sciencespo.fr/en/' },
+                        { name: 'Université Paris Cité', website: 'https://u-paris.fr/en/' },
+                        { name: 'University of Bordeaux', website: 'https://www.u-bordeaux.com/' },
+                        { name: 'Aix-Marseille University', website: 'https://www.univ-amu.fr/en' },
+                        { name: 'University of Lyon', website: 'https://www.universite-lyon.fr/en' },
+                        { name: 'University of Grenoble Alpes', website: 'https://www.univ-grenoble-alpes.fr/english/' },
+                        { name: 'University of Strasbourg', website: 'https://www.unistra.fr/en' },
+                        { name: 'INSA Lyon', website: 'https://www.insa-lyon.fr/en/' }
+                    ]
+                },
+                { 
+                    name: 'নেদারল্যান্ডস', 
+                    financials: 13500, 
+                    workPermit: 12, 
+                    gpa: '৩.৫ - ৫.০', 
+                    notes: 'টিউশন বাদে উচ্চ তহবিল প্রমাণের প্রয়োজনীয়তা। "ওরিয়েন্টেশন ইয়ার" পারমিট গ্র্যাজুয়েটদের এক বছর চাকরি খুঁজতে বা একটি কোম্পানি শুরু করতে দেয়।', 
+                    colors: { primary: '#AE1C28', accent: '#21468B', text: '#FFFFFF', cardText: '#AE1C28' },
+                    universities: [
+                        { name: 'University of Amsterdam', website: 'https://www.uva.nl/en' },
+                        { name: 'Delft University of Technology', website: 'https://www.tudelft.nl/en/' },
+                        { name: 'Utrecht University', website: 'https://www.uu.nl/en' },
+                        { name: 'Wageningen University & Research', website: 'https://www.wur.nl/en.htm' },
+                        { name: 'Leiden University', website: 'https://www.universiteitleiden.nl/en' },
+                        { name: 'Erasmus University Rotterdam', website: 'https://www.eur.nl/en' },
+                        { name: 'Vrije Universiteit Amsterdam', website: 'https://vu.nl/en' },
+                        { name: 'Maastricht University', website: 'https://www.maastrichtuniversity.nl/' },
+                        { name: 'Radboud University', website: 'https://www.ru.nl/en/' },
+                        { name: 'University of Groningen', website: 'https://www.rug.nl/' },
+                        { name: 'Eindhoven University of Technology', website: 'https://www.tue.nl/en/' },
+                        { name: 'University of Twente', website: 'https://www.utwente.nl/en/' }
+                    ]
+                },
+                { 
+                    name: 'ইতালি', 
+                    financials: 6080, 
+                    workPermit: 12, 
+                    gpa: '৩.৫ - ৫.০', 
+                    notes: 'কম আর্থিক প্রয়োজনীয়তা, তবে আপনাকে প্রত্যাবর্তনের জন্য তহবিলের প্রমাণও দেখাতে হবে (যেমন, একটি রিটার্ন টিকিট)। পারমিট চাকরি খোঁজার অনুমতি দেয়।', 
+                    colors: { primary: '#009246', accent: '#CE2B37', text: '#FFFFFF', cardText: '#009246' },
+                    universities: [
+                        { name: 'University of Bologna', website: 'https://www.unibo.it/en' },
+                        { name: 'Sapienza University of Rome', website: 'https://www.uniroma1.it/en' },
+                        { name: 'Politecnico di Milano', website: 'https://www.polimi.it/en/' },
+                        { name: 'University of Padua', website: 'https://www.unipd.it/en/' },
+                        { name: 'University of Milan', website: 'https://www.unimi.it/en' },
+                        { name: 'University of Pisa', website: 'https://www.unipi.it/index.php/english' },
+                        { name: 'University of Turin', website: 'https://en.unito.it/' },
+                        { name: 'University of Naples Federico II', website: 'http://www.international.unina.it/' },
+                        { name: 'University of Florence', website: 'https://www.unifi.it/en.html' },
+                        { name: 'University of Trento', website: 'https://www.unitn.it/en' },
+                        { name: 'Bocconi University', website: 'https://www.unibocconi.eu/' }
+                    ]
+                },
+                { 
+                    name: 'অস্ট্রিয়া', 
+                    financials: 9000, 
+                    workPermit: 12, 
+                    gpa: '৩.৫ - ৫.০', 
+                    notes: 'আনুমানিক আর্থিক প্রয়োজনীয়তা। গ্র্যাজুয়েটরা ১২ মাসের "রেড-হোয়াইট-রেড কার্ড" এর জন্য আবেদন করতে পারে যা তাদের যোগ্যতার সাথে মেলে এবং বেতন মান পূরণ করে এমন একটি চাকরি খুঁজতে পারে।', 
+                    colors: { primary: '#ED2939', accent: '#C8102E', text: '#FFFFFF', cardText: '#ED2939' },
+                    universities: [
+                        { name: 'University of Vienna', website: 'https://www.univie.ac.at/en/' },
+                        { name: 'TU Wien', website: 'https://www.tuwien.at/en/' },
+                        { name: 'Medical University of Vienna', website: 'https://www.meduniwien.ac.at/web/en/' },
+                        { name: 'University of Innsbruck', website: 'https://www.uibk.ac.at/en/' },
+                        { name: 'Graz University of Technology', website: 'https://www.tugraz.at/en/home/' },
+                        { name: 'Johannes Kepler University Linz', website: 'https://www.jku.at/en/' },
+                        { name: 'WU (Vienna University of Economics and Business)', website: 'https://www.wu.ac.at/en/' },
+                        { name: 'University of Salzburg', website: 'https://www.plus.ac.at/en/' },
+                        { name: 'University of Graz', website: 'https://www.uni-graz.at/en/' }
+                    ]
+                },
+                { 
+                    name: 'ফিনল্যান্ড', 
+                    financials: 6720, 
+                    workPermit: 24, 
+                    gpa: '৪.০ - ৫.০', 
+                    notes: 'প্রতি মাসে €৫৬০ প্রমাণ করা প্রয়োজন। কাজ খুঁজতে বা একটি ব্যবসা শুরু করতে ২ বছরের একটি উদার পারমিট অফার করে, স্থায়ী বসবাসের পথ সহ।', 
+                    colors: { primary: '#002F6C', accent: '#FFFFFF', text: '#FFFFFF', cardText: '#002F6C' },
+                     universities: [
+                        { name: 'University of Helsinki', website: 'https://www.helsinki.fi/en' },
+                        { name: 'Aalto University', website: 'https://www.aalto.fi/en' },
+                        { name: 'University of Turku', website: 'https://www.utu.fi/en' },
+                        { name: 'Tampere University', website: 'https://www.tuni.fi/en' },
+                        { name: 'University of Oulu', website: 'https://www.oulu.fi/en' },
+                        { name: 'LUT University', website: 'https://www.lut.fi/en' },
+                        { name: 'University of Jyväskylä', website: 'https://www.jyu.fi/en/' },
+                        { name: 'Hanken School of Economics', website: 'https://www.hanken.fi/en' },
+                        { name: 'University of Eastern Finland', website: 'https://www.uef.fi/en' },
+                        { name: 'University of Vaasa', website: 'https://www.uwasa.fi/en' }
+                    ]
+                },
+                { 
+                    name: 'স্পেন', 
+                    financials: 7200, 
+                    workPermit: 12, 
+                    gpa: '৩.৫ - ৫.০', 
+                    notes: 'প্রায় €৬০০/মাসের উপর ভিত্তি করে। গ্র্যাজুয়েটদের জন্য চাকরি খোঁজার জন্য এক বছর পর্যন্ত অনুমতি দেয়।', 
+                    colors: { primary: '#AA151B', accent: '#F1BF00', text: '#FFFFFF', cardText: '#AA151B' },
+                    universities: [
+                        { name: 'University of Barcelona', website: 'https://www.ub.edu/web/portal/en/' },
+                        { name: 'Complutense University of Madrid', website: 'https://www.ucm.es/english' },
+                        { name: 'Autonomous University of Barcelona', website: 'https://www.uab.cat/web/universitat-autonoma-de-barcelona-1345467954774.html?language=en' },
+                        { name: 'Autonomous University of Madrid', website: 'https://www.uam.es/uam/en/home' },
+                        { name: 'University of Navarra', website: 'https://en.unav.edu/' },
+                        { name: 'Pompeu Fabra University', website: 'https://www.upf.edu/web/portal' },
+                        { name: 'Carlos III University of Madrid', website: 'https://www.uc3m.es/home' },
+                        { name: 'Polytechnic University of Valencia', website: 'https://www.upv.es/en' },
+                        { name: 'University of Granada', website: 'https://www.ugr.es/en/' },
+                        { name: 'University of Valencia', website: 'https://www.uv.es/uvweb/universitat/en/university-valencia-1285845048380.html' }
+                    ]
+                },
+                { 
+                    name: 'পর্তুগাল', 
+                    financials: 9000, 
+                    workPermit: 12, 
+                    gpa: '৩.৫ - ৫.০', 
+                    notes: 'আনুমানিক আর্থিক প্রয়োজনীয়তা। স্নাতকোত্তর পর কাজ খোঁজার জন্য একটি অস্থায়ী বসবাসের অনুমতি বা একটি নির্দিষ্ট "জব সিকার ভিসা" অফার করে।', 
+                    colors: { primary: '#006241', accent: '#E4002B', text: '#FFFFFF', cardText: '#006241' },
+                    universities: [
+                        { name: 'University of Lisbon', website: 'https://www.ulisboa.pt/en/' },
+                        { name: 'University of Porto', website: 'https://sigarra.up.pt/up/en/web_base.gera_pagina?p_pagina=home' },
+                        { name: 'University of Coimbra', website: 'https://www.uc.pt/en' },
+                        { name: 'NOVA University Lisbon', website: 'https://www.unl.pt/en' },
+                        { name: 'University of Aveiro', website: 'https://www.ua.pt/en/' },
+                        { name: 'University of Minho', website: 'https://www.uminho.pt/EN' },
+                        { name: 'ISCTE - University Institute of Lisbon', website: 'https://www.iscte-iul.pt/en' },
+                        { name: 'University of Algarve', website: 'https://ualg.pt/en' },
+                        { name: 'Catholic University of Portugal', website: 'https://www.ucp.pt/en' }
+                    ]
+                },
+                { 
+                    name: 'সুইডেন', 
+                    financials: 10000, 
+                    workPermit: 0, 
+                    gpa: '৪.০ - ৫.০', 
+                    notes: 'আনুমানিক আর্থিক প্রয়োজনীয়তা। নীতিগুলি কঠোর; গ্র্যাজুয়েটদের সাধারণত তাদের ছাত্র পারমিট শেষ হওয়ার আগে একটি চাকরির প্রস্তাব থাকতে হবে।', 
+                    colors: { primary: '#006AA7', accent: '#FECC00', text: '#FFFFFF', cardText: '#006AA7' },
+                    universities: [
+                        { name: 'Lund University', website: 'https://www.lunduniversity.lu.se/' },
+                        { name: 'KTH Royal Institute of Technology', website: 'https://www.kth.se/en' },
+                        { name: 'Uppsala University', website: 'https://www.uu.se/en' },
+                        { name: 'Stockholm University', website: 'https://www.su.se/english/' },
+                        { name: 'University of Gothenburg', website: 'https://www.gu.se/en' },
+                        { name: 'Chalmers University of Technology', website: 'https://www.chalmers.se/en/' },
+                        { name: 'Linköping University', website: 'https://liu.se/en' },
+                        { name: 'Umeå University', website: 'https://www.umu.se/en/' },
+                        { name: 'Swedish University of Agricultural Sciences', website: 'https://www.slu.se/en/' },
+                        { name: 'Örebro University', website: 'https://www.oru.se/english/' }
+                    ]
+                },
+                { 
+                    name: 'বেলজিয়াম', 
+                    financials: 9000, 
+                    workPermit: 0, 
+                    gpa: '৩.৫ - ৫.০', 
+                    notes: 'আনুমানিক আর্থিক প্রয়োজনীয়তা। পোস্ট-স্টাডি কাজ আরও নিয়োগকর্তা-চালিত, প্রায়শই নিয়োগকর্তার আপনাকে নিয়োগের জন্য একটি ওয়ার্ক পারমিট প্রয়োজন হয়। কোনো স্বয়ংক্রিয় চাকরি খোঁজার সময়কাল নেই।', 
+                    colors: { primary: '#FDDA24', accent: '#EF3340', text: '#000000', cardText: '#000000' },
+                    universities: [
+                        { name: 'KU Leuven', website: 'https://www.kuleuven.be/english/' },
+                        { name: 'Ghent University', website: 'https://www.ugent.be/en' },
+                        { name: 'UCLouvain', website: 'https://uclouvain.be/en/index.html' },
+                        { name: 'Vrije Universiteit Brussel (VUB)', website: 'https://www.vub.be/en' },
+                        { name: 'Université libre de Bruxelles (ULB)', website: 'https://www.ulb.be/en' },
+                        { name: 'University of Antwerp', website: 'https://www.uantwerpen.be/en/' },
+                        { name: 'Hasselt University', website: 'https://www.uhasselt.be/en' },
+                        { name: 'University of Liège', website: 'https://www.uliege.be/cms/c_8699436/en/uliege' },
+                        { name: 'University of Namur', website: 'https://www.unamur.be/en' },
+                        { name: 'Saint-Louis University, Brussels', website: 'https://www.usaintlouis.be/sl/150.html' }
+                    ]
+                },
+            ].sort((a, b) => a.name.localeCompare(a.name));
+
+            const ieltsData = {
+                labels: ['A2', 'B1', 'B2', 'C1', 'C2'],
+                data: [4.0, 5.0, 6.5, 7.5, 9.0],
+                fullRanges: { 'A2': '3.5–4.0', 'B1': '4.5–5.0', 'B2': '5.5–6.5', 'C1': '7.0–7.5', 'C2': '8.0–9.0' },
+                notes: { 'B2': 'ব্যাচেলরদের জন্য সাধারণ', 'C1': 'মাস্টার্সদের জন্য সাধারণ' }
+            };
+            
+            const BASE_ANNUAL_FUNDS_EUR = 11208;
+            const ADDITIONAL_DEPENDENT_FUNDS_EUR = 4000;
+
+            const tabButtons = document.querySelectorAll('.nav-tab');
+            const contentSections = document.querySelectorAll('.content-section');
+            let activeChartInstances = {};
+
+            function updateThemeColors(colors) {
+                const heroSection = document.getElementById('hero-section');
+                const mainHeading = document.getElementById('main-heading');
+                const activeTab = document.querySelector('.tab-active');
+                const countryCard = document.getElementById('country-card');
+                const dynamicStyles = document.getElementById('dynamic-styles');
+
+                heroSection.style.background = `linear-gradient(135deg, ${colors.primary} 0%, ${colors.accent} 100%)`;
+                heroSection.style.color = colors.text;
+                // Make sure text inside hero is readable
+                heroSection.querySelectorAll('p, strong').forEach(el => el.style.color = colors.text === '#FFFFFF' ? '#E0E7FF' : '#4B5563');
+                
+                mainHeading.style.color = colors.primary;
+                countryCard.style.borderColor = colors.primary;
+
+                if (activeTab) {
+                    activeTab.style.borderColor = colors.primary;
+                    activeTab.style.color = colors.primary;
+                    activeTab.style.backgroundColor = `${colors.primary}1A`; // Add alpha for background
+                }
+
+                if (dynamicStyles) {
+                    dynamicStyles.innerHTML = `.section-heading::after { background-color: ${colors.accent} !important; }`;
+                }
+            }
+
+            function showTab(tabId) {
+                contentSections.forEach(section => section.classList.remove('content-active'));
+                tabButtons.forEach(button => button.classList.remove('tab-active', 'tab-inactive'));
+
+                const targetTabContent = document.getElementById(tabId + '-tab');
+                if (targetTabContent) targetTabContent.classList.add('content-active');
+
+                tabButtons.forEach(button => {
+                    if (button.dataset.tab === tabId) {
+                        button.classList.add('tab-active');
+                    } else {
+                        button.classList.add('tab-inactive');
+                    }
+                });
+                
+                const selectedCountryName = document.getElementById('country-selector').value;
+                const country = countryData.find(c => c.name === selectedCountryName);
+                if (country) {
+                    updateThemeColors(country.colors);
+                }
+
+
+                if (typeof initFunctions[tabId] === 'function') {
+                    initFunctions[tabId]();
+                }
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => showTab(button.dataset.tab));
+            });
+
+            function updateCountryInfoCard(countryName) {
+                const countrySelector = document.getElementById('country-selector');
+                const countryInfoCard = document.getElementById('country-info-card');
+                const country = countryData.find(c => c.name === countryName);
+                if (country && countryInfoCard) {
+                    const universitiesHTML = country.universities.map(uni => 
+                        `<li class="text-sm"><a href="${uni.website}" target="_blank" class="text-blue-600 hover:underline">${uni.name}</a></li>`
+                    ).join('');
+
+                    countryInfoCard.innerHTML = `
+                        <h3 class="text-2xl font-bold mb-4 mt-2" style="color: ${country.colors.cardText};">${country.name}</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">সাধারণ এইচএসসি জিপিএ প্রয়োজন</p>
+                                <p class="text-xl font-semibold text-gray-800">${country.gpa}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">ন্যূনতম বার্ষিক তহবিল</p>
+                                <p class="text-xl font-semibold text-gray-800">€${country.financials.toLocaleString('bn-BD')}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">পোস্ট-স্টাডি ওয়ার্ক পারমিট</p>
+                                <p class="text-xl font-semibold text-gray-800">${country.workPermit > 0 ? `${country.workPermit} মাস` : 'উপলব্ধ নেই / নিয়োগকর্তা-নির্ভর'}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">বিশ্ববিদ্যালয়সমূহ</p>
+                                <p class="text-xs italic text-gray-400">(এটি একটি সম্পূর্ণ তালিকা নয়)</p>
+                                <ul class="list-disc list-inside space-y-1 mt-1 max-h-60 overflow-y-auto pr-2">${universitiesHTML}</ul>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">মূল নোট</p>
+                                <p class="text-base text-gray-600">${country.notes}</p>
+                            </div>
+                        </div>`;
+                    updateThemeColors(country.colors);
+                }
+                if (countrySelector && countrySelector.value !== countryName) {
+                    countrySelector.value = countryName;
+                }
+            }
+            
+            const createChart = (canvasId, config) => {
+                const canvas = document.getElementById(canvasId);
+                if (!canvas) return;
+                if (activeChartInstances[canvasId]) {
+                    activeChartInstances[canvasId].destroy();
+                }
+                activeChartInstances[canvasId] = new Chart(canvas, config);
+            };
+
+            const initFunctions = {
+                explorer: () => {
+                    if (document.getElementById('explorer-tab').dataset.initialized) return;
+                    
+                    const countrySelector = document.getElementById('country-selector');
+                    countrySelector.innerHTML = '';
+                    countryData.forEach(country => {
+                        const option = document.createElement('option');
+                        option.value = country.name;
+                        option.textContent = country.name;
+                        countrySelector.appendChild(option);
+                    });
+                    countrySelector.addEventListener('change', e => updateCountryInfoCard(e.target.value));
+
+                    const chartClickHandler = (evt, chart) => {
+                        const points = chart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+                        if (points.length) {
+                            updateCountryInfoCard(chart.data.labels[points[0].index]);
+                        }
+                    };
+
+                    const commonOptions = {
+                        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { x: { beginAtZero: true, grid: { color: '#F3F4F6' } } }
+                    };
+
+                    const sortedByFinancials = [...countryData].sort((a,b) => a.financials - b.financials);
+                    createChart('financialsChart', {
+                        type: 'bar',
+                        data: {
+                            labels: sortedByFinancials.map(c => c.name),
+                            datasets: [{
+                                label: 'ন্যূনতম বার্ষিক তহবিল (€)',
+                                data: sortedByFinancials.map(c => c.financials),
+                                backgroundColor: '#3B82F6',
+                            }]
+                        },
+                        options: { ...commonOptions, onClick: (e, els, chart) => chartClickHandler(e, chart) }
+                    });
+
+                    const sortedByWorkPermit = [...countryData].sort((a,b) => a.workPermit - b.workPermit);
+                    createChart('workPermitChart', {
+                        type: 'bar',
+                        data: {
+                            labels: sortedByWorkPermit.map(c => c.name),
+                            datasets: [{
+                                label: 'ওয়ার্ক পারমিট (মাস)',
+                                data: sortedByWorkPermit.map(c => c.workPermit),
+                                backgroundColor: '#10B981',
+                            }]
+                        },
+                        options: { ...commonOptions, onClick: (e, els, chart) => chartClickHandler(e, chart) }
+                    });
+
+                    updateCountryInfoCard(countryData[0].name);
+                    document.getElementById('explorer-tab').dataset.initialized = 'true';
+                },
+                admissions: () => {
+                    if (document.getElementById('admissions-tab').dataset.initialized) return;
+                    createChart('ieltsChart', {
+                        type: 'bar',
+                        data: {
+                            labels: ieltsData.labels,
+                            datasets: [{
+                                label: 'স্তরের জন্য সর্বোচ্চ IELTS স্কোর',
+                                data: ieltsData.data,
+                                backgroundColor: '#6366F1',
+                            }]
+                        },
+                        options: {
+                            indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: {
+                                    callbacks: {
+                                        label: (context) => `IELTS রেঞ্জ: ${ieltsData.fullRanges[context.label]}`,
+                                        afterBody: (context) => ieltsData.notes[context[0].label] || ''
+                                    }
+                                }
+                            },
+                            scales: { x: { beginAtZero: true, max: 9, grid: { color: '#F3F4F6' } } }
+                        }
+                    });
+                    document.getElementById('admissions-tab').dataset.initialized = 'true';
+                },
+                finances: () => {
+                    if (document.getElementById('finances-tab').dataset.initialized) return;
+                    const familyMembersInput = document.getElementById('familyMembers');
+                    const fundsResultDiv = document.getElementById('fundsResult');
+                    
+                    const updateFundsRequired = () => {
+                        const members = parseInt(familyMembersInput.value);
+                        if (isNaN(members) || members < 1) {
+                            fundsResultDiv.innerHTML = '<p class="text-red-600">অনুগ্রহ করে একটি বৈধ সংখ্যা (১ বা তার বেশি) লিখুন।</p>';
+                            return;
+                        }
+                        let totalFunds = BASE_ANNUAL_FUNDS_EUR + ((members - 1) * ADDITIONAL_DEPENDENT_FUNDS_EUR);
+                        fundsResultDiv.innerHTML = `
+                            <p class="text-lg font-semibold text-gray-800">আনুমানিক প্রয়োজনীয় তহবিল (১ বছরের জন্য):</p>
+                            <p class="text-3xl font-bold text-blue-600">€${totalFunds.toLocaleString('bn-BD')}</p>
+                            <p class="text-sm text-gray-500">এটি জীবনযাত্রার খরচের জন্য একটি অনুমান এবং টিউশন ফি অন্তর্ভুক্ত নয়।</p>`;
+                    };
+                    
+                    familyMembersInput.addEventListener('input', updateFundsRequired);
+                    updateFundsRequired();
+                    document.getElementById('finances-tab').dataset.initialized = 'true';
+                }
+            };
+
+            showTab('explorer');
+        });
+    </script>
+</body>
+</html>

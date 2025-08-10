@@ -1,0 +1,11 @@
+body { font-family: 'Inter', sans-serif; }
+.chart-container { position: relative; width: 100%; max-width: 800px; margin-left: auto; margin-right: auto; height: 400px; max-height: 50vh; }
+@media (min-width: 768px) { .chart-container { height: 500px; } }
+.tab-active { border-color: #dc2626; color: #dc2626; background-color: #fee2e2; } /* Red for active tab */
+.tab-inactive { border-color: transparent; color: #374151; }
+.content-section { display: none; }
+.content-active { display: block; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f9fafb; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }

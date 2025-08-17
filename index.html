@@ -298,6 +298,38 @@
 <a class="cta-button" href="#country-selection-intro">আপনার যাত্রা শুরু করুন</a>
 </div>
 </section>
+
+<!-- Ad: Responsive Banner Ads -->
+<div class="my-8 text-center">
+    <!-- Desktop Banner (728x90) -->
+    <div class="hidden md:inline-block">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : 'd8d27b7ee5bb6f6585ed953c0dfe955c',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/d8d27b7ee5bb6f6585ed953c0dfe955c/invoke.js"></script>
+    </div>
+    <!-- Mobile Banner (320x50) -->
+    <div class="md:hidden">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : 'f897479ab9cc38130b94ee73bf17fc79',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/f897479ab9cc38130b94ee73bf17fc79/invoke.js"></script>
+    </div>
+</div>
+
+
 <section class="text-center mb-16" id="country-selection-intro">
 <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">আপনার পছন্দের দেশ নির্বাচন করুন</h3>
 <p class="max-w-2xl mx-auto text-lg text-slate-600">নিচের দেশগুলো থেকে আপনার পছন্দের দেশটি নির্বাচন করে সেই দেশের উচ্চশিক্ষা, ভিসা, এবং কাজের সুযোগ সম্পর্কে বিস্তারিত জানুন।</p>
@@ -373,6 +405,21 @@
 <canvas id="comparisonChart"></canvas>
 </div>
 </section>
+
+<!-- Ad: 300x250 Banner -->
+<div class="my-8 text-center">
+    <script type="text/javascript">
+        atOptions = {
+            'key' : '2c3c332182cd6ddee84f425a0fd9c053',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+        };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/2c3c332182cd6ddee84f425a0fd9c053/invoke.js"></script>
+</div>
+
 <div class="my-20 h-px bg-slate-200"></div>
 
 <section id="ai-assistant" class="mb-20">
@@ -476,6 +523,12 @@
 </div>
 </section>
 
+<!-- Ad: Native Banner -->
+<div class="my-8">
+    <script async="async" data-cfasync="false" src="//pl27200380.profitableratecpm.com/11bf8081d95e55bc85214dfa8aedefbe/invoke.js"></script>
+    <div id="container-11bf8081d95e55bc85214dfa8aedefbe"></div>
+</div>
+
 <!-- SEO: New video section added -->
 <section id="student-experience" class="my-20">
     <div class="text-center mb-12">
@@ -510,7 +563,26 @@
 <p class="text-sm mt-2">Admin: Tanveer Ahammed | Contact: <a class="text-sm text-gray-300 hover:text-green-400 transition" href="mailto:studyabroadbd360@gmail.com">studyabroadbd360@gmail.com</a><p></p>
 </p></div>
 </footer>
+
+<!-- Adsterra Social Bar -->
+<script type='text/javascript' src='//pl27223947.profitableratecpm.com/f8/c0/a3/f8c0a3ab36a2aad1c5e0234807ae3e56.js'></script>
+
 <script>
+        // Adsterra Popunder script
+        const popunderScript = document.createElement('script');
+        popunderScript.type = 'text/javascript';
+        popunderScript.text = "atOptions={key:'e84e0b80aba8c0ccfd760377d96fa8b8',format:'iframe',height:250,width:300,params:{}};";
+        
+        function triggerPopupAd() {
+            // It's better to load the script on interaction to avoid being blocked
+            if (!document.querySelector('script[src*="e84e0b80aba8c0ccfd760377d96fa8b8"]')) {
+                const script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = '//pl27200368.profitableratecpm.com/e8/4e/0b/e84e0b80aba8c0ccfd760377d96fa8b8.js';
+                document.body.appendChild(script);
+            }
+        }
+
         // --- COMPLETE DATA & CHART LOGIC ---
         const studyAbroadData = {
             Canada: {
@@ -785,6 +857,7 @@
             });
             
             aiButton.addEventListener('click', () => {
+                triggerPopupAd(); // Trigger the pop-up ad
                 const qualification = aiQualification.value;
                 const score = parseFloat(aiScoreInput.value);
                 const ielts = parseFloat(document.getElementById('ai-ielts').value);
